@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}Commercial Real Estate Insights Bengaluru | Bricx.ai Blog{% endblock %}
+
+{% block meta_description %}Market intelligence, leasing frameworks, and investment thinking for Bangalore's commercial real estate — from the Bricx.ai advisory desk.{% endblock %}
+
+{% block extra_head %}
+<!-- Structured JSON-LD dynamic Blog Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Bricx Blogs",
+  "url": "https://bricx.ai/blog",
+  "description": "Read Bricx.ai's institutional insights, market pricing data, due diligence reviews, and commercial real estate advisory editorials.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bricx.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bricx.ai/static/home_about_advisory.png"
+    }
+  },
+  "blogPost": [
+    {% for item in blogs %}
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ item.title }}",
+      "description": "{{ item.meta_description }}",
+      "datePublished": "{{ item.date }}",
+      "url": "https://bricx.ai/blog/{{ item.slug }}",
+      "image": "https://bricx.ai{{ item.hero_image }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<style>
+  /* Scoped layout overrides specifically to support transparent header correctly */
+  #main-header {
+    position: absolute;
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+
+  #main-header.scrolled {
+    position: fixed;
+    background: rgba(250, 248, 245, 0.95);
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  /* Hamburger toggle color defaults for transparent light background */
+  #main-header:not(.scrolled) .mobile-toggle span {
+    background-color: #4a4947 !important;
+  }
+  
+  #main-header:not(.scrolled) .nav-logo {
+    color: #4a4947 !important;
+  }
+
+  #main-header:not(.scrolled) .nav-cta {
+    color: #4a4947 !important;
+    border-color: rgba(74, 73, 71, 0.4) !important;
+  }
+
+  #main-header:not(.scrolled) .nav-cta:hover {
+    background-color: #4a4947 !important;
+    color: #ffffff !important;
+  }
+
+  #main-header:not(.scrolled) .nav-search-icon {
+    color: #4a4947 !important;
+  }
+
+  /* Excerpt typography styling matching luxury brokerage theme */
+  .bricx-blog-list-excerpt {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #7a7874;
+    margin: -18px 0 28px 0;
+    font-weight: 300;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── HEADER TITLE BLOCK (CAROLWOOD REPLICA) ────────────────────────── -->
+<div style="background-color: #f6f5f3; padding-top: 130px; padding-bottom: 30px; text-align: center;">
+  <h1 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 200; letter-spacing: 0.18em; color: #4a4947; text-transform: uppercase; margin: 0;">
+    BLOG
+  </h1>
+</div>
+
+<!-- ── BRICX JOURNAL / PRESS ARTICLES GRID (CAROLWOOD EXACT MATCH) ───── -->
+<section class="bricx-blog-list-section">
+  <div class="bricx-blog-list-container">
+    
+    {% for item in blogs %}
+    <a href="/blog/{{ item.slug }}" class="bricx-blog-list-item">
+      <div class="bricx-blog-list-image-wrap">
+        <img src="{{ item.hero_image }}" alt="{{ item.hero_image_alt if item.hero_image_alt else item.title }}" loading="lazy">
+      </div>
+      <div class="bricx-blog-list-content">
+        <h4>{{ item.title }}</h4>
+        <p class="bricx-blog-list-excerpt">{{ item.excerpt }}</p>
+        <ul class="bricx-blog-list-details">
+          <li class="bricx-blog-list-date">{{ item.date }}</li>
+          <li class="bricx-blog-list-publisher">{{ item.publisher }}</li>
+        </ul>
+        <span class="bricx-blog-list-link">READ MORE</span>
+      </div>
+    </a>
+    {% endfor %}
+
+  </div>
+</section>
+
+{% endblock %}

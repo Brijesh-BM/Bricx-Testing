@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Bricx.ai | Commercial Real Estate Advisor Bengaluru{% endblock %}
+
+{% block meta_description %}Contact Bricx.ai in Bengaluru for commercial real estate advisory, office leasing tenant representation, yield investments, and joint development land acquisition.{% endblock %}
+
+{% block content %}
+
+<!-- ── CONTACT US HERO ────────────────────────────────────────────────── -->
+<section class="advisory-hero" style="background-color: var(--accent-olive);">
+  <div class="advisory-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600&auto=format&fit=crop');"></div>
+  <div class="container">
+    <div class="blog-category" style="color: var(--accent-gold);">Initiate Consultation</div>
+    <h1>Contact Commercial Real Estate Advisors in Bengaluru</h1>
+    <p>Connect with our principals for conflict-free commercial real estate advisory in Bengaluru. We provide expert counsel on occupier-focused office leasing, secure income investments, and strategic land acquisition in Karnataka's high-growth corridors.</p>
+  </div>
+</section>
+
+<!-- ── CONTACT SPLIT SECTION ──────────────────────────────────────────── -->
+<section class="contact-section section-padding reveal-on-scroll">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Office Coordination details -->
+      <div class="contact-cards-container">
+        <div class="blog-category">Bricx Headquarters</div>
+
+        <div class="contact-card-item stagger-item">
+          <h3>Bengaluru Headquarters</h3>
+          <p style="margin-bottom: 1.5rem; line-height: 1.6; color: var(--text-charcoal);">
+            <strong>WeWork Galaxy</strong><br>
+            43, Residency Rd, Ashok Nagar,<br>
+            Bengaluru, Karnataka 560025
+          </p>
+
+          <p style="margin-bottom: 1rem; color: var(--text-charcoal);">
+            Direct Line: <a href="tel:+919070504020" style="color: var(--accent-olive); font-weight: 600;">+91 90 70 50
+              40 20</a>
+          </p>
+          <p style="color: var(--text-charcoal);">
+            Secure Email: <a href="mailto:krupesh@bricx.ai"
+              style="color: var(--accent-olive); font-weight: 600;">krupesh@bricx.ai</a>
+          </p>
+        </div>
+
+        <div class="contact-card-item stagger-item">
+          <h3>Operational Hours</h3>
+          <p style="line-height: 1.6; color: var(--text-charcoal);">
+            Monday &ndash; Friday: 9:00 AM &ndash; 6:30 PM (IST)<br>
+            Saturday: By prior appointment only<br>
+            Sunday: Closed
+          </p>
+        </div>
+
+        <div class="contact-card-item stagger-item" style="background-color: var(--bg-cream); border-color: var(--accent-gold);">
+          <h3>Investor Dealroom Helpdesk</h3>
+          <p style="line-height: 1.6; color: var(--text-charcoal);">
+            For issues regarding NDA approvals or secure investment dealroom access credentials, please call our digital
+            desk directly at <strong>+91 90 70 50 40 20</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Premium comprehensive contact form -->
+      <div class="conversation-card stagger-item" style="background-color: var(--bg-white);">
+        <div class="blog-category">Request Consultation</div>
+        <h2 style="margin-bottom: 2rem; font-size: 2rem;">Start the Conversation</h2>
+
+        <form id="contact-detailed-form" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="c-name">Full Name <span style="color: red;">*</span></label>
+            <input type="text" id="c-name" class="form-control" placeholder="Name*" required>
+          </div>
+
+          <div class="form-group">
+            <label for="c-email">Business Email <span style="color: red;">*</span></label>
+            <input type="email" id="c-email" class="form-control" placeholder="Email*" required>
+          </div>
+
+          <div class="form-group">
+            <label for="c-phone">Phone Number</label>
+            <input type="text" id="c-phone" class="form-control" placeholder="Phone Number">
+          </div>
+
+          <div class="form-group">
+            <label for="c-inquiry">Area of Interest</label>
+            <select id="c-inquiry" class="form-control">
+              <option value="Leasing Advisory">Occupier Leasing Advisory</option>
+              <option value="Income Investments">Income & Portfolio Placements</option>
+              <option value="Land Opportunities">Land Plot Development</option>
+              <option value="Other">General B2B Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="c-message">Inquiry Details</label>
+            <textarea id="c-message" class="form-control"
+              placeholder="Briefly describe your requirements or the specific assets you are interested in..."
+              style="min-height: 120px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="c-submit-btn">Request Consultation</button>
+        </form>
+
+        <!-- success modal structure -->
+        <div id="c-success-message" style="display: none; text-align: center; padding: 30px 0;">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--accent-olive)" stroke-width="1.5"
+            style="margin-bottom: 1.5rem;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 style="font-size: 1.6rem; margin-bottom: 10px; color: var(--primary-obsidian);">Consultation Initiated
+          </h3>
+          <p style="color: var(--text-charcoal); line-height: 1.6; max-width: 420px; margin: 0 auto;">
+            Thank you for reaching out. A senior Bricx.ai advisory principal will call you on your provided contact
+            number within 2 business hours.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Submit handling interaction script -->
+<script>
+  function handleContactSubmit(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('contact-detailed-form');
+    const successMsg = document.getElementById('c-success-message');
+    const nameInput = document.getElementById('c-name');
+    const emailInput = document.getElementById('c-email');
+    const phoneInput = document.getElementById('c-phone');
+    const inquirySelect = document.getElementById('c-inquiry');
+    const messageInput = document.getElementById('c-message');
+    const submitBtn = document.getElementById('c-submit-btn');
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+    const phone = phoneInput ? phoneInput.value : '';
+    const inquiry = inquirySelect ? inquirySelect.value : 'General B2B Inquiry';
+    const messageDetails = messageInput ? messageInput.value : '';
+
+    if (!name || !email) return;
+
+    const origText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        message: `[Inquiry: ${inquiry}] - ${messageDetails}`
+      })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('API submission error');
+      return res.json();
+    })
+    .then(data => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = origText;
+      if (data.success) {
+        // Animate fade-out of form and fade-in of success message
+        form.style.transition = 'opacity 0.2s ease';
+        form.style.opacity = '0';
+
+        setTimeout(() => {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+          successMsg.style.opacity = '0';
+          successMsg.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => {
+            successMsg.style.opacity = '1';
+          }, 50);
+        }, 200);
+      } else {
+        alert('Error: ' + data.message);
+      }
+    })
+    .catch(err => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = origText;
+      console.error(err);
+      alert('Could not submit details. Please try again.');
+    });
+  }
+</script>
+
+{% endblock %}

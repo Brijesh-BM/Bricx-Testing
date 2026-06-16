@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ① Critical meta must come first -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Bricx.ai | Independent Commercial Real Estate Advisory Bengaluru{% endblock %}</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="{% block meta_description %}Bricx.ai delivers high-end institutional real estate advisory, off-market income investments, and strategic land opportunities with unmatched structural clarity and credibility.{% endblock %}">
+  <meta name="theme-color" content="#0e182a">
+
+  <!-- Canonical URL -->
+  {% block canonical_block %}
+  <link rel="canonical" href="https://bricx.ai{{ request.path }}">
+  {% endblock %}
+
+  <!-- Open Graph / Facebook -->
+  {% block og_block %}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bricx.ai{{ request.path }}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.meta_description() }}">
+  <meta property="og:image" content="https://bricx.ai/static/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {% endblock %}
+
+  <!-- Twitter Card metadata -->
+  {% block twitter_block %}
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://bricx.ai{{ request.path }}">
+  <meta property="twitter:title" content="{{ self.title() }}">
+  <meta property="twitter:description" content="{{ self.meta_description() }}">
+  <meta property="twitter:image" content="https://bricx.ai/static/og-default.png">
+  <meta name="twitter:site" content="@bricx_ai">
+  <meta name="twitter:creator" content="@bricx_ai">
+  {% endblock %}
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%230e182a'/><text x='50%' y='53%' font-size='70' font-family='serif' fill='%23C5B897' text-anchor='middle' dominant-baseline='middle'>B</text></svg>">
+
+  <!-- Premium Google Fonts (Outfit + Inter + Cinzel) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome (loaded after critical meta) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- Mobile Nav Backdrop Overlay -->
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+
+  <!-- ── STICKY NAVIGATION HEADER (SCREENSHOTS MATCHED) ───────────────────── -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="/" class="nav-logo" id="logo-anchor">BRICX.AI</a>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+        <a href="/advisory" class="nav-link" id="nav-advisory">Leasing Advisory</a>
+        <a href="/investment-opportunities" class="nav-link" id="nav-investments">Income Investments</a>
+        <a href="/land-opportunities" class="nav-link" id="nav-land">Land & Opportunity</a>
+        <a href="/about" class="nav-link" id="nav-about">About Bricx</a>
+        <a href="/blog" class="nav-link" id="nav-blog">Bricx Blogs</a>
+        <a href="/contact-us" class="nav-link" id="nav-contact">Contact</a>
+      </nav>
+
+      <!-- Right Side Actions (Grouped for Carolwood Style Alignment) -->
+      <div class="nav-right">
+        <!-- Search Icon (Carolwood Style) -->
+        <a href="/contact-us" class="nav-search-icon" id="nav-search-icon" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </a>
+
+        <!-- Direct Line CTA button -->
+        <a href="/contact-us" class="nav-cta" id="header-phone-cta">
+          <span>Contact Us</span>
+        </a>
+
+        <!-- Hamburger Toggle for Mobile Drawer -->
+        <button type="button" class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu"
+          aria-expanded="false" aria-controls="nav-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── CENTRAL PAGE CONTENT BLOCK ───────────────────────────────────────── -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ── CORE INSTITUTIONAL FOOTER (SCREENSHOTS MATCHED) ──────────────────── -->
+  <footer class="premium-footer">
+
+    <div class="footer-container">
+
+      <!-- LEFT -->
+      <div class="footer-left">
+
+        <div class="footer-logo">BRICX.AI</div>
+
+        <p class="footer-description">
+          Evaluating commercial real estate with the analytical discipline
+          of capital markets— examining risk first, structure next, and
+          returns last.
+        </p>
+
+        <div class="footer-location">
+          EST. BENGALURU • KARNATAKA
+        </div>
+
+        <div class="footer-socials">
+
+          <a href="#">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a href="#">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-center">
+
+        <h3>CORE PRACTICES</h3>
+
+        <a href="/advisory">Leasing Advisory</a>
+        <a href="/investment-opportunities">Income Investments</a>
+        <a href="/land-opportunities">Land & Opportunity</a>
+        <a href="/about">About Bricx</a>
+        <a href="/blog">Bricx Blogs</a>
+        <a href="/contact-us">Advisory Consultation</a>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="footer-right">
+
+        <h3>HEADQUARTERS</h3>
+
+        <div class="footer-contact">
+          <p>
+            WeWork Galaxy <br>
+            43, Residency Rd, Ashok Nagar, <br>
+            Bengaluru, Karnataka 560025
+          </p>
+        </div>
+
+        <div class="footer-newsletter">
+
+          <h3>NEWSLETTER</h3>
+
+          <p>
+            Subscribe for institutional market insights,
+            investment opportunities, and advisory updates.
+          </p>
+
+          <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+
+            <input type="email" id="footer-newsletter-email" placeholder="Email Address" required>
+
+            <button type="submit">
+              SUBSCRIBE
+            </button>
+
+          </form>
+
+          <div id="newsletter-success-msg"
+            style="display: none; font-size: 0.85rem; color: #d4c28a; margin-top: 10px; font-weight: 500;">
+            <i class="fas fa-check-circle"></i> Successfully subscribed!
+          </div>
+
+        </div>
+
+        <div class="footer-contact">
+          <p>
+            krupesh@bricx.ai <br>
+            For secure investor dealroom inquiries
+          </p>
+        </div>
+
+        <div class="footer-contact">
+          <p>
+            +91 90 70 50 40 20 <br>
+            Secure client advisor hotline
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 Bricx.ai. All rights reserved. Registered Indian Entity.
+      </div>
+
+      <div class="footer-links">
+        <a href="/terms">Terms of Service</a>
+        <span>•</span>
+        <a href="/privacy">Privacy Charter</a>
+      </div>
+
+    </div>
+
+  </footer>
+  <!-- ── SCROLL TO TOP BUTTON ──────────────────────────────────────────────── -->
+  <button type="button" id="scroll-to-top" aria-label="Scroll to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ── PREMIUM INTERACTIONS & ANIMATION SCRIPTS ────────────────────────── -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      const backdrop = document.getElementById('nav-backdrop');
+
+      // 1. Mobile Menu Drawer Toggle with backdrop & aria-expanded
+      function openNav() {
+        mobileToggle.classList.add('open');
+        navMenu.classList.add('open');
+        backdrop.classList.add('active');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeNav() {
+        mobileToggle.classList.remove('open');
+        navMenu.classList.remove('open');
+        backdrop.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+          navMenu.classList.contains('open') ? closeNav() : openNav();
+        });
+
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', closeNav);
+        });
+      }
+
+      if (backdrop) {
+        backdrop.addEventListener('click', closeNav);
+      }
+
+      // Close nav on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) closeNav();
+      });
+
+      // 2. Sticky Nav Header Shadow on Scroll
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          header.classList.add('scrolled');
+          header.style.boxShadow = '0 4px 20px rgba(33, 40, 8, 0.04)';
+          header.style.padding = '12px 0';
+        } else {
+          header.classList.remove('scrolled');
+          header.style.boxShadow = 'none';
+          header.style.padding = '20px 0';
+        }
+      });
+
+      // 3. Highlight Active Navigation Links dynamically
+      const pathname = window.location.pathname;
+      if (pathname.includes('/advisory')) {
+        document.getElementById('nav-advisory')?.classList.add('active');
+      } else if (pathname.includes('/investment-opportunities')) {
+        document.getElementById('nav-investments')?.classList.add('active');
+      } else if (pathname.includes('/land-opportunities')) {
+        document.getElementById('nav-land')?.classList.add('active');
+      } else if (pathname.includes('/contact-us')) {
+        document.getElementById('nav-contact')?.classList.add('active');
+      } else if (pathname.includes('/blog')) {
+        document.getElementById('nav-blog')?.classList.add('active');
+      }
+
+      // 4. Premium Scroll Reveal with IntersectionObserver
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        revealElements.forEach(el => observer.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('revealed'));
+      }
+
+      // ── 4b. CINEMATIC HERO — Ken Burns loop + parallax + tag underline ──────
+      const heroBg = document.querySelector('.advisory-hero-bg');
+      if (heroBg) {
+        const ENTRY_MS = 3500;
+
+        // Tag underline reveal
+        const heroTag = document.querySelector('.advisory-hero .blog-category');
+        if (heroTag) setTimeout(() => heroTag.classList.add('tag-underlined'), 500);
+
+        // Switch entry zoom → continuous Ken Burns loop
+        setTimeout(() => heroBg.classList.add('kb-loop', 'parallax-ready'), ENTRY_MS + 40);
+
+        // Parallax on scroll
+        let pxReady = false;
+        setTimeout(() => { pxReady = true; }, ENTRY_MS);
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!pxReady || !ticking) {
+            requestAnimationFrame(() => {
+              const hero = heroBg.closest('.advisory-hero');
+              if (hero) {
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+                  const offset = -rect.top * 0.15;
+                  heroBg.style.transform = `translateY(${offset}px)`;
+                }
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // 5. Featured Slider Navigation
+      const track = document.getElementById('slider-track'); const prevBtn = document.getElementById('slider-prev-btn');
+      const nextBtn = document.getElementById('slider-next-btn');
+
+      if (track && prevBtn && nextBtn) {
+        let currentTranslate = 0;
+        const gap = 24;
+
+        function getSlideWidth() {
+          const slide = track.querySelector('.slider-slide');
+          return slide ? slide.offsetWidth : 0;
+        }
+
+        function getMaxTranslate() {
+          const totalWidth = track.scrollWidth;
+          const containerWidth = track.parentElement.offsetWidth;
+          return Math.max(0, totalWidth - containerWidth);
+        }
+
+        nextBtn.addEventListener('click', () => {
+          const slideWidth = getSlideWidth();
+          const step = slideWidth + gap;
+          const max = getMaxTranslate();
+          currentTranslate = Math.min(currentTranslate + step, max);
+          track.style.transform = `translate3d(-${currentTranslate}px, 0, 0)`;
+        });
+
+        prevBtn.addEventListener('click', () => {
+          const slideWidth = getSlideWidth();
+          const step = slideWidth + gap;
+          currentTranslate = Math.max(0, currentTranslate - step);
+          track.style.transform = `translate3d(-${currentTranslate}px, 0, 0)`;
+        });
+
+        window.addEventListener('resize', () => {
+          currentTranslate = 0;
+          track.style.transform = 'translate3d(0, 0, 0)';
+        });
+      }
+
+      // 6. Scroll-to-top button
+      const scrollBtn = document.getElementById('scroll-to-top');
+      if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+          scrollBtn.classList.toggle('visible', window.scrollY > 600);
+        }, { passive: true });
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+
+    // 7. Global Async Newsletter Subscription Handler
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('footer-newsletter-email');
+      const email = emailInput ? emailInput.value : '';
+      const successMsg = document.getElementById('newsletter-success-msg');
+      const form = e.target;
+      const button = form.querySelector('button');
+
+      if (!email) return;
+
+      const origText = button.textContent;
+      button.disabled = true;
+      button.textContent = '...';
+
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Network response error');
+          return res.json();
+        })
+        .then(data => {
+          button.disabled = false;
+          button.textContent = origText;
+          if (data.success) {
+            if (successMsg) {
+              successMsg.style.display = 'block';
+              successMsg.style.opacity = '1';
+              emailInput.value = '';
+              setTimeout(() => {
+                successMsg.style.transition = 'opacity 0.5s ease';
+                successMsg.style.opacity = '0';
+                setTimeout(() => {
+                  successMsg.style.display = 'none';
+                }, 500);
+              }, 4000);
+            }
+          } else {
+            alert('Error: ' + data.message);
+          }
+        })
+        .catch(err => {
+          button.disabled = false;
+          button.textContent = origText;
+          console.error(err);
+          alert('Could not subscribe. Please try again.');
+        });
+    }
+  </script>
+
+
+</body>
+
+
+
+</html>

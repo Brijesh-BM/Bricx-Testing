@@ -1,0 +1,328 @@
+{% extends 'base.html' %}
+
+{% block title %}Land Acquisition Advisory Bangalore | Joint Development (JDA) | Bricx.ai{% endblock %}
+
+{% block meta_description %}Strategic land acquisition and joint development (JDA) advisory in Bengaluru. We provide 30-year title chain vetting, zoning analysis, and FSI optimization.{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* ── CINEMATIC ENTRY TRANSITIONS ─────────────── */
+  .advisory-hero h1 {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 150ms;
+  }
+
+  .advisory-hero p {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 300ms;
+  }
+
+  .advisory-hero .blog-category {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 50ms;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  /* ── PHILOSOPHY CARDS HOVER ─────────────────── */
+  .advisory-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease !important;
+  }
+
+  .advisory-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 16px 36px rgba(14, 24, 42, 0.04) !important;
+  }
+
+  /* ── ACTIVE LAND ITEMS SLIDE-IN & BORDER ────── */
+  .land-item {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      border-left 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s ease !important;
+    border-left: 0px solid transparent !important;
+    cursor: pointer;
+  }
+
+  .land-item:hover {
+    transform: translateX(6px) translateY(-2px);
+    border-color: var(--accent-gold) !important;
+    border-left: 4px solid var(--accent-gold) !important;
+    box-shadow: 0 16px 36px rgba(14, 24, 42, 0.04) !important;
+  }
+
+  .land-item-img {
+    overflow: hidden;
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .land-item-img img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .land-item:hover .land-item-img img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 991px) {
+    .land-item-img {
+      aspect-ratio: 16 / 10 !important;
+      height: auto !important;
+      width: 100% !important;
+    }
+  }
+
+  /* ── INTERACTIVE TOPOGRAPHICAL MAP GLOW ──────── */
+  .land-map-mockup {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .land-map-mockup:hover {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 24px 48px rgba(197, 184, 151, 0.12) !important;
+    transform: translateY(-4px);
+  }
+
+  /* ── DUE DILIGENCE CARDS HOVER ───────────────── */
+  .matrix-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease !important;
+  }
+
+  .matrix-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 20px 48px rgba(14, 24, 42, 0.04) !important;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── LAND OPPORTUNITIES HERO ────────────────────────────────────────── -->
+<section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
+  <div class="showcase-container">
+    <div class="division-showcase-box reveal-on-scroll">
+      <div class="showcase-img-side">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop" alt="Land Acquisition & Joint Ventures" loading="eager" decoding="async">
+      </div>
+      <div class="showcase-content-side">
+        <div class="category-label" style="color: var(--accent-gold);">Strategic Assets</div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary-obsidian); margin-bottom: 1.2rem; letter-spacing: -0.02em;">Land Acquisition &amp; Joint Development Advisory in Bengaluru</h1>
+        <p>
+          Strategic land plots and commercial parcels in Bangalore's high-growth corridors. 100% litigation-cleared,
+          title-vetted, and joint-venture ready. We verify ownership, trace title history, and flag any gaps early.
+          Clean ownership. Clear access. Realistic use. Consult our <a href="/contact-us" style="color: var(--accent-olive); text-decoration: underline; font-weight: 600;">land acquisition advisory</a> desk for feasibility audits.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LAND ADVISORY PRINCIPLES ───────────────────────────────────────── -->
+<section class="leasing-details-section reveal-on-scroll"
+  style="padding: 4rem 0 2rem 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light);">
+  <div class="container">
+    <div class="section-header-center" style="margin-bottom: 3rem;">
+      <div class="blog-category">Land Philosophy</div>
+      <h2>Vetted Land Opportunities</h2>
+      <p>Litigation, unclear titles, access gaps, and assumptions that don't hold up. We filter aggressively before
+        anything reaches you. Clean ownership. Clear access. Realistic use.</p>
+    </div>
+
+    <div class="advisory-grid">
+      <!-- Principle 1 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Title Clarity</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          We verify ownership, trace title history, and flag any gaps early. If the paper is not clean, we don't take it
+          forward.
+        </p>
+      </div>
+      <!-- Principle 2 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Time & Exit Thinking</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          Land needs patience. We help you understand how long it may take to move and what your exit could
+          realistically look like.
+        </p>
+      </div>
+      <!-- Principle 3 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Fit Over All</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          Not every good land is right for you. We look at your time horizon, risk appetite, and capital comfort before
+          recommending anything.
+        </p>
+      </div>
+    </div>
+
+    <div style="max-width: 380px; margin: 24px auto 0 auto;">
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light); text-align: center;">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          What We Skip</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          Most land looks good on paper. We spend more time saying no than yes. If something doesn't meet our bar, it
+          doesn't reach you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN GRID (LISTINGS + MAP MOCKUP) ────────────────────────────────── -->
+<section class="land-details section-padding reveal-on-scroll" style="background-color: var(--bg-cream);">
+  <div class="container">
+    <div class="land-grid">
+
+      <!-- Left: Land Opportunities List -->
+      <div class="land-list">
+        <div class="blog-category">Active Land Portfolios</div>
+
+        <!-- Plot 1 -->
+        <div class="land-item stagger-item">
+          <div class="land-item-img">
+            <img src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?q=80&w=400&auto=format&fit=crop"
+              alt="Varthur Development Plot" width="140" height="140" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="land-item-content">
+            <span class="land-item-tag">Commercial Parcel</span>
+            <h3>Varthur Lake Plaza</h3>
+            <p class="land-item-desc">High-potential commercial plot with extensive double-road frontage. Cleared of
+              environmental NOCs and optimized for rapid development approval.</p>
+            <div class="land-item-specs">
+              <span>Area: <strong>4.2 Acres</strong></span>
+              <span>Permitted FSI: <strong>3.25</strong></span>
+              <span>Proposed: <strong>IT Park / Retail</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plot 2 -->
+        <div class="land-item stagger-item">
+          <div class="land-item-img">
+            <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=400&auto=format&fit=crop"
+              alt="Devanahalli Aviation City Plots" width="140" height="140" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="land-item-content">
+            <span class="land-item-tag">Mixed-Use Parcel</span>
+            <h3>Devanahalli Airport Corridor</h3>
+            <p class="land-item-desc">Exceptional strategic land parcel within the masterplanned high-growth aviation
+              corridor. Approved for integrated residential townships or villa parks.</p>
+            <div class="land-item-specs">
+              <span>Area: <strong>12.5 Acres</strong></span>
+              <span>Permitted FSI: <strong>2.75</strong></span>
+              <span>Proposed: <strong>Villa Park / Retail</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plot 3 -->
+        <div class="land-item stagger-item">
+          <div class="land-item-img">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=400&auto=format&fit=crop"
+              alt="Electronic City Industrial Zone" width="140" height="140" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="land-item-content">
+            <span class="land-item-tag">Industrial Parcel</span>
+            <h3>Electronic City Phase II Hub</h3>
+            <p class="land-item-desc">Zoned heavy-industrial land equipped with high-power grid access (10MVA), secure
+              boundary fencing, and robust logistics infrastructure.</p>
+            <div class="land-item-specs">
+              <span>Area: <strong>6.8 Acres</strong></span>
+              <span>Permitted FSI: <strong>1.80</strong></span>
+              <span>Proposed: <strong>Data Center / Mfg</strong></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Elegant Topographical Map Mockup representing high-end graphics -->
+      <div class="land-map-mockup stagger-item">
+        <div class="map-placeholder-graphics">
+          <!-- Map marker path -->
+          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <h3 style="margin-bottom: 8px;">Interactive Land Matrix</h3>
+          <p style="margin-bottom: 1.5rem;">Select active land parcels on the left to highlight their exact coordinates,
+            topography lines, and arterial connectivity paths.</p>
+          <div
+            style="background: rgba(33, 40, 8, 0.04); border: 1px solid var(--border-medium); border-radius: 4px; padding: 16px; font-size: 0.8rem; color: var(--accent-olive);">
+            <strong>System status:</strong> Map layers underwritten. Click a parcel card to inspect title abstracts.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LAND ACQUISITION & DEVELOPMENT ADVISORY SERVICES ───────────────── -->
+<section class="leasing-details-section section-padding reveal-on-scroll"
+  style="background-color: var(--bg-cream); border-top: 1px solid var(--border-light);">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="blog-category">Title & Zoning Integrity</div>
+      <h2>Acquisition Due Diligence</h2>
+      <p>Before any capital allocations, Bricx.ai deploys a rigorous investigative audit on every land target.</p>
+    </div>
+
+    <div class="matrix-steps" style="margin-top: 2rem;">
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">01</div>
+        <h3>Title & Encumbrance Audits</h3>
+        <p>Thorough 30-year historical title chain checks, verification of zoning laws, and identification of legal
+          constraints or active encumbrance certificates.</p>
+      </div>
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">02</div>
+        <h3>FSI & Zoning Optimization</h3>
+        <p>Calculation of high-yield Floor Space Index (FSI), transfer of development rights (TDR), building set-backs,
+          and zoning classification changes.</p>
+      </div>
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">03</div>
+        <h3>Infrastructure Feasibility</h3>
+        <p>Analyzing access roads, heavy-industry power grid loads, arterial water connectivity, environmental drainage
+          channels, and soil bearing ratios.</p>
+      </div>
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">04</div>
+        <h3>Joint-Venture Modeling</h3>
+        <p>Positioning parcels for optimal Joint Development Agreements (JDA), structuring JV models, and aligning
+          creditworthy institutional builder partnerships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}500 Internal Error | BRICX.AI{% endblock %}
+{% block content %}
+<section class="advisory-hero" style="background-color: var(--primary-obsidian); min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div class="container" style="padding: 100px 0;">
+    <div class="blog-category" style="color: var(--accent-gold); margin-bottom: 1rem;">Error 500</div>
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--bg-cream); margin-bottom: 1.5rem;">Underwriting Interrupted</h1>
+    <p style="color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.1rem; line-height: 1.8;">
+      An unexpected computational exception occurred on our secure servers. Our system administrators have been alerted. Please try again shortly.
+    </p>
+    <a href="/" class="carolwood-btn" style="background-color: var(--accent-gold); color: var(--primary-obsidian); border-color: var(--accent-gold); text-decoration: none;">Return to Main Portfolio</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,511 @@
+{% extends 'base.html' %}
+
+{% block title %}Office Space Advisory Bengaluru | Tenant Representation & Leasing | Bricx.ai{% endblock %}
+
+{% block meta_description %}Conflict-free office leasing advisory and tenant representation services in Bengaluru. We audit lease structures, lock-ins, and spatial performance to protect occupiers.{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the commercial leasing process in Bengaluru?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The process begins with a detailed spatial and financial needs analysis, followed by market sourcing of off-market and pre-leased assets. We then perform technical and legal due diligence, negotiate terms in the LOI, and draft/register the lease agreement, concluding with fit-out and handover audit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the key office leasing questions to ask before signing a lease in Bengaluru?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Occupiers must clarify: (1) Is the rental rate based on warm shell or plug-and-play? (2) What is the exact carpet area vs super built-up area ratio? (3) Are maintenance, power backup, and water charges included in the CAM? (4) What is the lock-in period and what are the penalties for early termination? (5) Does the landlord have a clear title and Occupancy Certificate (OC)?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Bricx.ai verify property compliance for office leasing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bricx.ai audits the property's title deeds, occupancy certificates, fire safety compliance, structural stability, and electricity load capabilities to protect occupiers from legal and operational disruptions."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  /* ── CINEMATIC ENTRY TRANSITIONS ─────────────── */
+  .advisory-hero h1 {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 150ms;
+  }
+
+  .advisory-hero p {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 300ms;
+  }
+
+  .advisory-hero .blog-category {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 50ms;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  /* ── PRINCIPLES CARDS INTERACTIVITY ──────────── */
+  .advisory-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease !important;
+  }
+
+  .advisory-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 16px 36px rgba(14, 24, 42, 0.04) !important;
+  }
+
+  /* ── INTERACTIVE TABLE HOVER HIGHLIGHTS ───────── */
+  .lease-table tbody tr {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .lease-table tbody tr:hover {
+    background-color: rgba(197, 184, 151, 0.08) !important;
+    transform: scale(1.002);
+  }
+
+  /* ── MATRIX CARDS INTERACTIVITY ──────────────── */
+  .matrix-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease !important;
+  }
+
+  .matrix-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 20px 48px rgba(14, 24, 42, 0.04) !important;
+  }
+  /* ── OCCUPIER MANDATE CUSTOM STYLES ──────────── */
+  .occupier-mandate-section {
+    background-color: var(--accent-olive);
+    color: var(--bg-cream);
+  }
+  .mandate-container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 991px) {
+    .mandate-container-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2.5rem !important;
+    }
+  }
+
+  /* ── CASE STUDY CUSTOM STYLES ────────────────── */
+  .case-study-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 3.5rem;
+  }
+  @media (max-width: 768px) {
+    .case-study-summary-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+  }
+
+  /* ── RECOMMENDATIONS CUSTOM STYLES ────────────── */
+  .recommendations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 991px) {
+    .recommendations-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+  }
+  .non-rec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .non-rec-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── ADVISORY PAGE HERO ──────────────────────────────────────────────── -->
+<section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
+  <div class="showcase-container">
+    <div class="division-showcase-box reveal-on-scroll">
+      <div class="showcase-img-side">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Managed Office & Commercial Leasing">
+      </div>
+      <div class="showcase-content-side">
+        <div class="category-label">Bricx Services</div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary-obsidian); margin-bottom: 1.2rem; letter-spacing: -0.02em;">Office Space Advisory &amp; Tenant Representation in Bengaluru</h1>
+        <p>
+          Conflict-free occupier representation, managed office discovery, and structured lease audits for growing startups
+          and enterprises in Bangalore. Finding the right workspace is only the beginning. Structuring the right lease ensures your business operates with flexibility, cost efficiency, and long-term stability. Connect directly with our <a href="/contact-us" style="color: var(--accent-olive); text-decoration: underline; font-weight: 600;">tenant representation services</a> for secure briefings.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRATEGIC LEASING ADVISORY PRINCIPLES ────────────────────────────── -->
+<section class="leasing-details-section section-padding reveal-on-scroll">
+  <div class="container">
+    <div class="section-header-center" style="margin-bottom: 4rem;">
+      <div class="blog-category">Strategic Leasing Advisory</div>
+      <h2>More Than Office Spaces</h2>
+      <p>Finding the right workspace is only the beginning. Structuring the right lease ensures your business operates
+        with flexibility, cost efficiency, and long-term stability.</p>
+    </div>
+
+    <!-- 4-card 2×2 grid -->
+    <div class="advisory-grid" style="grid-template-columns: repeat(2, 1fr)">
+      <!-- Card 1 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          More Than Offices</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem; margin-bottom: 0;">
+          Office space is not just desks and internet. It's about shaping an environment that supports focus, growth,
+          and how your team performs over time.
+        </p>
+      </div>
+      <!-- Card 2 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Terms That Matter</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem; margin-bottom: 0;">
+          Rent is only one part of the deal. We focus on lock-ins, flexibility, and the fine print that shapes long-term
+          outcomes.
+        </p>
+      </div>
+      <!-- Card 3 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          For Every Budget</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem; margin-bottom: 0;">
+          Every budget has trade-offs. We show you what changes across price points so you can choose what actually
+          matters to you.
+        </p>
+      </div>
+      <!-- Card 4 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          If Things Change</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem; margin-bottom: 0;">
+          Businesses evolve. We help you understand your flexibility if you need to expand, reduce, or exit early.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE BRICX OCCUPIER MANDATE ───────────────────────────────────────── -->
+<section class="occupier-mandate-section section-padding reveal-on-scroll">
+  <div class="container">
+    <div class="mandate-container-grid">
+      <!-- Left Column: Krupesh Quote & Positioning -->
+      <div class="mandate-quote-block">
+        <div class="blog-category" style="color: var(--accent-gold); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 700;">Independent Advocacy</div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: var(--bg-cream); margin-bottom: 1.5rem; letter-spacing: -0.02em;">The Occupier Mandate</h2>
+        <blockquote style="border-left: 3px solid var(--accent-gold); padding-left: 20px; margin: 2rem 0; font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; font-weight: 500; color: var(--bg-cream); line-height: 1.5;">
+          "Transactions may close in months. Trust compounds over years."
+        </blockquote>
+        <cite style="display: block; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--accent-gold); font-style: normal; margin-top: -1rem; margin-bottom: 2rem;">
+          — Krupesh Sanghani, Founder, Bricx.ai
+        </cite>
+      </div>
+      <!-- Right Column: Detail / Paragraphs -->
+      <div class="mandate-philosophy-block" style="display: flex; flex-direction: column; gap: 2rem;">
+        <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(249, 246, 240, 0.85); font-weight: 300;">
+          At Bricx.ai, independent thinking sits at the core of every client mandate. Our advisory practice is shaped by capital market discipline—evaluating real estate the way any serious asset class should be assessed: <strong>risk first, structure next, and returns after that.</strong>
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: rgba(249, 246, 240, 0.85); font-weight: 300;">
+          We are not a traditional broker or transactional listings platform. We act as high-trust, sharp, operator-minded advisors. We filter aggressively and focus on lock-ins, flexibility, and the fine print that shapes long-term operational success and capital efficiency.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REPRESENTATIVE ADVISORY MANDATE ─────────────────────────────────── -->
+<section class="mandate-case-study-section section-padding reveal-on-scroll" style="background-color: var(--bg-cream);">
+  <div class="container">
+    <div class="section-header-center" style="margin-bottom: 4rem;">
+      <div class="blog-category" style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">Advisory Methodology</div>
+      <h2 style="color: var(--accent-olive);">Representative Advisory Mandate</h2>
+      <p style="max-width: 780px; margin: 0 auto;">
+        To demonstrate our tenant representation and structured evaluation process in action, below is an underwriting analysis of a representative 25,000 sq ft office space mandate in the HSR Layout micro-market.
+      </p>
+    </div>
+
+    <!-- Case Study Metric Cards Summary -->
+    <div class="case-study-summary-grid">
+      <div style="background-color: var(--bg-white); border: 1px solid var(--border-light); border-radius: 4px; padding: 24px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--accent-olive);">25,000</div>
+        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; margin-top: 4px;">Mandate Size (Sq Ft)</div>
+      </div>
+      <div style="background-color: var(--bg-white); border: 1px solid var(--border-light); border-radius: 4px; padding: 24px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--accent-olive);">4</div>
+        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; margin-top: 4px;">Properties Assessed</div>
+      </div>
+      <div style="background-color: var(--bg-white); border: 1px solid var(--border-light); border-radius: 4px; padding: 24px; text-align: center;">
+        <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--accent-gold);">1</div>
+        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; margin-top: 4px;">Recommended Option</div>
+      </div>
+    </div>
+
+    <!-- The Lease Comparison Table -->
+    <div class="lease-table-container">
+      <table class="lease-table">
+        <thead>
+          <tr>
+            <th>Property Evaluated</th>
+            <th>Total Area</th>
+            <th>Rate / SQ FT</th>
+            <th>Est. Monthly Outlay</th>
+            <th>Readiness & Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Shree Towers</strong><br><small style="color: var(--text-muted);">Hosur Road / Silk Board</small></td>
+            <td>25,000 sq ft<br><span style="color: #2e7d32; font-size: 0.8rem; font-weight: 600;">Exact match</span></td>
+            <td>₹70</td>
+            <td>₹17,50,000</td>
+            <td><span style="display: inline-block; padding: 4px 10px; background-color: rgba(46, 125, 50, 0.1); color: #2e7d32; font-size: 0.78rem; font-weight: 700; border-radius: 2px;">IMMEDIATE</span></td>
+          </tr>
+          <tr>
+            <td><strong>New Building</strong><br><small style="color: var(--text-muted);">HSR Layout</small></td>
+            <td>18,000 sq ft<br><span style="color: #c62828; font-size: 0.8rem; font-weight: 600;">28% below target</span></td>
+            <td>₹66</td>
+            <td>₹11,88,000</td>
+            <td><span style="display: inline-block; padding: 4px 10px; background-color: rgba(239, 108, 0, 0.1); color: #ef6c00; font-size: 0.78rem; font-weight: 700; border-radius: 2px;">CONDITIONAL</span></td>
+          </tr>
+          <tr>
+            <td><strong>Jupiter HQ</strong><br><small style="color: var(--text-muted);">HSR Layout</small></td>
+            <td>40,000 sq ft<br><span style="color: #c62828; font-size: 0.8rem; font-weight: 600;">60% excess area</span></td>
+            <td>₹130</td>
+            <td>₹52,00,000</td>
+            <td><span style="display: inline-block; padding: 4px 10px; background-color: rgba(198, 40, 40, 0.1); color: #c62828; font-size: 0.78rem; font-weight: 700; border-radius: 2px;">MATERIAL INEFFICIENCY</span></td>
+          </tr>
+          <tr>
+            <td><strong>JS Towers</strong><br><small style="color: var(--text-muted);">HSR Layout</small></td>
+            <td>36,219 sq ft<br><span style="color: #c62828; font-size: 0.8rem; font-weight: 600;">45% excess area</span></td>
+            <td>₹100</td>
+            <td>₹36,21,900</td>
+            <td><span style="display: inline-block; padding: 4px 10px; background-color: rgba(198, 40, 40, 0.1); color: #c62828; font-size: 0.78rem; font-weight: 700; border-radius: 2px;">RATE-VALUE DISCONNECT</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;">
+      * Est. Monthly Outlay = Total Area × Rate per square foot. Pricing and terms reflect the underwriting analysis from the representative mandate files.
+    </div>
+  </div>
+</section>
+
+<!-- ── ADVISORY RECOMMENDATIONS & RATIONALE ────────────────────────────── -->
+<section class="mandate-recommendations-section section-padding reveal-on-scroll" style="background-color: var(--bg-white);">
+  <div class="container">
+    <div class="section-header-center" style="margin-bottom: 4rem;">
+      <div class="blog-category" style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem;">Strategic Positioning</div>
+      <h2 style="color: var(--accent-olive);">Underwriting & Recommendations</h2>
+      <p style="max-width: 780px; margin: 0 auto;">
+        Bricx structures and filters space options to balance capital efficiency and physical requirements. Below is the decision architecture behind our HSR Layout mandate recommendations.
+      </p>
+    </div>
+
+    <div class="recommendations-grid">
+      <!-- Primary Recommendation Card -->
+      <div style="background-color: var(--bg-cream); border: 1px solid var(--border-light); border-top: 4px solid #2e7d32; border-radius: 4px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #2e7d32; background-color: rgba(46, 125, 50, 0.1); padding: 4px 12px; border-radius: 2px;">Primary Recommendation</span>
+            <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: var(--accent-olive);">OPTIMAL FIT</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 0.5rem;">Shree Towers</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">Hosur Road · Silk Board Corridor</p>
+          
+          <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #2e7d32; margin-right: 10px; font-weight: bold;">✔</span>
+              <span><strong>Configuration:</strong> Full building. Ground + 5 floors (5,000 sq ft per floor).</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #2e7d32; margin-right: 10px; font-weight: bold;">✔</span>
+              <span><strong>Capacity & Status:</strong> Grade A fitout, fully furnished, 402 workstations, 3 training rooms, dedicated cafeteria.</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #2e7d32; margin-right: 10px; font-weight: bold;">✔</span>
+              <span><strong>Infrastructure:</strong> 250 KVA power with 100% backup, 25 dedicated car parks.</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #2e7d32; margin-right: 10px; font-weight: bold;">✔</span>
+              <span><strong>Lease Structure:</strong> Security of 7 months, lock-in period of 3 years.</span>
+            </li>
+          </ul>
+        </div>
+        <div style="border-top: 1px solid rgba(14, 24, 42, 0.08); padding-top: 1.5rem;">
+          <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;">Advisory Position</h4>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">
+            Shree Towers represents the most defensible positioning. It achieves an exact spatial match at a competitive market rate of ₹70/sq ft. The institutional lease structure and immediate plug-and-play readiness support business continuity with zero upfront capex risk.
+          </p>
+        </div>
+      </div>
+
+      <!-- Secondary Recommendation Card -->
+      <div style="background-color: var(--bg-cream); border: 1px solid var(--border-light); border-top: 4px solid #ef6c00; border-radius: 4px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ef6c00; background-color: rgba(239, 108, 0, 0.1); padding: 4px 12px; border-radius: 2px;">Secondary Option</span>
+            <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: var(--accent-olive);">CONDITIONAL FIT</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 0.5rem;">New Building</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">HSR Layout Micro-market</p>
+          
+          <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #ef6c00; margin-right: 10px; font-weight: bold;">⚠</span>
+              <span><strong>Configuration:</strong> 6 floors: Ground parking + 4 office floors + terrace.</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #ef6c00; margin-right: 10px; font-weight: bold;">⚠</span>
+              <span><strong>Gap Analysis:</strong> 18,000 sq ft total area. Represents a 28% (7,000 sq ft) shortfall against the 25,000 sq ft mandate.</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #ef6c00; margin-right: 10px; font-weight: bold;">⚠</span>
+              <span><strong>Infrastructure:</strong> 60 KW current load. Application submitted for 120 KW upgrade (timeline pending).</span>
+            </li>
+            <li style="font-size: 0.92rem; color: var(--text-charcoal); display: flex; align-items: baseline;">
+              <span style="color: #2e7d32; margin-right: 10px; font-weight: bold;">✔</span>
+              <span><strong>Commercials:</strong> Highly competitive rate of ₹66/sq ft; construction completed in 2025.</span>
+            </li>
+          </ul>
+        </div>
+        <div style="border-top: 1px solid rgba(14, 24, 42, 0.08); padding-top: 1.5rem;">
+          <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;">Advisory Position</h4>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">
+            Warrants secondary consideration if spatial flexibility permits an area reduction. While the rate advantage and asset age (new 2025 construction) are highly attractive, the pending power upgrade timeline introduces operational readiness risk that must be verified.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparative Dismissals / Non-defensible Options -->
+    <div style="background-color: var(--bg-cream); border: 1px solid var(--border-light); border-left: 4px solid #c62828; border-radius: 4px; padding: 28px;">
+      <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 12px;">Non-Recommended Analysis (Material Inefficiencies)</h4>
+      <p style="font-size: 0.92rem; line-height: 1.7; color: var(--text-charcoal); margin-bottom: 1rem;">
+        To ensure capital efficiency, Bricx advises against options that introduce unnecessary overhead or lock occupiers into suboptimal lease structures:
+      </p>
+      <div class="non-rec-grid">
+        <div>
+          <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 4px;">Jupiter HQ (HSR Layout)</h5>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+            Offered at a premium rate of ₹130/sq ft. Presents a 60% spatial excess (15,000 sq ft extra), driving the monthly outlay to 3× that of Shree Towers. Coupled with property maintenance concerns, it represents a severe capital inefficiency unless justified by immediate expansion.
+          </p>
+        </div>
+        <div>
+          <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 4px;">JS Towers (HSR Layout)</h5>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+            Presents a rate-to-value disconnect at ₹100/sq ft. The building is 19+ years old (completed 2005) and is 45% oversized for the client requirement. Underwriting indicates inferior positioning and lack of justification for the premium pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ── THE ADVISORY LIFECYCLE MATRIX ───────────────────────────────────── -->
+<section class="lifecycle-matrix section-padding reveal-on-scroll">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="blog-category">Process Architecture</div>
+      <h2>The Bricx Advisory Lifecycle</h2>
+      <p>A rigorous, structured four-step methodology governing every commercial transaction from blueprint to
+        occupancy.</p>
+    </div>
+
+    <div class="matrix-steps">
+      <!-- Step 1 -->
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">01 / Underwrite</div>
+        <h3>Needs Assessment</h3>
+        <p>Detailed analysis of current footprints, workspace usage parameters, talent demographics, and long-term
+          financial objectives.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">02 / Strategy</div>
+        <h3>Market Search</h3>
+        <p>Exhaustive off-market search and site evaluation, leveraging direct relations and proprietary commercial
+          transaction databases.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">03 / Capture</div>
+        <h3>Negotiation</h3>
+        <p>Structured RFP rounds, aggressive concession capture, and detailed legal underwriting of lease documents or
+          purchasing deeds.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="matrix-card stagger-item">
+        <div class="matrix-step-num">04 / Execute</div>
+        <h3>Occupancy Audit</h3>
+        <p>Project coordination for office build-outs, fit-out reviews, lease administration setups, and post-occupancy
+          operational checks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

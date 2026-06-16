@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Commercial Property Investment Bangalore | Office Investment Advisory | Bricx.ai{% endblock %}
+
+{% block meta_description %}Strategic commercial property investment advisory in Bengaluru. We evaluate income-producing assets with capital market discipline—focusing on risk first and return projections next.{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* ── CINEMATIC ENTRY TRANSITIONS ─────────────── */
+  .advisory-hero h1 {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 150ms;
+  }
+
+  .advisory-hero p {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 300ms;
+  }
+
+  .advisory-hero .blog-category {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 50ms;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  /* ── PHILOSOPHY CARDS HOVER ─────────────────── */
+  .advisory-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.4s ease !important;
+  }
+
+  .advisory-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 16px 36px rgba(14, 24, 42, 0.04) !important;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── INVESTMENT OPPORTUNITIES PAGE HERO ──────────────────────────────── -->
+<section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
+  <div class="showcase-container">
+    <div class="division-showcase-box reveal-on-scroll">
+      <div class="showcase-img-side">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Off-Market Income Placements">
+      </div>
+      <div class="showcase-content-side">
+        <div class="category-label" style="color: var(--accent-gold);">Private Exclusives</div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary-obsidian); margin-bottom: 1.2rem; letter-spacing: -0.02em;">Commercial Property Investment &amp; Office Yield Advisory</h1>
+        <p>
+          High-yield, pre-vetted commercial real estate and pre-leased assets in Bangalore, underwritten for
+          sovereign-grade corporate credit and long-term appreciation. Commercial real estate investments require more than opportunity.
+          They demand analysis, foresight, and disciplined decision making. Consult our <a href="/contact-us" style="color: var(--accent-olive); text-decoration: underline; font-weight: 600;">commercial property investment consultant</a> desk to review yield-producing assets.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMERCIAL INVESTMENT PRINCIPLES ───────────────────────────────── -->
+<section class="leasing-details-section reveal-on-scroll"
+  style="padding: 4rem 0 2rem 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light);">
+  <div class="container">
+    <div class="section-header-center" style="margin-bottom: 3rem;">
+      <div class="blog-category">Investment Philosophy</div>
+      <h2>Disciplined Decisions</h2>
+      <p>Commercial real estate investments require more than opportunity. They demand analysis, foresight, and
+        disciplined decision making.</p>
+    </div>
+
+    <div class="advisory-grid">
+      <!-- Principle 1 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Real Income</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          We look beyond the headline yield and focus on how steady and reliable the income really is.
+        </p>
+      </div>
+      <!-- Principle 2 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Return Clarity</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          Returns can look good on paper. We help you understand what they look like over time, not just in projections.
+        </p>
+      </div>
+      <!-- Principle 3 -->
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Risk First</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          Before returns, we look at what can go wrong. Tenant strength, location, and downside all come first.
+        </p>
+      </div>
+    </div>
+
+    <div style="max-width: 380px; margin: 24px auto 0 auto;">
+      <div class="advisory-card stagger-item"
+        style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light); text-align: center;">
+        <div
+          style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--accent-olive); margin-bottom: 8px;">
+          Exit & Timing</div>
+        <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.88rem;">
+          We think about how you will exit before you enter, and what the asset needs to achieve for that to happen.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

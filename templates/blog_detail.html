@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.meta_title if post.meta_title else post.title }}{% endblock %}
+
+{% block meta_description %}{{ post.meta_description if post.meta_description else (post.excerpt if post.excerpt else post.content[0][:155] + '...') }}{% endblock %}
+
+{% block canonical_block %}
+<link rel="canonical" href="https://bricx.ai/blog/{{ post.slug }}">
+{% endblock %}
+
+{% block og_block %}
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bricx.ai/blog/{{ post.slug }}">
+<meta property="og:title" content="{{ post.meta_title if post.meta_title else post.title }}">
+<meta property="og:description" content="{{ post.meta_description if post.meta_description else (post.excerpt if post.excerpt else post.content[0][:155] + '...') }}">
+<meta property="og:image" content="https://bricx.ai{{ post.hero_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{% endblock %}
+
+{% block twitter_block %}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://bricx.ai/blog/{{ post.slug }}">
+<meta property="twitter:title" content="{{ post.meta_title if post.meta_title else post.title }}">
+<meta property="twitter:description" content="{{ post.meta_description if post.meta_description else (post.excerpt if post.excerpt else post.content[0][:155] + '...') }}">
+<meta property="twitter:image" content="https://bricx.ai{{ post.hero_image }}">
+<meta name="twitter:site" content="@bricx_ai">
+<meta name="twitter:creator" content="@bricx_ai">
+{% endblock %}
+
+{% block extra_head %}
+
+<!-- Structured JSON-LD SEO Schema Markup for Blog Details -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://bricx.ai/blog/{{ post.slug }}"
+  },
+  "headline": "{{ post.title | replace('\"', '\\\"') }}",
+  "image": [
+    "https://bricx.ai{{ post.hero_image }}"
+  ],
+  "datePublished": "{{ post.date_iso if post.date_iso else post.date }}",
+  "dateModified": "{{ post.date_iso if post.date_iso else post.date }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Bricx Advisors",
+    "url": "https://bricx.ai"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bricx.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bricx.ai/static/home_about_advisory.png"
+    }
+  },
+  "description": "{{ (post.meta_description if post.meta_description else (post.excerpt if post.excerpt else post.content[0][:155] + '...')) | replace('\"', '\\\"') }}",
+  "articleBody": "{{ post.content | join(' ') | replace('\"', '\\\"') }}"
+}
+</script>
+<style>
+  /* Scoped layout overrides specifically to support transparent header correctly */
+  #main-header {
+    position: absolute;
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+
+  #main-header.scrolled {
+    position: fixed;
+    background: rgba(250, 248, 245, 0.95);
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  /* Hamburger toggle color defaults for transparent light background */
+  #main-header:not(.scrolled) .mobile-toggle span {
+    background-color: #4a4947 !important;
+  }
+  
+  #main-header:not(.scrolled) .nav-logo {
+    color: #4a4947 !important;
+  }
+
+  #main-header:not(.scrolled) .nav-cta {
+    color: #4a4947 !important;
+    border-color: rgba(74, 73, 71, 0.4) !important;
+  }
+
+  #main-header:not(.scrolled) .nav-cta:hover {
+    background-color: #4a4947 !important;
+    color: #ffffff !important;
+  }
+
+  #main-header:not(.scrolled) .nav-search-icon {
+    color: #4a4947 !important;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ── EDITORIAL BLOG HEADER (CAROLWOOD DESIGN REPLICATED) ────────────── -->
+<section class="blog-editorial-header" style="padding: 140px 0 2rem 0; background-color: var(--bg-cream);">
+  <div class="container" style="text-align: center;">
+    <div class="blog-category" style="color: var(--accent-gold); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem;">
+      {{ post.publisher }} &mdash; {{ post.category }}
+    </div>
+    
+    <h1 class="blog-editorial-title" style="font-family: 'Cinzel', serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; color: var(--primary-obsidian); margin: 0 auto 1.5rem auto; max-width: 900px;">
+      {{ post.title }}
+    </h1>
+  </div>
+</section>
+
+<!-- ── BLOG HERO IMAGE banner with Ken Burns Parallax ────────────────── -->
+<section class="blog-hero-image-wrapper" style="position: relative; height: 65vh; overflow: hidden; width: 100%;">
+  <img src="{{ post.hero_image }}" alt="{{ post.hero_image_alt if post.hero_image_alt else post.title }}" style="width: 100%; height: 100%; object-fit: cover; transform-origin: center center;">
+</section>
+
+<!-- ── EDITORIAL ARTICLE BODY (CAROLWOOD EXACT MATCH) ────────────────── -->
+<article class="blog-editorial-body">
+  
+  <!-- Lead Paragraph with Premium Drop-Cap -->
+  <p class="blog-editorial-paragraph lead">
+    {{ post.content[0] }}
+  </p>
+
+  {% for para in post.content[1:] %}
+    <p class="blog-editorial-paragraph">
+      {{ para }}
+    </p>
+
+    <!-- Insert Pull Quote Precisely under Paragraph 2 (index 1 of slice) -->
+    {% if loop.index == 1 and post.quote %}
+    <div class="blog-quote-block" style="border-left: 3px solid var(--accent-gold); padding-left: 2rem; margin: 3rem 0; font-style: italic;">
+      <p class="blog-quote-text" style="font-family: 'Cinzel', serif; font-size: 1.35rem; line-height: 1.6; color: var(--primary-obsidian); margin-bottom: 0.8rem;">
+        "{{ post.quote.text }}"
+      </p>
+      <div class="blog-quote-author" style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);">
+        &mdash; {{ post.quote.author }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Insert Visual Image Spread under Paragraph 3 (index 2 of slice) -->
+    {% if loop.index == 2 and post.spread_images %}
+    <div class="blog-spread" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 4rem 0;">
+      <div class="blog-spread-box" style="height: 380px; overflow: hidden; border: 1px solid var(--border-light);">
+        <img src="{{ post.spread_images[0] }}" alt="Bricx Advisory Layout Spread 1" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="blog-spread-box" style="height: 380px; overflow: hidden; border: 1px solid var(--border-light);">
+        <img src="{{ post.spread_images[1] }}" alt="Bricx Advisory Layout Spread 2" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+    {% endif %}
+
+  {% endfor %}
+
+  <!-- Social sharing icons block matching Image 1 raw symbol layouts -->
+  <div class="blog-share-section" style="border-top: 1px solid var(--border-light); padding-top: 2rem; margin-top: 4rem; display: flex; justify-content: center; gap: 24px;">
+    <a href="#" class="blog-share-icon" aria-label="Share on Facebook" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="blog-share-icon" aria-label="Share on X" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-x-twitter"></i></a>
+    <a href="#" class="blog-share-icon" aria-label="Share via Email" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="far fa-envelope"></i></a>
+    <a href="#" class="blog-share-icon" aria-label="Share on LinkedIn" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <!-- Dynamic CTA Section (Conversion & SEO Upgrade) -->
+  {% if post.cta_title %}
+  <div class="blog-cta-panel" style="background: rgba(14, 24, 42, 0.45); padding: 3.5rem 3rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); margin: 4.5rem 0; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+    <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: #ffffff; font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem;">{{ post.cta_title }}</h3>
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.85); font-weight: 300; margin-bottom: 2rem; max-width: 680px; margin-left: auto; margin-right: auto;">{{ post.cta_text }}</p>
+    <a href="{{ post.cta_link }}" class="carolwood-btn" style="background-color: var(--accent-gold); color: var(--primary-obsidian) !important; font-weight: 600;">{{ post.cta_button_text }}</a>
+  </div>
+  {% endif %}
+
+  <!-- ── RECOMMENDED READING ARTICLES GRID (DYNAMIC INTERNAL LINKS) ────── -->
+  {% if related %}
+  <div class="blog-related-readings reveal-on-scroll" style="margin-top: 6rem; border-top: 1px solid var(--border-light); padding-top: 4rem;">
+    <h3 style="font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-bottom: 3.5rem;">
+      Recommended Reading
+    </h3>
+    
+    <div class="listings-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; display: grid;">
+      {% for item in related %}
+      <a href="/blog/{{ item.slug }}" class="listing-card stagger-item" style="display: flex; flex-direction: column; background: var(--bg-white); border: 1px solid var(--border-light); text-decoration: none; overflow: hidden;">
+        <div class="listing-img-wrapper" style="height: 240px; position: relative; overflow: hidden;">
+          <img src="{{ item.hero_image }}" alt="{{ item.hero_image_alt if item.hero_image_alt else item.title }}" class="listing-img" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);">
+        </div>
+        <div class="listing-body" style="padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="listing-location" style="color: var(--accent-gold); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;">
+            {{ item.publisher }} &mdash; {{ item.date }}
+          </div>
+          <h4 style="font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.1rem; line-height: 1.35; color: var(--primary-obsidian); letter-spacing: 0.05em; text-transform: uppercase; margin: 0;">
+            {{ item.title }}
+          </h4>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Center View All Action Button -->
+    <div style="display: flex; justify-content: center; margin-top: 3.5rem;">
+      <a href="/blog" class="carolwood-btn">
+        VIEW ALL <i class="fas fa-arrow-right" style="font-size: 0.75rem; margin-left: 8px;"></i>
+      </a>
+    </div>
+
+  </div>
+  {% endif %}
+
+</article>
+
+{% endblock %}
