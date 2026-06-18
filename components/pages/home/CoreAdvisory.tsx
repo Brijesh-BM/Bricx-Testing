@@ -7,7 +7,7 @@ const pillars = [
   {
     title: "Leasing Advisory",
     cta: "Explore Leasing",
-    description: "Location strategy, negotiation, portfolio planning and transaction management for occupiers and landlords.",
+    description: "Workspace decisions are long-term commitments. We provide leasing advisory in Bengaluru that goes beyond finding space — structuring terms, evaluating trade-offs, and ensuring the lease works for your business over time.",
     href: "/advisory",
     image: {
       src: "/images/home/advisoryLeasing.jpg",
@@ -17,7 +17,7 @@ const pillars = [
   {
     title: "Income Investments",
     cta: "Explore Investments",
-    description: "Buy-side and sell-side advisory, underwriting, capital structuring and portfolio strategy.",
+    description: "Commercial property investment in Bangalore requires more than a good yield. We bring underwriting discipline, risk-first evaluation, and capital markets rigour to every mandate.",
     href: "/investment-opportunities",
     image: {
       src: "/images/home/advisoryInvestments.jpg",
@@ -27,7 +27,7 @@ const pillars = [
   {
     title: "Land & Opportunity",
     cta: "Explore Land",
-    description: "Acquisition strategy, feasibility studies, joint development structuring and value unlocking.",
+    description: "Land acquisition advisory in Bengaluru starts with saying no to most of what is available. We filter on title, access, and realistic use before anything reaches you.",
     href: "/land-opportunities",
     image: {
       src: "/images/home/advisoryLand.jpg",
@@ -41,14 +41,13 @@ export function CoreAdvisory() {
     <section id="advisory" className="py-16 md:py-28">
         <div className="mx-auto max-w-[74rem] min-w-0 px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-serif font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl text-center">
-          Core Advisory
+          What We Do
         </h2>
         <p className="mt-3 text-lg text-foreground font-nunito font-bold sm:mt-4 text-center">
-          Clarity across the cycle.
+          Conflict-Free Counsel. Capital Markets Discipline.
         </p>
         <p className="mt-5 mx-auto text-sm leading-relaxed sm:mt-6 font-semibold text-center text-muted">
-          Whether you&apos;re occupying space, allocating capital or planning
-          development, we advise across three focused domains.
+          Whether you&apos;re occupying space, allocating capital or planning development, we advise across three focused domains.
         </p>
         <div className="mt-8 grid min-w-0 gap-5 sm:gap-6 md:grid-cols-3">
           {pillars.map((item) => (

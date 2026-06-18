@@ -23,21 +23,17 @@ export function Hero() {
 
         {/* Copy below image: column centered via text-center wrapper + inline-block; copy is text-left */}
         <div className="relative mx-auto max-w-6xl min-w-0 px-4 pt-4 text-center sm:px-6 sm:pt-6 md:pt-7 lg:px-8">
-          <div className="inline-block max-w-4xl text-left md:max-w-5xl-plus font-serif">
-            <p className=" text-[1.0625rem] font-semibold leading-[1.2] text-foreground sm:text-[1.1875rem] sm:leading-[1.2] md:text-[1.3125rem] md:leading-[1.2] lg:text-[1.4375rem] lg:leading-[1.25] xl:text-[1.5625rem] xl:leading-[1.25]">
-              <span className="block">
-                From leasing to investment opportunities and
-              </span>
-              <span className="block">
-              land positioning, every move begins with careful
-              </span>
-              <span className="block">evaluation and structured thinking.</span>
-            </p>
-            <div className="relative mt-12 mb-6 -mx-16 sm:mt-16 sm:mb-8 sm:-mx-24 md:mt-20 md:mb-10 md:-mx-32 lg:mt-24 lg:mb-12 lg:-mx-40">
-              <h1 className="relative z-10 mx-16 sm:mx-24 md:mx-32 lg:mx-40 text-5xl font-bold leading-[0.85] font-serif tracking-tighter text-foreground py-6 sm:text-6xl sm:py-9 md:text-7xl md:py-12 lg:text-8xl lg:py-16 xl:text-9xl xl:py-18">
-                BRICX.AI
+          <div className="inline-flex flex-col max-w-4xl text-left md:max-w-5xl-plus font-serif">
+            <div className="relative mt-12 mb-6 -mx-16 sm:mt-16 sm:mb-8 sm:-mx-24 md:mt-20 md:mb-10 md:-mx-32 lg:mt-24 lg:mb-12 lg:-mx-40 order-2">
+              <h1 className="relative z-10 mx-16 sm:mx-24 md:mx-32 lg:mx-40 text-4xl font-bold leading-[1.1] font-serif tracking-tight text-foreground py-6 sm:text-5xl sm:py-9 md:text-6xl md:py-12 lg:text-7xl lg:py-16 xl:text-8xl xl:py-18">
+                Independent Commercial Real Estate Advisory in Bangalore, Bengaluru
               </h1>
             </div>
+            <h2 className="text-[1.0625rem] font-semibold leading-[1.2] text-foreground sm:text-[1.1875rem] sm:leading-[1.2] md:text-[1.3125rem] md:leading-[1.2] lg:text-[1.4375rem] lg:leading-[1.25] xl:text-[1.5625rem] xl:leading-[1.25] order-1">
+              <span className="block">
+                Conflict-Free Counsel. Capital Markets Discipline.
+              </span>
+            </h2>
           </div>
         </div>
       </div>

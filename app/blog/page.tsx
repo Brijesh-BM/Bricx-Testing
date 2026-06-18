@@ -25,17 +25,25 @@ export default function BlogPage() {
             className="px-4 pt-10 text-center sm:px-6 sm:pt-12 md:pt-14"
             aria-labelledby="blog-heading"
           >
-            <div className="mx-auto lg:px-8">
+            <div className="mx-auto lg:px-8 max-w-4xl space-y-4">
               <h1
                 id="blog-heading"
-                className="mt-4 font-serif text-2xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-3xl md:text-4xl md:leading-[1.05]"
+                className="mt-4 font-serif text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl"
               >
-                Insights &amp; Perspectives
+                Commercial Real Estate Intelligence — Bangalore, Bengaluru
               </h1>
-              <p className="mx-auto mt-6 text-base leading-relaxed">
-                Thoughts on commercial real estate, market trends, and strategic
-                decision-making across leasing, investment, and land.
+              <h2 className="mx-auto font-serif text-xl font-semibold leading-[1.2] text-[var(--color-accent)] sm:text-2xl uppercase tracking-wider">
+                Market Insights. Advisory Thinking. No Filler.
+              </h2>
+              <p className="mx-auto mt-6 text-base font-light leading-relaxed text-muted font-nunito">
+                The Bricx.ai blog covers commercial real estate in Bangalore and India — leasing frameworks, investment thinking, land advisory, and micro-market analysis across Whitefield, Outer Ring Road, Koramangala, Electronic City, HSR Layout, and South Bengaluru.
               </p>
+              <div className="pt-4 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-widest text-[var(--color-accent)] font-nunito">
+                <span>Leasing Advisory</span> <span>|</span>
+                <span>Income Investments</span> <span>|</span>
+                <span>Land & Opportunity</span> <span>|</span>
+                <span>Market Intelligence</span>
+              </div>
             </div>
           </section>
 

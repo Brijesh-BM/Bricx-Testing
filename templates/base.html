@@ -286,19 +286,24 @@
         if (e.key === 'Escape' && navMenu.classList.contains('open')) closeNav();
       });
 
-      // 2. Sticky Nav Header Shadow on Scroll
+      // 2. Sticky Nav Header Shadow on Scroll (Optimized to prevent Layout Thrashing)
       const header = document.getElementById('main-header');
+      let isScrolled = false;
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-          header.classList.add('scrolled');
-          header.style.boxShadow = '0 4px 20px rgba(33, 40, 8, 0.04)';
-          header.style.padding = '12px 0';
-        } else {
-          header.classList.remove('scrolled');
-          header.style.boxShadow = 'none';
-          header.style.padding = '20px 0';
+        const scrolled = window.scrollY > 40;
+        if (scrolled !== isScrolled) {
+          isScrolled = scrolled;
+          if (isScrolled) {
+            header.classList.add('scrolled');
+            header.style.boxShadow = '0 4px 20px rgba(33, 40, 8, 0.04)';
+            header.style.padding = '12px 0';
+          } else {
+            header.classList.remove('scrolled');
+            header.style.boxShadow = 'none';
+            header.style.padding = '20px 0';
+          }
         }
-      });
+      }, { passive: true });
 
       // 3. Highlight Active Navigation Links dynamically
       const pathname = window.location.pathname;
@@ -350,19 +355,19 @@
         setTimeout(() => { pxReady = true; }, ENTRY_MS);
         let ticking = false;
         window.addEventListener('scroll', () => {
-          if (!pxReady || !ticking) {
+          if (pxReady && !ticking) {
+            ticking = true;
             requestAnimationFrame(() => {
               const hero = heroBg.closest('.advisory-hero');
               if (hero) {
                 const rect = hero.getBoundingClientRect();
                 if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
                   const offset = -rect.top * 0.15;
-                  heroBg.style.transform = `translateY(${offset}px)`;
+                  heroBg.style.transform = `translate3d(0, ${offset}px, 0)`;
                 }
               }
               ticking = false;
             });
-            ticking = true;
           }
         }, { passive: true });
       }
@@ -410,8 +415,13 @@
       // 6. Scroll-to-top button
       const scrollBtn = document.getElementById('scroll-to-top');
       if (scrollBtn) {
+        let isScrollBtnVisible = false;
         window.addEventListener('scroll', () => {
-          scrollBtn.classList.toggle('visible', window.scrollY > 600);
+          const visible = window.scrollY > 600;
+          if (visible !== isScrollBtnVisible) {
+            isScrollBtnVisible = visible;
+            scrollBtn.classList.toggle('visible', isScrollBtnVisible);
+          }
         }, { passive: true });
         scrollBtn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });

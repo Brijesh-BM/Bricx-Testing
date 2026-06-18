@@ -16,24 +16,15 @@ export function WhyBricx() {
       <div className="flex flex-col gap-10 px-4 sm:px-6 md:flex-row md:items-center md:gap-0 lg:px-8">
         <motion.div {...fadeUp} className="mx-auto mt-14 flex w-full max-w-[35rem] flex-1 flex-col justify-center md:py-16">
           <h2 className="text-2xl text-center font-serif font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
-            Why Work With Bricx.ai
+            Why Bricx.ai
           </h2>
-          <p className="mt-3 font-light text-center text-lg text-foreground sm:mt-4 font-nunito font-semibold">
-            Independent advice. Structured decisions.
-          </p>
+
           <p className="mt-1 text-sm font-light leading-relaxed sm:mt-2 font-nunito">
-            Independent thinking guides every engagement, ensuring advice is
-            shaped by what truly aligns with the mandate rather than the pressure
-            to close a transaction. Real estate is evaluated with the discipline
-            of capital markets, where risk is examined first, structure follows,
-            and returns are considered with a long-term view. Each opportunity is
-            positioned strategically within its broader market context, looking
-            beyond location to assess relevance, demand and future potential. A
-            structured approach governs the process from initial analysis to
-            final execution, reducing uncertainty and supporting informed
-            decisions. The focus ultimately extends beyond individual deals to
-            building enduring relationships grounded in trust, clarity and
-            continuity.
+            Most real estate firms are incentivised to close transactions. We are incentivised to give
+            you the right advice. As an independent commercial property advisor in Bengaluru, our
+            only interest is the outcome that works best for you. Unlike large commercial real estate
+            firms in Bangalore, we do not hold developer inventory, earn referral fees, or represent
+            landlords on mandates where we also advise occupiers.
           </p>
           <a
             href="#contact"

@@ -7,6 +7,7 @@ import { ParallaxZoom } from "@/components/pages/home/ParallaxZoom";
 import { OpportunitiesCarousel } from "@/components/pages/home/OpportunitiesCarousel";
 import { WhoWeAre } from "@/components/pages/home/WhoWeAre";
 import { WhyBricx } from "@/components/pages/home/WhyBricx";
+import { HowWeWork } from "@/components/pages/home/HowWeWork";
 import { FaqSection } from "@/components/shared/FaqSection";
 import { pageMetadata } from "@/lib/seo";
 
@@ -105,6 +106,7 @@ export default function Home() {
         <CoreAdvisory />
         {/* <OpportunitiesCarousel /> */}
         <WhyBricx />
+        <HowWeWork />
         <ContactSection />
         <FaqSection page="home" />
       </main>

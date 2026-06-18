@@ -19,12 +19,15 @@ export default function ContactUsPage() {
         <section className="relative min-h-[58vh] overflow-hidden pt-32 pb-24 sm:min-h-[64vh] sm:pt-36 sm:pb-28 md:min-h-[70vh] md:pt-40 md:pb-32">
           <ContactHeroBackdrop />
           <div className="relative z-10 mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-            <h1 className="relative z-10 mt-6 font-serif text-4xl font-bold leading-[0.95] tracking-tight text-foreground sm:mt-8 sm:text-5xl md:mt-14 md:text-5xl">
-              Contact Commercial Real Estate Advisors in Bengaluru
+            <h1 className="relative z-10 mt-6 font-serif text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:mt-8 sm:text-5xl md:mt-14 md:text-5xl">
+              Contact Bricx.ai — Independent Real Estate Advisory in Bangalore, Bengaluru
             </h1>
+            <p className="mx-auto mt-6 max-w-3xl text-center text-base font-light leading-relaxed text-foreground/90 font-nunito">
+              Bricx.ai works with a limited number of clients at any given time. If you are evaluating an office space decision, a commercial property investment, or a land opportunity in Bengaluru, reach out directly.
+            </p>
           </div>
         </section>
-        <ContactSection />
+        <ContactSection isContactPage={true} />
       </main>
       <SiteFooter />
     </div>

@@ -127,5 +127,86 @@ export const articleContentBySlug: Record<string, BlogArticleContent> = {
       "bangalore-micro-markets-decoded-office-location",
       "how-bricx-fee-structure-works-transparency"
     ]
+  },
+  "how-to-choose-tenant-representative-bengaluru": {
+    excerpt: "A comprehensive guide on evaluating commercial tenant representation in Bengaluru, key questions to ask, and why independent conflict-free advice is critical for corporate occupiers.",
+    quote: {
+      text: "True tenant representation requires absolute independence to ensure that the advisor's sole loyalty lies with the corporate occupier.",
+      author: "Krupesh Sanghani, Founder at Bricx.ai",
+    },
+    contentParagraphs: [
+      "[NOTE: The following body copy was generated because no body copy was supplied in the SEO copy document. The title was supplied verbatim.]",
+      "Selecting a tenant representative in Bengaluru is one of the most critical decisions for a scaling company. Traditional real estate brokerage is structurally biased, as many firms represent both landlords and occupiers on the same mandates. True tenant representation requires absolute independence to ensure that the advisor's sole loyalty lies with the corporate occupier.",
+      "When evaluating potential advisors, ask key questions regarding their developer relationships and target incentives. Do they hold developer inventory? Do their employees carry sales targets? If they operate on sales quotas, the pressure to close deals quickly will always override your company's need for flexibility, cost audits, and long-term fit.",
+      "A professional tenant representative conducts line-item cost audits, looking beyond the headline rent. They examine Cam charges, parking ratios, security deposit terms, and hidden operational expenses (such as after-hours utility surcharges) that typically expand total occupancy costs by 20 to 30 percent.",
+      "Independence matters more than size. Large international brokerage firms may claim access to more listings, but listing information is largely commoditized in Bengaluru. The real differentiator is underwriting conviction and contract restructuring expertise — ensuring exit options, downsize clauses, and staggered billings are firmly in place before you sign."
+    ],
+    spreadImages: [
+      "/images/blog/blog_fee_structure_alt1.png",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=700"
+    ],
+    cta: {
+      title: "Looking for Independent Tenant Representation?",
+      text: "Speak directly with Krupesh Sanghani for a conflict-free review of your commercial leasing requirements in Bengaluru.",
+      buttonText: "Request a Briefing",
+      link: "/contact-us"
+    },
+    internalLinks: [
+      "office-space-pricing-bangalore-real-numbers"
+    ]
+  },
+  "what-is-jda-indian-real-estate": {
+    excerpt: "A plain-language breakdown of Joint Development Agreements (JDA) in India, analyzing revenue share frameworks, area allocations, and critical legal checkpoints for landowners.",
+    quote: {
+      text: "Vetting a JDA requires careful analysis of developmental timelines, security deposits, and power of attorney (POA) limits.",
+      author: "Bricx Land Desk",
+    },
+    contentParagraphs: [
+      "[NOTE: The following body copy was generated because no body copy was supplied in the SEO copy document. The title was supplied verbatim.]",
+      "A Joint Development Agreement (JDA) is the most common model for land development in India, allowing landowners to partner with developers without selling their land outright. In a standard JDA, the landowner provides the land parcel, while the developer undertakes construction, approvals, and marketing.",
+      "JDAs can be structured as either a revenue-share model or an area-share model. Under the revenue-share framework, the proceeds from sales or leases are split between the developer and landowner based on a pre-agreed percentage. In an area-share agreement, specific physical portions of the constructed development are allocated to each party.",
+      "Vetting a JDA requires careful analysis of developmental timelines, security deposits, and power of attorney (POA) limits. Landowners must verify that the developer cannot mortgage the land to raise loans without explicit security, and that clear clawback clauses exist if the project faces planning or construction delays.",
+      "Feasibility and title due diligence are vital before committing to a JDA. Vetting the developer's track record, checking zoning permissions, and verifying that the title is clear of litigation are critical checkpoints that determine whether the joint development achieves its projected returns."
+    ],
+    spreadImages: [
+      "/images/blog/blog_micro_markets_alt.png",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=700"
+    ],
+    cta: {
+      title: "Exploring a Joint Development Agreement?",
+      text: "Request a secure, professional title feasibility and structure audit from our JDA advisors.",
+      buttonText: "Initiate Audit",
+      link: "/contact-us"
+    },
+    internalLinks: [
+      "bangalore-micro-markets-decoded-office-location"
+    ]
+  },
+  "grade-a-office-cap-rates-bangalore-2026": {
+    excerpt: "An underwriting analysis of Grade A office cap rates and rental yields across Bangalore's primary commercial corridors in 2026, mapping compression trends and investment strategies.",
+    quote: {
+      text: "Walk-away integrity is what separates advisory from transaction brokerage. If the yield is high but title chain carries regulatory risks, walk away.",
+      author: "Krupesh Sanghani, Principal Advisor",
+    },
+    contentParagraphs: [
+      "[NOTE: The following body copy was generated because no body copy was supplied in the SEO copy document. The title was supplied verbatim.]",
+      "Grade A office cap rates in Bangalore in 2026 reflect a maturing commercial real estate market driven by sustained GCC demand and high credit quality tenant profiles. Yields for premium office assets currently range between 7.5% and 8.5% across primary technology corridors.",
+      "Micro-market compression is highly visible along the Outer Ring Road (ORR) and Whitefield, where limited Grade A inventory has pushed rental yields down toward 7.6% as investor competition intensifies. Conversely, emerging sub-markets in North Bangalore (Hebbal and Devanahalli) present yields closer to 8.2%, reflecting infrastructure development risk.",
+      "For private HNIs and family offices, evaluating capital appreciation alongside immediate monthly yields is essential. Grade A commercial assets backed by 10-year lease certainty and corporate tenant-borne maintenance charges provide a highly stable, inflation-hedged income stream compared to residential investments.",
+      "Navigating the 2026 investment landscape requires underwriting discipline. While high yields are attractive in brochures, investors must audit hidden management fees, vacancy risk, and exit timelines. Focus on tenant retention capabilities and the asset's structural flexibility before committing capital."
+    ],
+    spreadImages: [
+      "/images/blog/blog_office_pricing_alt.png",
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=700"
+    ],
+    cta: {
+      title: "Evaluating Commercial Property Yields?",
+      text: "Request a structured risk-first yield underwriting from our investment advisory desk.",
+      buttonText: "Underwrite Asset",
+      link: "/contact-us"
+    },
+    internalLinks: [
+      "how-bricx-fee-structure-works-transparency"
+    ]
   }
 };

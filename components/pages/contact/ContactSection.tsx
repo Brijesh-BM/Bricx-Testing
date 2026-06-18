@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { inquiryTypes } from "@/data/inquiryTypes";
 
-export function ContactSection() {
+export function ContactSection({ isContactPage = false }: { isContactPage?: boolean }) {
   const [submitted, setSubmitted] = useState(false);
   const [inquiry, setInquiry] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,9 +46,9 @@ export function ContactSection() {
       form.reset();
     } catch (error) {
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Unable to submit inquiry right now.",
+          error instanceof Error
+              ? error.message
+              : "Unable to submit inquiry right now.",
       );
     } finally {
       setIsSubmitting(false);
@@ -60,12 +60,47 @@ export function ContactSection() {
       <div className="mx-auto max-w-5xl-plus min-w-0 px-4 sm:px-6 lg:px-8">
         <div className="grid min-w-0 gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
           <div className="min-w-0">
-            <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
-              Start the Conversation
-            </h2>
-            <p className="mt-2 text-base leading-relaxed text-foreground sm:mt-4 font-nunito font-light">
-              Connect with our principals for conflict-free commercial real estate advisory in Bengaluru. We provide expert counsel on occupier-focused office leasing, secure income investments, and strategic land acquisition in Karnataka&apos;s high-growth corridors.
-            </p>
+            {isContactPage ? (
+              <div className="space-y-6">
+                <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
+                  Direct Coordination
+                </h2>
+                <div className="space-y-3 font-nunito font-light text-muted text-base">
+                  <p>
+                    Phone:{" "}
+                    <a href="tel:+919070504020" className="text-[var(--color-accent)] font-semibold">
+                      90 70 50 40 20
+                    </a>
+                  </p>
+                  <p>
+                    Email:{" "}
+                    <a href="mailto:krupesh@bricx.ai" className="text-[var(--color-accent)] font-semibold">
+                      krupesh@bricx.ai
+                    </a>
+                  </p>
+                  <p>
+                    Web:{" "}
+                    <a href="https://bricx.ai" className="text-[var(--color-accent)] font-semibold">
+                      bricx.ai
+                    </a>
+                  </p>
+                </div>
+                <div className="mt-8 border-t border-border pt-6">
+                  <h3 className="font-serif text-lg font-medium text-foreground">
+                    No sales calls. No pressure. Just a conversation.
+                  </h3>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <h2 className="font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
+                  Start the Conversation
+                </h2>
+                <p className="mt-2 text-base leading-relaxed text-foreground sm:mt-4 font-nunito font-light">
+                  Connect with our principals for conflict-free commercial real estate advisory in Bengaluru. We provide expert counsel on occupier-focused office leasing, secure income investments, and strategic land acquisition in Karnataka&apos;s high-growth corridors.
+                </p>
+              </div>
+            )}
           </div>
         <form
           onSubmit={onSubmit}
