@@ -3,22 +3,7 @@
 {% block title %}Land Acquisition Advisory in Bangalore, Bengaluru
 
 
-<script>
-  (function () {
-    var items = document.querySelectorAll('.bricx-faq-item');
-    items.forEach(function (item) {
-      var trigger = item.querySelector('.bricx-faq-trigger');
-      if (!trigger) return;
-      trigger.addEventListener('click', function () {
-        var isOpen = item.classList.contains('is-open');
-        // close all
-        items.forEach(function (el) { el.classList.remove('is-open'); });
-        // open clicked (unless it was already open)
-        if (!isOpen) { item.classList.add('is-open'); }
-      });
-    });
-  })();
-</script>
+
 
 
 {% endblock %}
@@ -341,5 +326,68 @@ provides land acquisition advisory in Bengaluru with a filter-first approach.{% 
       </p>
     </div>
   </section>
+
+  <!-- ── LAND FAQ SECTION ── -->
+<section class="home-faq-section" style="background-color: var(--bg-cream); padding: 90px 0; border-top: 1px solid var(--border-light);">
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <div class="blog-category" style="color: var(--accent-gold); letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">Clear Answers</div>
+      <h2 style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--primary-obsidian); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Frequently Asked Questions</h2>
+    </div>
+
+    <!-- Accordion Group -->
+    <div class="faq-accordion-group">
+
+      <!-- FAQ 1 -->
+      <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
+        <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
+          <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">How do you evaluate land for commercial development in Bangalore?</h3>
+          <span class="faq-icon" style="font-size: 1.2rem; color: var(--accent-olive); transition: transform 0.3s;">+</span>
+        </button>
+        <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, margin-top 0.3s;">
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 0; font-weight: 300; margin-top: 12px;">
+            Evaluating land for commercial development in Bangalore requires disciplined due diligence beyond location appeal and per-acre pricing—prioritizing title clarity, zoning validation, litigation risk assessment, and micro-market demand fundamentals before financial modeling. An investor wanted to acquire land in Kanakapura Road (South Bangalore). Market research identified 23 available parcels. Bricx.ai's due diligence process rejected all 23 options—each carried litigation issues, OC (Occupancy Certificate) conversion problems, or title disputes. Bricx.ai presented alternative micro-markets with clean titles and better appreciation potential. Land is Bangalore's most litigation-vulnerable asset class—Bricx.ai rejects more land opportunities than any other advisory to protect client capital. Litigation history, disputed ownership, unclear zoning classifications, pending BBMP sanctions, environmental clearance delays, and unrealistic development assumptions cause most land deals to fail post-acquisition. Title verification, land-use validation under Bangalore's master plan, regulatory pathway mapping (RERA compliance, BBMP approvals), and ownership chain documentation are non-negotiable prerequisites. North Bangalore—particularly Hebbal and the airport corridor—offers the strongest land appreciation potential in Bangalore's commercial real estate market in 2026. Airport proximity, Metro expansion expected within 24 months, GCC cluster development, and current underdevelopment relative to demand create compounding appreciation drivers. Property prices in North Bangalore are escalating as infrastructure investments materialize. Bricx.ai identifies Hebbal and surrounding North Bangalore corridors as optimal land banking opportunities for investors with 3-5 year hold periods.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.faq-accordion-group -->
+  </div><!-- /.container -->
+</section><!-- /.home-faq-section -->
+
+<!-- ── FAQ Accordion Script ── -->
+<script>
+  (function () {
+    var items = document.querySelectorAll('.faq-item-card');
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.faq-trigger');
+      var content = item.querySelector('.faq-content');
+      var icon    = item.querySelector('.faq-icon');
+      if (!trigger || !content) return;
+
+      trigger.addEventListener('click', function () {
+        var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Close all
+        items.forEach(function (el) {
+          var c  = el.querySelector('.faq-content');
+          var ic = el.querySelector('.faq-icon');
+          if (c)  { c.style.maxHeight = '0px'; c.style.marginTop = '0'; }
+          if (ic) { ic.textContent = '+'; ic.style.transform = 'rotate(0deg)'; }
+        });
+
+        // Open clicked (unless it was already open)
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.marginTop = '12px';
+          icon.textContent = '×';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  })();
+</script>
 
   {% endblock %}
