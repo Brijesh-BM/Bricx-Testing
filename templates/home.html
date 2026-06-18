@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %}Independent Commercial Real Estate Advisory in Bangalore, Bengaluru{% endblock %}
+{% block title %}Independent Commercial Real Estate Advisory in Bangalore, Bengaluru
+<!-- ── BRICX FAQ ACCORDION ───────────────────────────────────────────────── -->
+
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.bricx-faq-item');
+  items.forEach(function (item) {
+    var trigger = item.querySelector('.bricx-faq-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function () {
+      var isOpen = item.classList.contains('is-open');
+      // close all
+      items.forEach(function (el) { el.classList.remove('is-open'); });
+      // open clicked (unless it was already open)
+      if (!isOpen) { item.classList.add('is-open'); }
+    });
+  });
+})();
+</script>
+
+
+{% endblock %}
 
 {% block meta_description %}Bricx.ai is a boutique real estate advisory firm in Bangalore, Bengaluru. Conflict-free counsel across leasing, investments, and land without developer bias.{% endblock %}
 
@@ -397,10 +419,6 @@
     padding: 16px 24px;
     text-align: center;
     color: var(--text-white);
-  }
-
-  .stat-item:first-child {
-    /* Kept for structural compatibility */
   }
 
   .stat-item h4 {
