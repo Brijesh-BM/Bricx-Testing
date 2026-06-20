@@ -3019,55 +3019,7 @@ textarea:focus-visible {
   opacity: 0.65;
 }
 
-/* ── SCROLL-TO-TOP BUTTON ──────────────────────────────────────────────────── */
-#scroll-to-top {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 800;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--accent-olive);
-  border: 1px solid rgba(203, 191, 159, 0.3);
-  color: var(--text-white);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(12px);
-  transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease;
-  box-shadow: 0 4px 20px rgba(33, 40, 8, 0.18);
-}
 
-#scroll-to-top.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-#scroll-to-top:hover {
-  background: var(--accent-olive-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(33, 40, 8, 0.22);
-}
-
-#scroll-to-top svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-}
-
-@media (max-width: 768px) {
-  #scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-}
 
 /* ── LISTING CARD FLEX DIRECTION FIX ─────────────────────────────────────── */
 /* Listing cards were display:flex but content was not stacking correctly */
@@ -4189,7 +4141,7 @@ textarea:focus-visible {
 #floating-contact-btn {
   position: fixed;
   bottom: 96px;
-  right: 32px;
+  right: 0;
   z-index: 850;
 
   width: auto;
@@ -4197,7 +4149,8 @@ textarea:focus-visible {
   height: 52px;
   padding: 0 20px;
 
-  border-radius: 999px;
+  border-radius: 999px 0 0 999px;
+  border-right: none;
   background: var(--accent-olive);
   border: 1px solid var(--accent-gold);
   color: var(--accent-gold);
@@ -4214,7 +4167,8 @@ textarea:focus-visible {
   text-transform: uppercase;
 
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 8px 24px rgba(8, 13, 22, 0.22);
+  transform-origin: right center;
+  box-shadow: -4px 8px 24px rgba(8, 13, 22, 0.22);
   outline: none;
 }
 
@@ -4222,7 +4176,7 @@ textarea:focus-visible {
   background: var(--accent-gold);
   color: var(--primary-obsidian);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 32px rgba(8, 13, 22, 0.32);
+  box-shadow: -6px 12px 32px rgba(8, 13, 22, 0.32);
 }
 
 
@@ -4230,11 +4184,13 @@ textarea:focus-visible {
 @media (max-width: 768px) {
   #floating-contact-btn {
     bottom: 80px;
-    right: 20px;
+    right: 0;
     min-width: 100px;
     height: 44px;
     font-size: 0.7rem;
     padding: 0 16px;
+    border-radius: 999px 0 0 999px;
+    border-right: none;
   }
 }
   
