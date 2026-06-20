@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-19T06:17:32.468070Z"
+    },
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-19T06:17:42.263734Z"
+    },
+    {
+        "name": "Test User",
+        "mobile": "9876543210",
+        "email": "test@example.com",
+        "submitted_at": "2026-06-20T03:24:41.606545Z"
+    },
+    {
+        "name": "Test Prospectus",
+        "mobile": "9876543211",
+        "email": "test2@example.com",
+        "submitted_at": "2026-06-20T03:29:04.551247Z",
+        "property": "Indiranagar Corporate Suite"
+    },
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-20T03:36:27.482128Z"
+    },
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-20T03:36:43.120988Z"
+    },
+    {
+        "name": "Overlay Tester",
+        "mobile": "9900112233",
+        "email": "overlay@example.com",
+        "submitted_at": "2026-06-20T03:55:42.582194Z"
+    },
+    {
+        "name": "Final User",
+        "mobile": "9876543212",
+        "email": "final@example.com",
+        "submitted_at": "2026-06-20T04:14:23.444531Z"
+    },
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-20T04:16:55.414897Z"
+    },
+    {
+        "name": "Reverted User",
+        "mobile": "9876543213",
+        "email": "revert@example.com",
+        "submitted_at": "2026-06-20T04:21:27.048351Z"
+    },
+    {
+        "name": "Brijesh BM",
+        "mobile": "9901658159",
+        "email": "brijeshbm45@gmail.com",
+        "submitted_at": "2026-06-20T04:33:31.436009Z"
+    }
+]

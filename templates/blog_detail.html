@@ -98,9 +98,6 @@
     color: #ffffff !important;
   }
 
-  #main-header:not(.scrolled) .nav-search-icon {
-    color: #4a4947 !important;
-  }
 </style>
 {% endblock %}
 
@@ -151,12 +148,12 @@
 
     <!-- Insert Visual Image Spread under Paragraph 3 (index 2 of slice) -->
     {% if loop.index == 2 and post.spread_images %}
-    <div class="blog-spread" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 4rem 0;">
-      <div class="blog-spread-box" style="height: 380px; overflow: hidden; border: 1px solid var(--border-light);">
-        <img src="{{ post.spread_images[0] }}" alt="Bricx Advisory Layout Spread 1" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="blog-spread">
+      <div class="blog-spread-box">
+        <img src="{{ post.spread_images[0] }}" alt="Bricx Advisory Layout Spread 1">
       </div>
-      <div class="blog-spread-box" style="height: 380px; overflow: hidden; border: 1px solid var(--border-light);">
-        <img src="{{ post.spread_images[1] }}" alt="Bricx Advisory Layout Spread 2" style="width: 100%; height: 100%; object-fit: cover;">
+      <div class="blog-spread-box">
+        <img src="{{ post.spread_images[1] }}" alt="Bricx Advisory Layout Spread 2">
       </div>
     </div>
     {% endif %}

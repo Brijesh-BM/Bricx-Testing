@@ -171,6 +171,49 @@ def api_nda():
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
 
+@app.route("/api/contact-lead", methods=["POST"])
+def api_contact_lead():
+    if not security_check():
+        return jsonify({"success": False, "message": "Unauthorized request origin."}), 403
+    try:
+        data = request.get_json() or {}
+        name = data.get("name")
+        mobile = data.get("mobile")
+        email = data.get("email")
+        message = data.get("message")
+
+        if not name or not mobile or not email:
+            return jsonify({"success": False, "message": "Full Name, Mobile Number, and Email Address are required."}), 400
+
+        import re
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return jsonify({"success": False, "message": "Invalid email address format."}), 400
+
+        from datetime import datetime
+        timestamp = datetime.utcnow().isoformat() + "Z"
+
+        CONTACT_LEADS_FILE = os.path.join(os.path.dirname(__file__), "contact_leads.json")
+        leads_db = load_json_db(CONTACT_LEADS_FILE)
+        
+        lead = {
+            "name": name,
+            "mobile": mobile,
+            "email": email,
+            "submitted_at": timestamp
+        }
+        prop = data.get("property")
+        if prop:
+            lead["property"] = prop
+        if message:
+            lead["message"] = message
+        leads_db.append(lead)
+        save_json_db(CONTACT_LEADS_FILE, leads_db)
+        print(f"\n[BRICX.AI BACKEND] FLOATING LEAD CAPTURED:\n  Name: {name}\n  Mobile: {mobile}\n  Email: {email}\n  Property: {prop}\n  Message: {message}\n  Submitted At: {timestamp}\n")
+        return jsonify({"success": True, "message": "Lead brief submitted successfully!"})
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
 @app.route("/robots.txt")
 def robots_txt():
     content = "User-agent: *\nAllow: /blog/\nSitemap: https://bricx.ai/sitemap.xml\n"

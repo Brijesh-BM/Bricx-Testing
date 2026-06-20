@@ -118,19 +118,7 @@ endblock %}
     color: var(--bg-cream);
   }
 
-  .mandate-container-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
 
-  @media (max-width: 991px) {
-    .mandate-container-grid {
-      grid-template-columns: 1fr !important;
-      gap: 2.5rem !important;
-    }
-  }
 
   /* ── CASE STUDY CUSTOM STYLES ────────────────── */
   .case-study-summary-grid {
@@ -191,7 +179,7 @@ endblock %}
       <div class="showcase-content-side">
         <div class="category-label">Bricx Services</div>
         <h1
-          style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary-obsidian); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
+          style="font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; color: var(--primary-obsidian); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
           Leasing Advisory Services in Bangalore, Bengaluru</h1>
         <h2
           style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 600; color: var(--accent-olive); margin-bottom: 1rem; text-transform: uppercase; border: none; padding: 0;">
@@ -217,7 +205,7 @@ endblock %}
     </div>
 
     <!-- 4-card 2×2 grid -->
-    <div class="advisory-grid" style="grid-template-columns: repeat(2, 1fr)">
+    <div class="advisory-grid-2col">
       <!-- Card 1 -->
       <div class="advisory-card stagger-item"
         style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
@@ -350,7 +338,7 @@ endblock %}
               <div class="metric-value">100%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Vasant Vihar Plaza')">Request Prospectus</button>
+          <button class="listing-btn" onclick="triggerProspectusModal('Vasant Vihar Plaza')">Request Prospectus</button>
         </div>
       </div>
 
@@ -380,7 +368,7 @@ endblock %}
               <div class="metric-value">100%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Koramangala Highstreet')">Request Prospectus</button>
+          <button class="listing-btn" onclick="triggerProspectusModal('Koramangala Highstreet')">Request Prospectus</button>
         </div>
       </div>
 
@@ -410,7 +398,7 @@ endblock %}
               <div class="metric-value">92%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Whitefield Logistics Hub')">Request Prospectus</button>
+          <button class="listing-btn" onclick="triggerProspectusModal('Whitefield Logistics Hub')">Request Prospectus</button>
         </div>
       </div>
 
@@ -441,7 +429,7 @@ endblock %}
               <div class="metric-value">100%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Indiranagar Corporate Suite')">Request
+          <button class="listing-btn" onclick="triggerProspectusModal('Indiranagar Corporate Suite')">Request
             Prospectus</button>
         </div>
       </div>
@@ -473,7 +461,7 @@ endblock %}
               <div class="metric-value">96%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Bandra West Commercial Tower')">Request
+          <button class="listing-btn" onclick="triggerProspectusModal('Bandra West Commercial Tower')">Request
             Prospectus</button>
         </div>
       </div>
@@ -505,37 +493,93 @@ endblock %}
               <div class="metric-value">100%</div>
             </div>
           </div>
-          <button class="listing-btn" onclick="triggerNdaDrawer('Cyber City Corporate Hub')">Request Prospectus</button>
+          <button class="listing-btn" onclick="triggerProspectusModal('Cyber City Corporate Hub')">Request Prospectus</button>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!--  CONFIDENTIAL NDA GATEWAY DRAWERS  -->
-  <div class="nda-gate reveal-on-scroll" id="nda-gate-wrapper">
-    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5">
-      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-    </svg>
-    <h3>Access Institutional Off-Market Dealroom</h3>
-    <p>Due to owner confidentiality mandates, detailed financial disclosures, full underwritten valuation cash flows,
-      lease abstracts, and tenant details are secure. Please sign a digital NDA to unlock all prospectus materials.</p>
+  <!-- ── PROSPECTUS MODAL OVERLAY ────────────────────────────────────────── -->
+  <div class="prospectus-modal-overlay" id="prospectus-modal-overlay" role="presentation"></div>
 
-    <form id="nda-form" onsubmit="handleNdaSubmit(event)"
-      style="max-width: 450px; margin: 0 auto; display: flex; gap: 10px;">
-      <input type="email" id="nda-email" class="form-control" placeholder="Enter business email to sign digital NDA"
-        required style="flex-grow: 1;">
-      <button type="submit" class="btn-submit"
-        style="width: auto; margin-top: 0; padding: 12px 24px; white-space: nowrap;">Request Access</button>
-    </form>
+  <!-- ── PROSPECTUS MODAL POPUP ──────────────────────────────────────────── -->
+  <div class="prospectus-modal" id="prospectus-modal" role="dialog" aria-modal="true" aria-labelledby="prospectus-modal-title">
+    <div class="prospectus-modal-header">
+      <h3 id="prospectus-modal-title">Request Prospectus</h3>
+      <button type="button" class="prospectus-modal-close" id="prospectus-modal-close" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
 
-    <div id="nda-success" style="display: none; color: var(--accent-olive); font-weight: 600; margin-top: 1.5rem;">
-      ✓ NDA request logged. Our investment principal will email your secure credentials within 1 hour.
+    <div class="prospectus-modal-body">
+      <!-- Dynamically filled property name badge -->
+      <div class="property-badge" id="prospectus-property-badge">
+        <span class="badge-label">Asset:</span> <span class="badge-value" id="prospectus-property-name">Property Name</span>
+      </div>
+
+      <!-- Advisor/Consultant mini-profile -->
+      <div class="advisor-info-box">
+        <div class="advisor-avatar">KS</div>
+        <div class="advisor-details">
+          <h4>Karan Singh</h4>
+          <p>Principal Advisor, Corporate Real Estate</p>
+        </div>
+      </div>
+
+      <p class="modal-desc">
+        Due to owner confidentiality mandates, detailed financial disclosures, lease abstracts, and tenant details are secured. Please provide your business details below to unlock the complete prospectus materials.
+      </p>
+
+      <form id="prospectus-modal-form" novalidate>
+        <div class="modal-form-group" id="p-grp-name">
+          <label for="prospectus-name">Full Name <span class="required">*</span></label>
+          <input type="text" id="prospectus-name" class="modal-form-control" placeholder="Your full name" autocomplete="name">
+          <span class="error-msg">Please enter your full name.</span>
+        </div>
+
+        <div class="modal-form-group" id="p-grp-mobile">
+          <label for="prospectus-mobile">Mobile Number <span class="required">*</span></label>
+          <input type="tel" id="prospectus-mobile" class="modal-form-control" placeholder="Your mobile number" autocomplete="tel">
+          <span class="error-msg">Please enter your mobile number.</span>
+        </div>
+
+        <div class="modal-form-group" id="p-grp-email">
+          <label for="prospectus-email">Business Email <span class="required">*</span></label>
+          <input type="email" id="prospectus-email" class="modal-form-control" placeholder="Your business email" autocomplete="email">
+          <span class="error-msg" id="prospectus-email-error-msg">Please enter a valid email address.</span>
+        </div>
+
+        <div class="modal-form-actions">
+          <button type="submit" class="modal-btn-submit" id="prospectus-submit-btn">Request Access</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ── STATE OVERLAY ── -->
+    <div class="modal-state-overlay" id="prospectus-modal-state-overlay">
+      <div class="state-loading">
+        <div class="spinner"></div>
+        <p>Submitting...</p>
+      </div>
+      <div class="state-success">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Request Submitted</h3>
+        <p>✓ NDA request logged. Our investment principal will email your secure credentials within 1 hour.</p>
+      </div>
+      <div class="state-error">
+        <div class="success-icon" style="color: #c93b3b;">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <h3>Submission Failed</h3>
+        <p id="prospectus-modal-error-text">Something went wrong. Please try again.</p>
+        <button type="button" class="btn-retry" id="prospectus-modal-retry-btn">Retry</button>
+      </div>
     </div>
   </div>
 
-  </div>
 </section>
 
 <!-- Dynamic filtering script & NDA action handling -->
@@ -617,24 +661,149 @@ endblock %}
     handleCombinedFilter();
   }
 
-  // 3. Direct inquiry button trigger to focus the NDA form
-  function triggerNdaDrawer(propertyName) {
-    const ndaGate = document.getElementById('nda-gate-wrapper');
-    const emailField = document.getElementById('nda-email');
+  // 3. Direct inquiry button trigger to open the Prospectus Modal
+  function triggerProspectusModal(propertyName) {
+    const modal = document.getElementById('prospectus-modal');
+    const overlay = document.getElementById('prospectus-modal-overlay');
+    const nameSpan = document.getElementById('prospectus-property-name');
 
-    ndaGate.style.borderColor = 'var(--accent-gold)';
-    ndaGate.scrollIntoView({ behavior: 'smooth' });
+    if (!modal || !overlay) return;
 
-    emailField.placeholder = `Email to sign NDA for ${propertyName}`;
-    emailField.focus();
+    nameSpan.textContent = propertyName;
+
+    // Reset form errors and states
+    document.getElementById('prospectus-modal-form').reset();
+    document.querySelectorAll('#prospectus-modal-form .modal-form-group').forEach(grp => {
+      grp.classList.remove('has-error');
+    });
+    
+    const stateOverlay = document.getElementById("prospectus-modal-state-overlay");
+    if (stateOverlay) stateOverlay.className = "modal-state-overlay";
+
+    modal.classList.add('open');
+    overlay.classList.add('open');
   }
 
-  // 4. NDA submission response
-  function handleNdaSubmit(event) {
-    event.preventDefault();
-    document.getElementById('nda-form').style.display = 'none';
-    document.getElementById('nda-success').style.display = 'block';
-  }
+  // 4. Modal listeners and AJAX submission handling
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('prospectus-modal');
+    const overlay = document.getElementById('prospectus-modal-overlay');
+    const closeBtn = document.getElementById('prospectus-modal-close');
+
+    if (!modal || !overlay || !closeBtn) return;
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      overlay.classList.remove('open');
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Form submission
+    const form = document.getElementById('prospectus-modal-form');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('prospectus-name');
+      const mobileInput = document.getElementById('prospectus-mobile');
+      const emailInput = document.getElementById('prospectus-email');
+      const propertyName = document.getElementById('prospectus-property-name').textContent;
+
+      const grpName = document.getElementById('p-grp-name');
+      const grpMobile = document.getElementById('p-grp-mobile');
+      const grpEmail = document.getElementById('p-grp-email');
+
+      let hasError = false;
+
+      // Clean errors
+      grpName.classList.remove('has-error');
+      grpMobile.classList.remove('has-error');
+      grpEmail.classList.remove('has-error');
+
+      if (!nameInput.value.trim()) {
+        grpName.classList.add('has-error');
+        hasError = true;
+      }
+
+      if (!mobileInput.value.trim()) {
+        grpMobile.classList.add('has-error');
+        hasError = true;
+      }
+
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        grpEmail.classList.add('has-error');
+        document.getElementById('prospectus-email-error-msg').textContent = "Please enter your email address.";
+        hasError = true;
+      } else if (!emailRegex.test(email)) {
+        grpEmail.classList.add('has-error');
+        document.getElementById('prospectus-email-error-msg').textContent = "Please enter a valid email address.";
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      const stateOverlay = document.getElementById("prospectus-modal-state-overlay");
+      const submitBtn = document.getElementById('prospectus-submit-btn');
+
+      // Show loading overlay
+      stateOverlay.className = "modal-state-overlay open-overlay state-is-loading";
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch("/api/contact-lead", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: nameInput.value.trim(),
+            mobile: mobileInput.value.trim(),
+            email: email,
+            property: propertyName
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Show success overlay
+          stateOverlay.className = "modal-state-overlay open-overlay state-is-success";
+
+          setTimeout(() => {
+            closeModal();
+            form.reset();
+            stateOverlay.className = "modal-state-overlay";
+            submitBtn.disabled = false;
+          }, 3000);
+        } else {
+          // Show error overlay
+          stateOverlay.className = "modal-state-overlay open-overlay state-is-error";
+          document.getElementById("prospectus-modal-error-text").textContent = data.message || "Something went wrong. Please try again.";
+          
+          document.getElementById("prospectus-modal-retry-btn").onclick = function() {
+            stateOverlay.className = "modal-state-overlay";
+            submitBtn.disabled = false;
+          };
+        }
+      } catch (err) {
+        // Show error overlay
+        stateOverlay.className = "modal-state-overlay open-overlay state-is-error";
+        document.getElementById("prospectus-modal-error-text").textContent = "Network error. Please try again.";
+        
+        document.getElementById("prospectus-modal-retry-btn").onclick = function() {
+          stateOverlay.className = "modal-state-overlay";
+          submitBtn.disabled = false;
+        };
+      }
+    });
+  });
 </script>
 
 <!-- ── WHERE WE WORK SECTION ───────────────────────────────────────────── -->

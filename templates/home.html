@@ -148,23 +148,7 @@
     display: flex !important;
   }
 
-  /* Magnifying Glass Search Icon */
-  #main-header .nav-search-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-white) !important;
-    font-size: 0.95rem;
-    margin-right: 28px;
-    opacity: 0.85;
-    transition: var(--transition-snappy);
-    cursor: pointer;
-  }
 
-  #main-header .nav-search-icon:hover {
-    opacity: 1;
-    color: var(--accent-gold) !important;
-  }
 
   /* Rectangular CTA button */
   #main-header .nav-cta {
@@ -246,13 +230,7 @@
     color: var(--primary-obsidian) !important;
   }
 
-  #main-header.scrolled .nav-search-icon {
-    color: var(--text-charcoal) !important;
-  }
 
-  #main-header.scrolled .nav-search-icon:hover {
-    color: var(--accent-gold) !important;
-  }
 
   #main-header.scrolled .nav-cta {
     background-color: transparent !important;
@@ -294,7 +272,9 @@
     transform-origin: center center;
     object-fit: cover;
     z-index: 0;
-    filter: brightness(1.12) contrast(1.06) saturate(1.1);
+    /* Optimize rendering contrast and scaling in modern browsers */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   .overlay-component {
@@ -521,7 +501,7 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(to bottom, rgba(8, 13, 22, 0.20) 0%, rgba(8, 13, 22, 0.40) 100%);
+    background: linear-gradient(to bottom, rgba(8, 13, 22, 0.15) 0%, rgba(8, 13, 22, 0.25) 100%);
   }
 
   .editorial-container {
@@ -657,6 +637,17 @@
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Specific white frosted glass overlay for the Why Bricx.ai section card */
+  #section-about .service-content-block {
+    background: rgba(255, 255, 255, 0.008);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 4rem 3.5rem;
+    box-shadow: 0 8px 32px rgba(8, 13, 22, 0.03);
+    box-sizing: border-box;
+  }
+
   /* Clickable section content link */
   .service-content-block-link {
     text-decoration: none;
@@ -672,6 +663,32 @@
 
   .service-content-block-link:hover .service-desc {
     color: rgba(255, 255, 255, 0.95);
+  }
+
+  .service-learn-more {
+    margin-top: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .service-learn-more i {
+    transition: transform 0.3s ease;
+  }
+
+  .service-content-block-link:hover .service-learn-more {
+    color: var(--text-white);
+  }
+
+  .service-content-block-link:hover .service-learn-more i {
+    transform: translateX(5px);
   }
 
   .service-title {
@@ -781,6 +798,10 @@
       padding: 0;
     }
 
+    #section-about .service-content-block {
+      padding: 3rem 2rem;
+    }
+
     .service-title {
       font-size: 2rem;
     }
@@ -793,6 +814,10 @@
 
     .premium-service-section {
       padding: 4rem 0;
+    }
+
+    #section-about .service-content-block {
+      padding: 2.5rem 1.5rem;
     }
 
     .service-title {
@@ -1149,8 +1174,8 @@
      1. VIDEO HERO SECTION (CAROLWOOD EXACT MATCH)
 ══════════════════════════════════════════════════════════════════ -->
 <section id="section-6b01fd16-6dec-44d9-8683-fed1932e4d35" class="video-section">
-  <video autoplay loop muted playsinline class="hero-video" id="hero-video-element">
-    <source src="{{ url_for('static', filename='hero.mp4') }}" type="video/mp4">
+  <video autoplay loop muted playsinline preload="auto" class="hero-video" id="hero-video-element">
+    <source src="{{ url_for('static', filename='hero.mp4') }}?v=3" type="video/mp4">
   </video>
 
   <div class="overlay-component"></div>
@@ -1222,7 +1247,7 @@
           landlords on mandates where we also advise occupiers.
         </p>
         <div style="border-top: 1px solid rgba(255, 255, 255, 0.12); margin-top: 1.5rem; padding-top: 1.5rem; display: flex; align-items: flex-start; gap: 16px;">
-          <div style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--accent-gold); display: flex; align-items: center; justify-content: center; color: var(--primary-obsidian); font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; flex-shrink: 0;">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--accent-gold); display: flex; align-items: center; justify-content: center; color: var(--primary-obsidian); font-family: var(--font-heading); font-weight: 900; font-size: 1.60rem; flex-shrink: 0;">
             KS
           </div>
           <div style="text-align: left;">
@@ -1265,6 +1290,9 @@
           Bengaluru that goes beyond finding space — structuring terms, evaluating trade-offs, and
           ensuring the lease works for your business over time.
         </p>
+        <span class="service-learn-more">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
@@ -1284,6 +1312,9 @@
           Commercial property investment in Bangalore requires more than a good yield. We bring
           underwriting discipline, risk-first evaluation, and capital markets rigour to every mandate.
         </p>
+        <span class="service-learn-more">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
@@ -1303,6 +1334,9 @@
           Land acquisition advisory in Bengaluru starts with saying no to most of what is available.
           We filter on title, access, and realistic use before anything reaches you.
         </p>
+        <span class="service-learn-more">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </span>
       </div>
     </a>
   </div>
@@ -1409,6 +1443,8 @@
 Most brokers will show you 30 properties in a week. Bricx.ai will show you 3. The difference isn't volume—it's conviction. Traditional brokers are compensated for closing deals quickly. Bricx.ai is structured to prioritize long-term fit over short-term commissions. At Bricx.ai, employees don't carry targets. This isn't idealism—it's structural. Targets create pressure to close deals regardless of fit. Advisory firms don't operate on sales quotas. Brokerage firms do. A client needed 47 seats for a back-end support operation. Day one, they had zero hires. Most brokers would've locked them into paying for all 47 seats immediately to maximize commission. Bricx.ai structured staggered billing instead: 15 seats upfront, 15 more after 45 days, full occupancy after 90 days. The landlord secured a long-term tenant. The client avoided paying for empty seats. Bricx.ai earned less upfront but gained a client for life. A commercial investment provider approached Bricx.ai offering 9.8% annual ROI with 15% escalations. On paper, exceptional. In the fine print: 1% 'management fees,' hidden deductions, baseless charges. Actual investor return: sub-6%. Below bank FD rates with significantly higher risk. Bricx.ai severed the partnership immediately. Traditional brokers rarely read past the headline ROI. Bricx.ai evaluates assets the way institutional investors do—risk first, structure second, returns last. If Bricx.ai wouldn't set up its own office in a space, invest its own capital in a property, or buy the land personally, it doesn't get recommended to clients. Bricx.ai maintains standardized transaction fees across all coworking providers, managed office operators, and property sellers. WeWork, Beehive, Novel Office, IndiQube—the commission is identical. This removes the incentive to push clients toward whichever property pays the highest referral fee.</p>
         </div>
       </div>
+    </div><!-- /.faq-accordion-group -->
+  </div><!-- /.container -->
 </section>
 
 <!-- FAQ Accordion JS Script -->

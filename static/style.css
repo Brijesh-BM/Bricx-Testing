@@ -244,23 +244,7 @@ header {
   display: none !important;
 }
 
-/* Magnifying Glass Search Icon */
-.nav-search-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-charcoal);
-  font-size: 0.95rem;
-  margin-right: 24px;
-  opacity: 0.85;
-  transition: var(--transition-snappy);
-  cursor: pointer;
-}
 
-.nav-search-icon:hover {
-  opacity: 1;
-  color: var(--accent-gold);
-}
 
 /* Rectangular CTA button */
 .nav-cta {
@@ -340,9 +324,7 @@ header {
     font-size: 0.72rem;
     margin-right: 12px;
   }
-  .nav-search-icon {
-    margin-right: 12px;
-  }
+
 }
 
 /* ── CAROLWOOD INFINITE MARQUEE TYPOGRAPHY (PRESTIGE SCROLL) ─────────── */
@@ -4201,4 +4183,693 @@ textarea:focus-visible {
   font-size: 1.12rem !important;
   line-height: 1.8 !important;
   color: var(--text-charcoal) !important;
+}
+
+/* ── FLOATING CONTACT BUTTON & MODAL POPUP (BRICX THEME MATCHED) ─────────── */
+#floating-contact-btn {
+  position: fixed;
+  bottom: 96px;
+  right: 32px;
+  z-index: 850;
+
+  width: auto;
+  min-width: 120px;
+  height: 52px;
+  padding: 0 20px;
+
+  border-radius: 999px;
+  background: var(--accent-olive);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(8, 13, 22, 0.22);
+  outline: none;
+}
+
+#floating-contact-btn:hover {
+  background: var(--accent-gold);
+  color: var(--primary-obsidian);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(8, 13, 22, 0.32);
+}
+
+
+
+@media (max-width: 768px) {
+  #floating-contact-btn {
+    bottom: 80px;
+    right: 20px;
+    min-width: 100px;
+    height: 44px;
+    font-size: 0.7rem;
+    padding: 0 16px;
+  }
+}
+  
+
+
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 13, 22, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.contact-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 400px;
+  background: var(--bg-white);
+  border: 1px solid var(--accent-gold);
+  padding: 32px;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 32px 64px rgba(8, 13, 22, 0.35);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.contact-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 12px;
+}
+
+.contact-modal-header h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--primary-obsidian);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contact-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: var(--transition-snappy);
+}
+
+.contact-modal-close:hover {
+  color: var(--accent-gold);
+  transform: rotate(90deg);
+}
+
+.modal-form-group {
+  margin-bottom: 18px;
+  position: relative;
+  text-align: left;
+}
+
+.modal-form-group label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-charcoal);
+  margin-bottom: 6px;
+}
+
+.modal-form-group label .required {
+  color: #c93b3b;
+}
+
+.modal-form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  background: var(--bg-cream);
+  border: 1px solid var(--border-medium);
+  border-radius: 0px !important;
+  color: var(--text-charcoal);
+  outline: none;
+  transition: var(--transition-snappy);
+}
+
+.modal-form-control:focus {
+  border-color: var(--accent-gold);
+  background: var(--bg-white);
+  box-shadow: 0 0 0 3px rgba(197, 184, 151, 0.15);
+}
+
+.modal-form-group .error-msg {
+  display: none;
+  color: #c93b3b;
+  font-size: 0.72rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.modal-form-group.has-error .modal-form-control {
+  border-color: #c93b3b;
+}
+
+.modal-form-group.has-error .error-msg {
+  display: block;
+}
+
+.modal-form-actions {
+  margin-top: 24px;
+}
+
+.modal-btn-submit {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--accent-olive);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-snappy);
+}
+
+.modal-btn-submit:hover {
+  background: var(--accent-gold);
+  color: var(--primary-obsidian);
+}
+
+.modal-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-success-msg, .modal-error-msg {
+  display: none;
+  padding: 12px;
+  font-size: 0.8rem;
+  margin-top: 16px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.modal-success-msg {
+  background: rgba(197, 184, 151, 0.12);
+  color: var(--accent-olive);
+  border: 1px solid var(--accent-gold);
+}
+
+.modal-error-msg {
+  background: rgba(201, 59, 59, 0.06);
+  color: #c93b3b;
+  border: 1px solid rgba(201, 59, 59, 0.12);
+}
+
+/* ── PROSPECTUS MODAL & ADVISOR PROFILE (BRICX THEME MATCHED) ── */
+.prospectus-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 13, 22, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prospectus-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.prospectus-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 95%;
+  max-width: 480px;
+  background: var(--bg-white);
+  border: 1px solid var(--accent-gold);
+  padding: 28px;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 32px 64px rgba(8, 13, 22, 0.35);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prospectus-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.prospectus-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 10px;
+}
+
+.prospectus-modal-header h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--primary-obsidian);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.prospectus-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: var(--transition-snappy);
+}
+
+.prospectus-modal-close:hover {
+  color: var(--accent-gold);
+  transform: rotate(90deg);
+}
+
+.property-badge {
+  background: var(--bg-cream);
+  padding: 8px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  border-left: 3px solid var(--accent-olive);
+  margin-bottom: 14px;
+}
+
+.property-badge .badge-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.property-badge .badge-value {
+  font-weight: 600;
+  color: var(--primary-obsidian);
+}
+
+.advisor-info-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-cream);
+  padding: 10px 14px;
+  border: 1px dashed var(--border-medium);
+  margin-bottom: 14px;
+}
+
+.advisor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-obsidian);
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.advisor-details h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-obsidian);
+  margin: 0 0 1px 0;
+}
+
+.advisor-details p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.prospectus-modal-body p.modal-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-charcoal);
+  margin-bottom: 16px;
+}
+
+@media (max-width: 480px) {
+  .prospectus-modal {
+    padding: 20px;
+    width: 92%;
+  }
+}
+
+/* ── MODAL SUBMISSION STATE OVERLAY (SPINNER & BLUR) ── */
+.modal-state-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.modal-state-overlay.open-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide all state contents by default */
+.modal-state-overlay .state-loading,
+.modal-state-overlay .state-success,
+.modal-state-overlay .state-error {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Show active state content */
+.modal-state-overlay.state-is-loading .state-loading {
+  display: flex;
+}
+
+.modal-state-overlay.state-is-success .state-success {
+  display: flex;
+}
+
+.modal-state-overlay.state-is-error .state-error {
+  display: flex;
+}
+
+/* Gold Spinner */
+.modal-state-overlay .spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(197, 184, 151, 0.2);
+  border-top-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: modal-spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes modal-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pop-in success animation */
+.modal-state-overlay .success-icon {
+  font-size: 3rem;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+  animation: modal-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.modal-state-overlay h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  color: var(--primary-obsidian);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modal-state-overlay p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@keyframes modal-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Retry Button */
+.modal-state-overlay .btn-retry {
+  margin-top: 14px;
+  padding: 8px 16px;
+  background: var(--accent-olive);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-snappy);
+}
+
+.modal-state-overlay .btn-retry:hover {
+  background: var(--accent-gold);
+  color: var(--primary-obsidian);
+}
+
+/* ==========================================================================
+   MOBILE AUDIT & RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+
+/* 1. Viewport Overflow & Image Prevention */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* 2. Globalized mandate-container-grid */
+.mandate-container-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .mandate-container-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    align-items: center; /* Centers initials box / avatar on mobile */
+  }
+}
+
+/* 3. Mobile Header & Toggle Touch Target scaling */
+.nav-logo,
+.nav-cta {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 1.15rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  .nav-cta {
+    padding: 8px 12px !important;
+    font-size: 0.68rem !important;
+    margin-right: 8px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-logo {
+    font-size: 1.05rem !important;
+    letter-spacing: 0.08em !important;
+  }
+  .nav-cta {
+    padding: 6px 10px !important;
+    font-size: 0.62rem !important;
+    margin-right: 4px !important;
+  }
+}
+
+/* Touch Target Minimum Heights (44px) */
+.mobile-toggle {
+  padding: 8px !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+.nav-link {
+  padding: 12px 0 !important;
+  display: block !important;
+}
+
+.faq-trigger,
+.bricx-faq-trigger {
+  padding: 14px 0 !important;
+}
+
+.modal-btn-submit {
+  padding: 14px 24px !important; /* guarantees 44px touch height */
+}
+
+/* Modal Close Touch Targets (at least 44px) */
+.prospectus-modal-close,
+.contact-modal-close {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px !important;
+  margin: -10px !important; /* Keep icon in the visual position */
+}
+
+/* Mobile Filter and Listings Buttons Touch Targets (at least 44px) */
+@media (max-width: 768px) {
+  .filter-btn {
+    padding: 12px 24px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .listing-btn {
+    padding: 12px 16px !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .footer-socials a {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* 4. Footer Logo & Padding Response */
+@media (max-width: 640px) {
+  .footer-logo {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bricx-blog-list-container {
+    padding: 0 20px !important;
+  }
+  .premium-footer {
+    padding: 40px 24px 96px !important; /* safe spacing to prevent floating button overlaps */
+  }
+}
+
+/* 5. Showcase Hero Mobile Overrides */
+@media (max-width: 768px) {
+  .showcase-hero-section {
+    padding: 100px 0 1.5rem 0 !important;
+  }
+}
+
+/* 6. Contact Modal Vertical Overflow fallback */
+@media (max-height: 640px) {
+  .contact-modal {
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-modal {
+    padding: 24px 20px !important;
+    width: 92% !important;
+  }
+}
+
+/* 7. Responsive 2-Column Advisory Grid */
+.advisory-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .advisory-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 8. Newsletter Mobile Scaling & Overflow Prevention */
+@media (max-width: 768px) {
+  .newsletter-box {
+    padding: 30px 20px !important;
+    gap: 24px !important;
+  }
+  .newsletter-box h2 {
+    font-size: 1.8rem !important;
+  }
+  .newsletter-form input {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-slide {
+    min-width: 270px !important;
+  }
 }

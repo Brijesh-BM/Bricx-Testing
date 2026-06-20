@@ -85,14 +85,9 @@
 
       <!-- Right Side Actions (Grouped for Carolwood Style Alignment) -->
       <div class="nav-right">
-        <!-- Search Icon (Carolwood Style) -->
-        <a href="/contact-us" class="nav-search-icon" id="nav-search-icon" aria-label="Search">
-          <i class="fas fa-search"></i>
-        </a>
-
         <!-- Direct Line CTA button -->
-        <a href="/contact-us" class="nav-cta" id="header-phone-cta">
-          <span>Contact Us</span>
+        <a href="tel:+919050704020" class="nav-cta" id="header-phone-cta">
+          <span>+91 90 50 70 40 20</span>
         </a>
 
         <!-- Hamburger Toggle for Mobile Drawer -->
@@ -237,6 +232,76 @@
 
   </footer>
   <!-- ── SCROLL TO TOP BUTTON ──────────────────────────────────────────────── -->
+  <!-- ── FLOATING CONTACT BUTTON ─────────────────────────────────────────── -->
+  <button type="button" id="floating-contact-btn" aria-label="Enquire" title="Enquire">
+    ENQUIRE
+</button>
+  <!-- ── CONTACT MODAL OVERLAY ──────────────────────────────────────────── -->
+  <div class="contact-modal-overlay" id="contact-modal-overlay" role="presentation"></div>
+
+  <!-- ── CONTACT MODAL POPUP ────────────────────────────────────────────── -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-header">
+      <h3 id="contact-modal-title">Get In Touch</h3>
+      <button type="button" class="contact-modal-close" id="contact-modal-close" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <form id="contact-modal-form" novalidate>
+      <div class="modal-form-group" id="grp-name">
+        <label for="modal-name">Full Name <span class="required">*</span></label>
+        <input type="text" id="modal-name" class="modal-form-control" placeholder="Your full name" autocomplete="name">
+        <span class="error-msg">Please enter your full name.</span>
+      </div>
+
+      <div class="modal-form-group" id="grp-mobile">
+        <label for="modal-mobile">Mobile Number <span class="required">*</span></label>
+        <input type="tel" id="modal-mobile" class="modal-form-control" placeholder="Your mobile number" autocomplete="tel">
+        <span class="error-msg">Please enter your mobile number.</span>
+      </div>
+
+      <div class="modal-form-group" id="grp-email">
+        <label for="modal-email">Email Address <span class="required">*</span></label>
+        <input type="email" id="modal-email" class="modal-form-control" placeholder="Your email address" autocomplete="email">
+        <span class="error-msg" id="email-error-msg">Please enter a valid email address.</span>
+      </div>
+
+      <div class="modal-form-group" id="grp-message">
+        <label for="modal-message">What would you like to discuss? <span class="required">*</span></label>
+        <textarea id="modal-message" class="modal-form-control" placeholder="Tell us what you would like to discuss" rows="3"></textarea>
+        <span class="error-msg">Please enter what you would like to discuss.</span>
+      </div>
+
+      <div class="modal-form-actions">
+        <button type="submit" class="modal-btn-submit" id="modal-submit-btn">Submit</button>
+      </div>
+    </form>
+
+    <!-- ── STATE OVERLAY ── -->
+    <div class="modal-state-overlay" id="contact-modal-state-overlay">
+      <div class="state-loading">
+        <div class="spinner"></div>
+        <p>Submitting...</p>
+      </div>
+      <div class="state-success">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Thank You</h3>
+        <p>Your enquiry has been received successfully.<br>A member of the Bricx.ai team will contact you shortly.</p>
+      </div>
+      <div class="state-error">
+        <div class="success-icon" style="color: #c93b3b;">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <h3>Submission Failed</h3>
+        <p id="contact-modal-error-text">Something went wrong. Please try again.</p>
+        <button type="button" class="btn-retry" id="contact-modal-retry-btn">Retry</button>
+      </div>
+    </div>
+  </div>
+
   <button type="button" id="scroll-to-top" aria-label="Scroll to top" title="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
       stroke-linejoin="round">
@@ -484,6 +549,153 @@
         });
     }
   </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const openBtn = document.getElementById("floating-contact-btn");
+    const modal = document.getElementById("contact-modal");
+    const overlay = document.getElementById("contact-modal-overlay");
+    const closeBtn = document.getElementById("contact-modal-close");
+
+    if (!openBtn || !modal || !overlay || !closeBtn) return;
+
+    openBtn.addEventListener("click", function () {
+        modal.classList.add("open");
+        overlay.classList.add("open");
+        const stateOverlay = document.getElementById("contact-modal-state-overlay");
+        if (stateOverlay) stateOverlay.className = "modal-state-overlay";
+    });
+
+    closeBtn.addEventListener("click", function () {
+        modal.classList.remove("open");
+        overlay.classList.remove("open");
+    });
+
+    overlay.addEventListener("click", function () {
+        modal.classList.remove("open");
+        overlay.classList.remove("open");
+    });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            modal.classList.remove("open");
+            overlay.classList.remove("open");
+        }
+    });
+
+});
+</script>
+
+<script>
+document.getElementById("contact-modal-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const nameInput = document.getElementById("modal-name");
+    const mobileInput = document.getElementById("modal-mobile");
+    const emailInput = document.getElementById("modal-email");
+    const messageInput = document.getElementById("modal-message");
+
+    const grpName = document.getElementById("grp-name");
+    const grpMobile = document.getElementById("grp-mobile");
+    const grpEmail = document.getElementById("grp-email");
+    const grpMessage = document.getElementById("grp-message");
+
+    let hasError = false;
+
+    // Reset error styling
+    grpName.classList.remove("has-error");
+    grpMobile.classList.remove("has-error");
+    grpEmail.classList.remove("has-error");
+    grpMessage.classList.remove("has-error");
+
+    if (!nameInput.value.trim()) {
+        grpName.classList.add("has-error");
+        hasError = true;
+    }
+
+    if (!mobileInput.value.trim()) {
+        grpMobile.classList.add("has-error");
+        hasError = true;
+    }
+
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+        grpEmail.classList.add("has-error");
+        document.getElementById("email-error-msg").textContent = "Please enter your email address.";
+        hasError = true;
+    } else if (!emailRegex.test(email)) {
+        grpEmail.classList.add("has-error");
+        document.getElementById("email-error-msg").textContent = "Please enter a valid email address.";
+        hasError = true;
+    }
+
+    if (!messageInput.value.trim()) {
+        grpMessage.classList.add("has-error");
+        hasError = true;
+    }
+
+    if (hasError) return;
+
+    const stateOverlay = document.getElementById("contact-modal-state-overlay");
+    const submitBtn = document.getElementById("modal-submit-btn");
+
+    // Show loading overlay
+    stateOverlay.className = "modal-state-overlay open-overlay state-is-loading";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("/api/contact-lead", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: nameInput.value.trim(),
+                mobile: mobileInput.value.trim(),
+                email: email,
+                message: messageInput.value.trim()
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Show success overlay
+            stateOverlay.className = "modal-state-overlay open-overlay state-is-success";
+
+            setTimeout(() => {
+                document.getElementById("contact-modal").classList.remove("open");
+                document.getElementById("contact-modal-overlay").classList.remove("open");
+
+                stateOverlay.className = "modal-state-overlay";
+                submitBtn.disabled = false;
+
+                document.getElementById("contact-modal-form").reset();
+            }, 3000);
+        } else {
+            // Show error overlay
+            stateOverlay.className = "modal-state-overlay open-overlay state-is-error";
+            document.getElementById("contact-modal-error-text").textContent = data.message || "Something went wrong. Please try again.";
+            
+            document.getElementById("contact-modal-retry-btn").onclick = function() {
+                stateOverlay.className = "modal-state-overlay";
+                submitBtn.disabled = false;
+            };
+        }
+    } catch (err) {
+        // Show error overlay
+        stateOverlay.className = "modal-state-overlay open-overlay state-is-error";
+        document.getElementById("contact-modal-error-text").textContent = "Network error. Please try again.";
+        
+        document.getElementById("contact-modal-retry-btn").onclick = function() {
+            stateOverlay.className = "modal-state-overlay";
+            submitBtn.disabled = false;
+        };
+    }
+});
+</script>
 
 
 </body>
