@@ -213,8 +213,8 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 120px 48px 48px;
-  gap: 28px;
+  padding: 70px 48px 48px;
+  gap: 16px;
   z-index: 1050;
   transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -4218,16 +4218,30 @@ textarea:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 900px;
   background: var(--bg-white);
   border: 1px solid var(--accent-gold);
-  padding: 32px;
+  padding: 40px;
   z-index: 2000;
   opacity: 0;
   pointer-events: none;
   box-shadow: 0 32px 64px rgba(8, 13, 22, 0.35);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+  .contact-modal {
+    padding: 30px 24px;
+    width: 90%;
+  }
+  .modal-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .modal-left-column {
+    display: none !important;
+  }
 }
 
 .contact-modal.open {
@@ -4827,5 +4841,256 @@ img {
 @media (max-width: 480px) {
   .slider-slide {
     min-width: 270px !important;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS AND TOUCH TARGETS
+   ========================================== */
+
+/* STEP 11 - SCROLL BEHAVIOR & TOUCH SMOOTHING */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* STEP 4 - ALL IMAGES GLOBAL ASPECT RATIO RULES */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* STEP 1 & 2 & 3 & 4 & 6 & 7 & 8 & 9 & 10 - MEDIA QUERIES FOR MOBILE VIEWPOTS */
+@media (max-width: 768px) {
+  /* STEP 1 - GLOBAL OVERFLOW FIX */
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Major wrappers/containers box sizing */
+  body, main, div, section, article, footer, header {
+    box-sizing: border-box !important;
+  }
+
+  div, section, article {
+    max-width: 100%;
+  }
+
+  /* STEP 2 - CONTAINER PADDING OVERRIDES */
+  .container, 
+  .lp-container, 
+  .footer-container, 
+  .showcase-container, 
+  .bricx-blog-list-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  section, .section-padding, .premium-footer {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* STEP 3 - TYPOGRAPHY SCALING & BREAKING */
+  h1 { font-size: clamp(24px, 6vw, 32px) !important; }
+  h2 { font-size: clamp(20px, 5vw, 24px) !important; }
+  h3 { font-size: clamp(18px, 4vw, 20px) !important; }
+  p, li, span, a { font-size: clamp(15px, 3.5vw, 16px); }
+
+  h1, h2, h3, p, li, span, a {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* STEP 4 - RESPONSIVE IMAGES */
+  .advisory-hero img, 
+  .blog-hero-image-wrapper img, 
+  .showcase-img-side img,
+  .blog-spread-box img, 
+  .blog-editorial-body img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .listing-img-wrapper img, 
+  .bricx-blog-list-image-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .footer-logo img, 
+  .nav-logo img {
+    height: auto !important;
+    max-width: 140px !important;
+  }
+
+  /* STEP 6 - GRID & CARD STACKING */
+  .listings-grid, 
+  .blog-spread, 
+  .modal-grid-container,
+  .mandate-container-grid,
+  .footer-container,
+  .advisory-grid, 
+  .advisory-grid-2col {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .bricx-blog-list-container {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 16px !important;
+  }
+  .bricx-blog-list-item {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Customer logos wrap */
+  .logo-slider-container, 
+  .slider-track {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
+  }
+  .slider-slide {
+    min-width: 120px !important;
+    width: auto !important;
+  }
+
+  /* STEP 7 - CTA BLOCKS */
+  .newsletter-box, 
+  .blog-cta-panel, 
+  .contact-detailed-card, 
+  .modal-info-card {
+    width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    padding: 20px 16px !important;
+  }
+
+  .carolwood-btn, 
+  .modal-btn-submit,
+  .btn-submit,
+  #modal-submit-btn,
+  .newsletter-form button {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 15px !important;
+    padding: 12px 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* STEP 8 - BLOG PAGES SPECIFICALLY */
+  .blog-editorial-title {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    font-size: clamp(24px, 5vw, 32px) !important;
+    padding: 0 16px !important;
+  }
+
+  .blog-category {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .blog-back-link {
+    display: inline-block !important;
+    padding: 8px 0 !important;
+    min-height: 44px !important;
+  }
+
+  .blog-editorial-paragraph ul, 
+  .blog-editorial-paragraph ol {
+    padding-left: 20px !important;
+    margin-left: 0 !important;
+  }
+
+  /* STEP 9 - FOOTER STACKING */
+  footer, .premium-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 24px 16px 96px !important;
+  }
+
+  .footer-left, 
+  .footer-center, 
+  .footer-right {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .footer-center a, 
+  .footer-links a {
+    display: block !important;
+    padding: 10px 0 !important;
+    min-height: 44px !important;
+  }
+
+  /* STEP 10 - MODALS */
+  .contact-modal, 
+  .prospectus-modal, 
+  .modal, 
+  .modal-content {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    margin: auto !important;
+    padding: 20px 16px !important;
+  }
+
+  /* Extra mobile visual corrections */
+  .blog-hero-image-wrapper {
+    height: 35vh !important;
+  }
+  .blog-spread-box {
+    margin-bottom: 16px !important;
+    width: 100% !important;
+  }
+  .blog-spread-box:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* STEP 5 - NAVBAR SPECIAL COMPACT VIEWPORT SIZES */
+@media (max-width: 480px) {
+  .nav-menu {
+    padding: 80px 24px 32px !important;
+  }
+
+  .nav-link {
+    font-size: 1rem !important;
+    padding: 12px 0 !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .mobile-toggle {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }

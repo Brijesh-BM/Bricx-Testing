@@ -98,7 +98,12 @@ def blog_detail(slug):
         return render_template("404.html"), 404
     
     internal_slugs = post.get("internal_links", [])
-    related = [b for b in blogs if b["slug"] in internal_slugs] if internal_slugs else []
+    matched = [b for b in blogs if b["slug"] in internal_slugs] if internal_slugs else []
+    if len(matched) < 2:
+        fallback = [b for b in blogs if b["slug"] != slug and b not in matched]
+        related = (matched + fallback)[:2]
+    else:
+        related = matched[:2]
     return render_template("blog_detail.html", post=post, related=related)
 
 @app.route("/api/lead", methods=["POST"])
@@ -182,8 +187,8 @@ def api_contact_lead():
         email = data.get("email")
         message = data.get("message")
 
-        if not name or not mobile or not email:
-            return jsonify({"success": False, "message": "Full Name, Mobile Number, and Email Address are required."}), 400
+        if not name or not email:
+            return jsonify({"success": False, "message": "Full Name and Business Email are required."}), 400
 
         import re
         if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
