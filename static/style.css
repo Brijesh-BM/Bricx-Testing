@@ -4724,8 +4724,10 @@ img {
 }
 
 .nav-link {
-  padding: 12px 0 !important;
-  display: block !important;
+  padding: 0 !important;
+  min-height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .faq-trigger,
@@ -4866,6 +4868,10 @@ img {
 
 /* STEP 1 & 2 & 3 & 4 & 6 & 7 & 8 & 9 & 10 - MEDIA QUERIES FOR MOBILE VIEWPOTS */
 @media (max-width: 768px) {
+  .nav-menu {
+    gap: 0px !important;
+  }
+
   /* STEP 1 - GLOBAL OVERFLOW FIX */
   html, body {
     overflow-x: hidden !important;
@@ -4938,7 +4944,9 @@ img {
   .mandate-container-grid,
   .footer-container,
   .advisory-grid, 
-  .advisory-grid-2col {
+  .advisory-grid-2col,
+  .land-grid,
+  .land-item {
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: 1fr !important;
@@ -5076,11 +5084,12 @@ img {
 @media (max-width: 480px) {
   .nav-menu {
     padding: 80px 24px 32px !important;
+    gap: 0px !important;
   }
 
   .nav-link {
     font-size: 1rem !important;
-    padding: 12px 0 !important;
+    padding: 0 !important;
     min-height: 44px !important;
     display: flex !important;
     align-items: center !important;
