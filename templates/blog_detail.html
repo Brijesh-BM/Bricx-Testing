@@ -104,6 +104,31 @@
     color: var(--primary-obsidian) !important;
   }
 
+  .blog-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    background-color: var(--text-white) !important;
+    color: var(--accent-olive) !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    border: 1px solid var(--accent-olive) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    border-radius: 0px !important;
+  }
+
+  .blog-cta-btn:hover {
+    background-color: var(--accent-olive) !important;
+    color: var(--text-white) !important;
+    border-color: var(--accent-olive) !important;
+  }
+
 </style>
 {% endblock %}
 
@@ -184,7 +209,7 @@
   <div class="blog-cta-panel" style="background: rgba(14, 24, 42, 0.45); padding: 3.5rem 3rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); margin: 4.5rem 0; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
     <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: #ffffff; font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem;">{{ post.cta_title }}</h3>
     <p style="font-family: 'Montserrat', sans-serif; font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.85); font-weight: 300; margin-bottom: 2rem; max-width: 680px; margin-left: auto; margin-right: auto;">{{ post.cta_text }}</p>
-    <a href="{{ post.cta_link }}" class="carolwood-btn" style="background-color: var(--accent-gold); color: var(--primary-obsidian) !important; font-weight: 600;">{{ post.cta_button_text }}</a>
+    <a href="{{ post.cta_link }}" class="blog-cta-btn">{{ post.cta_button_text }}</a>
   </div>
   {% endif %}
 

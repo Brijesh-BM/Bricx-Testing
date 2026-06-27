@@ -200,7 +200,7 @@
 
         <div class="footer-contact">
           <p>
-            Hello <br>
+            <a href="mailto:hello@bricx.ai">hello@bricx.ai</a> <br>
             For secure investor dealroom inquiries
           </p>
         </div>
@@ -256,7 +256,7 @@
             Phone: <a href="tel:+919070504020" style="color: var(--accent-olive); font-weight: 600; text-decoration: none;">90 70 50 40 20</a>
           </p>
           <p style="color: var(--text-charcoal); margin-bottom: 8px; font-size: 0.85rem;">
-            Email: <a href="mailto:krupesh@gmail.com" style="color: var(--accent-olive); font-weight: 600; text-decoration: none;">krupesh@gmail.com</a>
+            Email: <a href="mailto:hello@bricx.ai" style="color: var(--accent-olive); font-weight: 600; text-decoration: none;">hello@bricx.ai</a>
           </p>
           <p style="color: var(--text-charcoal); font-size: 0.85rem; margin-bottom: 0;">
             Web: <a href="https://bricx.ai" style="color: var(--accent-olive); font-weight: 600; text-decoration: none;">bricx.ai</a>
@@ -296,18 +296,30 @@
           </div>
 
           <div class="modal-form-group" id="grp-interest">
-            <label for="modal-interest">Area of Interest</label>
-            <select id="modal-interest" class="modal-form-control" style="background-color: var(--bg-cream); border: 1px solid var(--border-medium); padding: 10px 14px; font-family: 'Inter', sans-serif; font-size: 0.9rem; width: 100%; border-radius: 0px !important;">
-              <option value="Occupier Leasing Advisory">Occupier Leasing Advisory</option>
-              <option value="Investment Opportunities">Investment Opportunities</option>
-              <option value="Land Acquisitions">Land Acquisitions</option>
-              <option value="Other">Other</option>
-            </select>
+            <label style="display: block; margin-bottom: 12px;">Area of Interest</label>
+            <div class="checkbox-group" style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px;">
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="interest" value="Leasing Advisory" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Occupier Leasing Advisory
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="interest" value="Income Investments" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Income & Portfolio Placements
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="interest" value="Land Opportunities" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Land Plot Development
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="interest" value="Other" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                General B2B Inquiry
+              </label>
+            </div>
           </div>
 
           <div class="modal-form-group" id="grp-message">
             <label for="modal-message">Inquiry Details</label>
-            <textarea id="modal-message" class="modal-form-control" placeholder="Briefly describe your requirements or the specific assets you are interested in..." rows="3"></textarea>
+            <textarea id="modal-message" class="modal-form-control" placeholder="" rows="3"></textarea>
             <span class="error-msg">Please enter your inquiry details.</span>
           </div>
 
@@ -654,6 +666,7 @@ document.getElementById("contact-modal-form").addEventListener("submit", async f
     submitBtn.disabled = true;
 
     try {
+        const selectedInterests = Array.from(document.querySelectorAll('input[name="interest"]:checked')).map(cb => cb.value).join(', ');
         const response = await fetch("/api/contact-lead", {
             method: "POST",
             headers: {
@@ -663,7 +676,7 @@ document.getElementById("contact-modal-form").addEventListener("submit", async f
                 name: nameInput.value.trim(),
                 mobile: mobileInput.value.trim(),
                 email: email,
-                message: "Area of Interest: " + document.getElementById("modal-interest").value + "\nDetails: " + messageInput.value.trim()
+                message: "Area of Interest: " + (selectedInterests || "None") + "\nDetails: " + messageInput.value.trim()
             })
         });
 

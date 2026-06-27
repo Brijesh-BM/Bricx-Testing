@@ -31,7 +31,7 @@
             Phone: <a href="tel:+919070504020" style="color: var(--accent-olive); font-weight: 600;">90 70 50 40 20</a>
           </p>
           <p style="color: var(--text-charcoal); margin-bottom: 1rem;">
-            Email: <a href="mailto:krupesh@gmail.com" style="color: var(--accent-olive); font-weight: 600;">krupesh@gmail.com</a>
+            Email: <a href="mailto:hello@bricx.ai" style="color: var(--accent-olive); font-weight: 600;">hello@bricx.ai</a>
           </p>
           <p style="color: var(--text-charcoal);">
             Web: <a href="https://bricx.ai" style="color: var(--accent-olive); font-weight: 600;">bricx.ai</a>
@@ -67,20 +67,32 @@
             <input type="text" id="c-phone" class="form-control" placeholder="Phone Number">
           </div>
 
-          <div class="form-group">
-            <label for="c-inquiry">Area of Interest</label>
-            <select id="c-inquiry" class="form-control">
-              <option value="Leasing Advisory">Occupier Leasing Advisory</option>
-              <option value="Income Investments">Income & Portfolio Placements</option>
-              <option value="Land Opportunities">Land Plot Development</option>
-              <option value="Other">General B2B Inquiry</option>
-            </select>
+          <div class="form-group" id="grp-c-inquiry">
+            <label style="display: block; margin-bottom: 12px;">Area of Interest</label>
+            <div class="checkbox-group" style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px;">
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="c-interest" value="Leasing Advisory" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Occupier Leasing Advisory
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="c-interest" value="Income Investments" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Income & Portfolio Placements
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="c-interest" value="Land Opportunities" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                Land Plot Development
+              </label>
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-charcoal); cursor: pointer; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                <input type="checkbox" name="c-interest" value="Other" style="accent-color: var(--accent-gold); width: 18px; height: 18px; cursor: pointer;">
+                General B2B Inquiry
+              </label>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="c-message">Inquiry Details</label>
             <textarea id="c-message" class="form-control"
-              placeholder="Briefly describe your requirements or the specific assets you are interested in..."
+              placeholder=""
               style="min-height: 120px;"></textarea>
           </div>
 
@@ -116,14 +128,14 @@
     const nameInput = document.getElementById('c-name');
     const emailInput = document.getElementById('c-email');
     const phoneInput = document.getElementById('c-phone');
-    const inquirySelect = document.getElementById('c-inquiry');
     const messageInput = document.getElementById('c-message');
     const submitBtn = document.getElementById('c-submit-btn');
 
     const name = nameInput ? nameInput.value : '';
     const email = emailInput ? emailInput.value : '';
     const phone = phoneInput ? phoneInput.value : '';
-    const inquiry = inquirySelect ? inquirySelect.value : 'General B2B Inquiry';
+    const selectedInquiries = Array.from(document.querySelectorAll('input[name="c-interest"]:checked')).map(cb => cb.value).join(', ');
+    const inquiry = selectedInquiries || 'General B2B Inquiry';
     const messageDetails = messageInput ? messageInput.value : '';
 
     if (!name || !email) return;
