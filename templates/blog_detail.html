@@ -134,7 +134,9 @@
 
 {% block content %}
 
-<!-- ── EDITORIAL BLOG HEADER (CAROLWOOD DESIGN REPLICATED) ────────────── -->
+<!-- ==========================================================
+     Editorial Blog Header ()
+========================================================== -->
 <section class="blog-editorial-header" style="padding: 140px 0 2rem 0; background-color: var(--bg-cream);">
   <div class="container" style="text-align: center;">
     <div style="text-align: left; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 1rem;">
@@ -143,7 +145,7 @@
       </a>
     </div>
     <div class="blog-category" style="color: var(--accent-gold); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem;">
-      {{ post.publisher }} &bull; {{ post.category }}
+      {{ post.publisher }}{% if post.category %} &bull; {{ post.category }}{% endif %}
     </div>
     
     <h1 class="blog-editorial-title" style="font-family: 'Cinzel', serif; font-weight: 400; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; color: var(--primary-obsidian); margin: 0 auto 1.5rem auto; max-width: 900px;">
@@ -152,25 +154,33 @@
   </div>
 </section>
 
-<!-- ── BLOG HERO IMAGE banner with Ken Burns Parallax ────────────────── -->
+<!-- ==========================================================
+     Blog Hero Image Banner With Ken Burns Parallax
+========================================================== -->
 <section class="blog-hero-image-wrapper" style="position: relative; height: 65vh; overflow: hidden; width: 100%;">
   <img src="{{ post.hero_image }}" alt="{{ post.hero_image_alt if post.hero_image_alt else post.title }}" style="width: 100%; height: 100%; object-fit: cover; transform-origin: center center;">
 </section>
 
-<!-- ── EDITORIAL ARTICLE BODY (CAROLWOOD EXACT MATCH) ────────────────── -->
+<!-- ==========================================================
+     Editorial Article Body ()
+========================================================== -->
 <article class="blog-editorial-body">
   
-  <!-- Lead Paragraph with Premium Drop-Cap -->
+  <!-- Lead Paragraph -->
   <div class="blog-editorial-paragraph lead">
     {{ post.content[0] | safe }}
   </div>
 
   {% for para in post.content[1:] %}
-    <div class="blog-editorial-paragraph">
+    {% if para.strip().startswith('<') %}
       {{ para | safe }}
-    </div>
+    {% else %}
+      <div class="blog-editorial-paragraph">
+        {{ para | safe }}
+      </div>
+    {% endif %}
 
-    <!-- Insert Pull Quote Precisely under Paragraph 2 (index 1 of slice) -->
+    
     {% if loop.index == 1 and post.quote %}
     <div class="blog-quote-block" style="border-left: 3px solid var(--accent-gold); padding-left: 2rem; margin: 3rem 0; font-style: italic;">
       <p class="blog-quote-text" style="font-family: 'Cinzel', serif; font-size: 1.35rem; line-height: 1.6; color: var(--primary-obsidian); margin-bottom: 0.8rem;">
@@ -186,25 +196,19 @@
     {% if loop.index == 2 and post.spread_images %}
     <div class="blog-spread">
       <div class="blog-spread-box">
-        <img src="{{ post.spread_images[0] }}" alt="Bricx Advisory Layout Spread 1">
+        <img src="{{ post.spread_images[0] }}" alt="{{ post.title }} - Layout Spread 1">
       </div>
       <div class="blog-spread-box">
-        <img src="{{ post.spread_images[1] }}" alt="Bricx Advisory Layout Spread 2">
+        <img src="{{ post.spread_images[1] }}" alt="{{ post.title }} - Layout Spread 2">
       </div>
     </div>
     {% endif %}
 
   {% endfor %}
 
-  <!-- Social sharing icons block matching Image 1 raw symbol layouts -->
-  <div class="blog-share-section" style="border-top: 1px solid var(--border-light); padding-top: 2rem; margin-top: 4rem; display: flex; justify-content: center; gap: 24px;">
-    <a href="#" class="blog-share-icon" aria-label="Share on Facebook" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="blog-share-icon" aria-label="Share on X" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-x-twitter"></i></a>
-    <a href="#" class="blog-share-icon" aria-label="Share via Email" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="far fa-envelope"></i></a>
-    <a href="#" class="blog-share-icon" aria-label="Share on LinkedIn" style="color: var(--text-muted); font-size: 1.1rem; transition: var(--transition-snappy);"><i class="fab fa-linkedin-in"></i></a>
-  </div>
 
-  <!-- Dynamic CTA Section (Conversion & SEO Upgrade) -->
+
+  <!-- Article CTA Section -->
   {% if post.cta_title %}
   <div class="blog-cta-panel" style="background: rgba(14, 24, 42, 0.45); padding: 3.5rem 3rem; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); margin: 4.5rem 0; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
     <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: #ffffff; font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem;">{{ post.cta_title }}</h3>
@@ -213,7 +217,9 @@
   </div>
   {% endif %}
 
-  <!-- ── RECOMMENDED READING ARTICLES GRID (DYNAMIC INTERNAL LINKS) ────── -->
+  <!-- ==========================================================
+     Recommended Reading Articles Grid
+========================================================== -->
   {% if related %}
   <div class="blog-related-readings reveal-on-scroll" style="margin-top: 6rem; border-top: 1px solid var(--border-light); padding-top: 4rem;">
     <h3 style="font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-bottom: 3.5rem;">

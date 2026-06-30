@@ -2,23 +2,23 @@
 <html lang="en">
 
 <head>
-  <!-- ① Critical meta must come first -->
+  <!-- Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Bricx.ai | Independent Commercial Real Estate Advisory Bengaluru{% endblock %}</title>
 
-  <!-- SEO Meta Tags -->
+  
   <meta name="description"
     content="{% block meta_description %}Bricx.ai delivers high-end institutional real estate advisory, off-market income investments, and strategic land opportunities with unmatched structural clarity and credibility.{% endblock %}">
   <meta name="keywords" content="{% block meta_keywords %}commercial real estate advisory, off-market investments, land opportunities, Bengaluru real estate{% endblock %}">
   <meta name="theme-color" content="#0e182a">
 
-  <!-- Canonical URL -->
+  
   {% block canonical_block %}
   <link rel="canonical" href="https://bricx.ai{{ request.path }}">
   {% endblock %}
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph Metadata -->
   {% block og_block %}
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bricx.ai{{ request.path }}">
@@ -29,7 +29,7 @@
   <meta property="og:image:height" content="630">
   {% endblock %}
 
-  <!-- Twitter Card metadata -->
+  <!-- Twitter Metadata -->
   {% block twitter_block %}
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://bricx.ai{{ request.path }}">
@@ -48,7 +48,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   <!-- Font Awesome (loaded after critical meta) -->
@@ -68,7 +68,9 @@
   <!-- Mobile Nav Backdrop Overlay -->
   <div class="nav-backdrop" id="nav-backdrop"></div>
 
-  <!-- ── STICKY NAVIGATION HEADER (SCREENSHOTS MATCHED) ───────────────────── -->
+  <!-- ==========================================================
+     Sticky Navigation Header (Screenshots Matched)
+========================================================== -->
   <header id="main-header">
     <div class="nav-container">
       <a href="/" class="nav-logo" id="logo-anchor">BRICX.AI</a>
@@ -84,14 +86,14 @@
         <a href="/contact-us" class="nav-link" id="nav-contact">Contact</a>
       </nav>
 
-      <!-- Right Side Actions (Grouped for Carolwood Style Alignment) -->
+      <!-- Right Side Actions -->
       <div class="nav-right">
-        <!-- Direct Line CTA button -->
-        <a href="tel:+919050704020" class="nav-cta" id="header-phone-cta">
-          <span>+91 90 50 70 40 20</span>
+        
+        <a href="tel:+919070504020" class="nav-cta" id="header-phone-cta">
+          <span>+91 90 70 50 40 20</span>
         </a>
 
-        <!-- Hamburger Toggle for Mobile Drawer -->
+        
         <button type="button" class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu"
           aria-expanded="false" aria-controls="nav-menu">
           <span></span>
@@ -102,12 +104,16 @@
     </div>
   </header>
 
-  <!-- ── CENTRAL PAGE CONTENT BLOCK ───────────────────────────────────────── -->
+  <!-- ==========================================================
+     Central Page Content Block
+========================================================== -->
   <main id="main-content">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- ── CORE INSTITUTIONAL FOOTER (SCREENSHOTS MATCHED) ──────────────────── -->
+  <!-- ==========================================================
+     Core Institutional Footer (Screenshots Matched)
+========================================================== -->
   <footer class="premium-footer">
 
     <div class="footer-container">
@@ -127,21 +133,7 @@
           EST. BENGALURU • KARNATAKA
         </div>
 
-        <div class="footer-socials">
 
-          <a href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-
-          <a href="#">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-
-          <a href="#">
-            <i class="fab fa-x-twitter"></i>
-          </a>
-
-        </div>
 
       </div>
 
@@ -232,15 +224,23 @@
     </div>
 
   </footer>
-  <!-- ── SCROLL TO TOP BUTTON ──────────────────────────────────────────────── -->
-  <!-- ── FLOATING CONTACT BUTTON ─────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Scroll To Top Button
+========================================================== -->
+  <!-- ==========================================================
+     Floating Contact Button
+========================================================== -->
   <button type="button" id="floating-contact-btn" aria-label="Enquire" title="Enquire">
     ENQUIRE
 </button>
-  <!-- ── CONTACT MODAL OVERLAY ──────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Contact Modal Overlay
+========================================================== -->
   <div class="contact-modal-overlay" id="contact-modal-overlay" role="presentation"></div>
 
-  <!-- ── CONTACT MODAL POPUP ────────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Contact Modal Popup
+========================================================== -->
   <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" style="max-width: 900px; width: 95%;">
     <button type="button" class="contact-modal-close" id="contact-modal-close" aria-label="Close" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.25rem; cursor: pointer; color: var(--text-charcoal); z-index: 10;">
       <i class="fas fa-times"></i>
@@ -248,7 +248,7 @@
 
     <div class="modal-grid-container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; padding-top: 10px;">
       
-      <!-- Left Column: Details -->
+      
       <div class="modal-left-column" style="display: flex; flex-direction: column; gap: 24px; text-align: left; justify-content: center;">
         <div class="modal-info-card" style="background: var(--bg-cream); border: 1px solid var(--border-light); padding: 28px 24px; border-radius: 4px;">
           <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--primary-obsidian); text-transform: uppercase; letter-spacing: 0.05em; border: none; padding: 0;">Direct Coordination</h3>
@@ -271,7 +271,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Form -->
+      
       <div class="modal-right-column" style="text-align: left;">
         <div class="blog-category" style="color: var(--accent-gold); font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Request Consultation</div>
         <h2 id="contact-modal-title" style="font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.3; color: var(--primary-obsidian); margin: 0 0 1.5rem 0; text-transform: uppercase; border: none; padding: 0;">Start the Conversation</h2>
@@ -331,7 +331,9 @@
 
     </div>
 
-    <!-- ── STATE OVERLAY ── -->
+    <!-- ==========================================================
+     State Overlay
+========================================================== -->
     <div class="modal-state-overlay" id="contact-modal-state-overlay">
       <div class="state-loading">
         <div class="spinner"></div>
@@ -355,14 +357,50 @@
     </div>
   </div>
 
-  <!-- ── PREMIUM INTERACTIONS & ANIMATION SCRIPTS ────────────────────────── -->
+  <!-- ==========================================================
+     Interactions & Animation Scripts
+========================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Shared FAQ Accordion Toggle Function
+      const faqItems = document.querySelectorAll('.faq-item-card');
+      faqItems.forEach(item => {
+        const trigger = item.querySelector('.faq-trigger');
+        const content = item.querySelector('.faq-content');
+        const icon    = item.querySelector('.faq-icon');
+        if (!trigger || !content) return;
+
+        trigger.addEventListener('click', () => {
+          const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+          // Close all
+          faqItems.forEach(el => {
+            const c  = el.querySelector('.faq-content');
+            const ic = el.querySelector('.faq-icon');
+            if (c)  { c.style.maxHeight = '0px'; c.style.marginTop = '0'; }
+            if (ic) {
+              ic.textContent = '+';
+              ic.style.transform = 'rotate(0deg)';
+            }
+          });
+
+          // Open clicked (unless it was already open)
+          if (!isOpen) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.marginTop = '12px';
+            if (icon) {
+              icon.textContent = '×';
+              icon.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+      });
+
       const mobileToggle = document.getElementById('mobile-toggle');
       const navMenu = document.getElementById('nav-menu');
       const backdrop = document.getElementById('nav-backdrop');
 
-      // 1. Mobile Menu Drawer Toggle with backdrop & aria-expanded
+      // Mobile Menu Drawer Toggle
       function openNav() {
         mobileToggle.classList.add('open');
         navMenu.classList.add('open');
@@ -525,7 +563,7 @@
       }
     });
 
-    // 7. Global Async Newsletter Subscription Handler
+    // Newsletter Subscription Handler
     function handleNewsletterSubmit(e) {
       e.preventDefault();
       const emailInput = document.getElementById('footer-newsletter-email');

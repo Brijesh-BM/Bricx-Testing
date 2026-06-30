@@ -168,7 +168,9 @@ endblock %}
 
 {% block content %}
 
-<!-- ── ADVISORY PAGE HERO ──────────────────────────────────────────────── -->
+<!-- ==========================================================
+     Advisory Page Hero
+========================================================== -->
 <section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
   <div class="showcase-container">
     <div class="division-showcase-box reveal-on-scroll">
@@ -196,7 +198,9 @@ endblock %}
   </div>
 </section>
 
-<!-- ── STRATEGIC LEASING ADVISORY PRINCIPLES ────────────────────────────── -->
+<!-- ==========================================================
+     Strategic Leasing Advisory Principles
+========================================================== -->
 <section class="leasing-details-section section-padding reveal-on-scroll">
   <div class="container">
     <div class="section-header-center" style="margin-bottom: 4rem;">
@@ -204,9 +208,9 @@ endblock %}
       <h2>What We Cover</h2>
     </div>
 
-    <!-- 4-card 2×2 grid -->
+    
     <div class="advisory-grid-2col">
-      <!-- Card 1 -->
+      
       <div class="advisory-card stagger-item"
         style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
         <div
@@ -220,7 +224,7 @@ endblock %}
           line item cost audits before recommending any space.
         </p>
       </div>
-      <!-- Card 2 -->
+      
       <div class="advisory-card stagger-item"
         style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
         <div
@@ -234,7 +238,7 @@ endblock %}
           not just the headline figure.
         </p>
       </div>
-      <!-- Card 3 -->
+      
       <div class="advisory-card stagger-item"
         style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
         <div
@@ -248,7 +252,7 @@ endblock %}
           to your business.
         </p>
       </div>
-      <!-- Card 4 -->
+      
       <div class="advisory-card stagger-item"
         style="padding: 24px; background: var(--bg-cream); border: 1px solid var(--border-light);">
         <div
@@ -265,11 +269,13 @@ endblock %}
   </div>
 </section>
 
-<!-- ── LISTINGS GRID & FILTERS ─────────────────────────────────────────── -->
+<!-- ==========================================================
+     Listings Grid & Filters
+========================================================== -->
 <section class="listings-section section-padding" style="background-color: var(--bg-cream);">
   <div class="container">
 
-    <!-- Carolwood Estates Minimalist Search & Filter Panel -->
+    <!-- Minimalist Search and Filter Panel -->
     <div class="carolwood-filter-panel reveal-on-scroll">
       <div class="carolwood-filter-group">
         <label for="search-location">Search Location / Property</label>
@@ -300,7 +306,7 @@ endblock %}
       <button class="carolwood-clear-btn" onclick="clearCarolwoodFilters()">Clear Filters</button>
     </div>
 
-    <!-- Category Filters -->
+    
     <div class="filter-tabs reveal-on-scroll" id="filter-tabs" style="margin-bottom: 3.5rem;">
       <button class="filter-btn active" data-category="all">Show All</button>
       <button class="filter-btn" data-category="Office">Office</button>
@@ -309,10 +315,10 @@ endblock %}
       <button class="filter-btn" data-category="Industrial">Industrial</button>
     </div>
 
-    <!-- Grid of 6 Premium Off-Market Listings -->
+    <!-- Off-Market Listings Grid -->
     <div class="listings-grid reveal-on-scroll" id="listings-grid">
 
-      <!-- Listing 1 -->
+      
       <div class="listing-card stagger-item" data-category="Mixed-Use">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -342,7 +348,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- Listing 2 -->
+      
       <div class="listing-card stagger-item" data-category="Retail">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -372,7 +378,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- Listing 3 -->
+      
       <div class="listing-card stagger-item" data-category="Industrial">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -402,7 +408,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- Listing 4 -->
+      
       <div class="listing-card stagger-item" data-category="Office">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -434,7 +440,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- Listing 5 -->
+      
       <div class="listing-card stagger-item" data-category="Mixed-Use">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -466,7 +472,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- Listing 6 -->
+      
       <div class="listing-card stagger-item" data-category="Office">
         <div class="listing-img-wrapper">
           <span class="listing-exclusive-tag">Private Exclusive</span>
@@ -500,10 +506,14 @@ endblock %}
     </div>
   </div>
 
-  <!-- ── PROSPECTUS MODAL OVERLAY ────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Prospectus Modal Overlay
+========================================================== -->
   <div class="prospectus-modal-overlay" id="prospectus-modal-overlay" role="presentation"></div>
 
-  <!-- ── PROSPECTUS MODAL POPUP ──────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Prospectus Modal Popup
+========================================================== -->
   <div class="prospectus-modal" id="prospectus-modal" role="dialog" aria-modal="true" aria-labelledby="prospectus-modal-title">
     <div class="prospectus-modal-header">
       <h3 id="prospectus-modal-title">Request Prospectus</h3>
@@ -513,12 +523,12 @@ endblock %}
     </div>
 
     <div class="prospectus-modal-body">
-      <!-- Dynamically filled property name badge -->
+      
       <div class="property-badge" id="prospectus-property-badge">
         <span class="badge-label">Asset:</span> <span class="badge-value" id="prospectus-property-name">Property Name</span>
       </div>
 
-      <!-- Advisor/Consultant mini-profile -->
+      
       <div class="advisor-info-box">
         <div class="advisor-avatar">KS</div>
         <div class="advisor-details">
@@ -556,7 +566,9 @@ endblock %}
       </form>
     </div>
 
-    <!-- ── STATE OVERLAY ── -->
+    <!-- ==========================================================
+     State Overlay
+========================================================== -->
     <div class="modal-state-overlay" id="prospectus-modal-state-overlay">
       <div class="state-loading">
         <div class="spinner"></div>
@@ -806,7 +818,9 @@ endblock %}
   });
 </script>
 
-<!-- ── WHERE WE WORK SECTION ───────────────────────────────────────────── -->
+<!-- ==========================================================
+     Where We Work Section
+========================================================== -->
 <section class="leasing-details-section section-padding reveal-on-scroll"
   style="background-color: var(--bg-white); border-top: 1px solid var(--border-light);">
   <div class="container">
@@ -826,7 +840,9 @@ endblock %}
   </div>
 </section>
 
-<!-- ── WHO WE WORK WITH SECTION ────────────────────────────────────────── -->
+<!-- ==========================================================
+     Who We Work With Section
+========================================================== -->
 <section class="leasing-details-section section-padding reveal-on-scroll"
   style="background-color: var(--bg-cream); border-top: 1px solid var(--border-light);">
   <div class="container">
@@ -842,20 +858,22 @@ endblock %}
   </div>
 </section>
 
-<!-- ── FAQ SECTION ── -->
+<!-- ==========================================================
+     FAQ Section
+========================================================== -->
 <section class="home-faq-section" style="background-color: var(--bg-cream); padding: 90px 0; border-top: 1px solid var(--border-light);">
   <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
 
-    <!-- Header -->
+    
     <div style="text-align: center; margin-bottom: 4rem;">
       <div class="blog-category" style="color: var(--accent-gold); letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;">Clear Answers</div>
       <h2 style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--primary-obsidian); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Frequently Asked Questions</h2>
     </div>
 
-    <!-- Accordion Group -->
+    
     <div class="faq-accordion-group">
 
-      <!-- FAQ 1 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">How much does office space cost in Bangalore?</h3>
@@ -868,7 +886,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- FAQ 2 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">What's the difference between coworking and managed office space?</h3>
@@ -881,7 +899,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- FAQ 3 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">How long does it take to find office space in Bangalore?</h3>
@@ -894,7 +912,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- FAQ 4 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">Do you charge companies for leasing advisory?</h3>
@@ -907,7 +925,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- FAQ 5 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">Which areas in Bangalore are best for office space?</h3>
@@ -920,7 +938,7 @@ endblock %}
         </div>
       </div>
 
-      <!-- FAQ 6 -->
+      
       <div class="faq-item-card" style="border-bottom: 1px solid rgba(14, 24, 42, 0.08); padding: 24px 0;">
         <button class="faq-trigger" style="background: none; border: none; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0;">
           <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary-obsidian); margin: 0; letter-spacing: 0.02em;">What should I look for when evaluating office space?</h3>
@@ -937,38 +955,7 @@ endblock %}
   </div><!-- /.container -->
 </section><!-- /.home-faq-section -->
 
-<!-- ── FAQ Accordion Script ── -->
-<script>
-  (function () {
-    var items = document.querySelectorAll('.faq-item-card');
-    items.forEach(function (item) {
-      var trigger = item.querySelector('.faq-trigger');
-      var content = item.querySelector('.faq-content');
-      var icon    = item.querySelector('.faq-icon');
-      if (!trigger || !content) return;
 
-      trigger.addEventListener('click', function () {
-        var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-        // Close all
-        items.forEach(function (el) {
-          var c = el.querySelector('.faq-content');
-          var ic = el.querySelector('.faq-icon');
-          if (c)  { c.style.maxHeight = '0px'; c.style.marginTop = '0'; }
-          if (ic) { ic.textContent = '+'; ic.style.transform = 'rotate(0deg)'; }
-        });
-
-        // Open clicked (unless it was already open)
-        if (!isOpen) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.marginTop = '12px';
-          icon.textContent = '×';
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-    });
-  })();
-</script>
 
 
 {% endblock %}

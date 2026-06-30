@@ -121,7 +121,9 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
 
 {% block content %}
 
-<!-- ── LAND OPPORTUNITIES HERO ────────────────────────────────────────── -->
+<!-- ==========================================================
+     Land Opportunities Hero
+========================================================== -->
 <section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
   <div class="showcase-container">
     <div class="division-showcase-box reveal-on-scroll">
@@ -148,7 +150,9 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
   </div>
 </section>
 
-<!-- ── LAND ADVISORY PRINCIPLES ───────────────────────────────────────── -->
+<!-- ==========================================================
+     Land Advisory Principles
+========================================================== -->
 <section class="leasing-details-section reveal-on-scroll"
   style="padding: 4rem 0 2rem 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light);">
   <div class="container">
@@ -218,7 +222,9 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
   </div>
 </section>
 
-<!-- ── MAIN GRID (LISTINGS + MAP MOCKUP) ────────────────────────────────── -->
+<!-- ==========================================================
+     Main Grid (Listings + Map Mockup)
+========================================================== -->
 <section class="land-details section-padding reveal-on-scroll" style="background-color: var(--bg-cream);">
   <div class="container">
     <div class="land-grid">
@@ -311,7 +317,9 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
   </div>
 </section>
 
-  <!-- ── WHO WE WORK WITH SECTION ────────────────────────────────────────── -->
+  <!-- ==========================================================
+     Who We Work With Section
+========================================================== -->
   <section class="leasing-details-section section-padding reveal-on-scroll"
     style="background-color: var(--bg-cream); border-top: 1px solid var(--border-light);">
     <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
@@ -329,7 +337,9 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
     </div>
   </section>
 
-  <!-- ── LAND FAQ SECTION ── -->
+  <!-- ==========================================================
+     Land FAQ Section
+========================================================== -->
 <section class="home-faq-section" style="background-color: var(--bg-cream); padding: 90px 0; border-top: 1px solid var(--border-light);">
   <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
 
@@ -359,37 +369,6 @@ provides land acquisition advisory in Bengaluru with a filter first approach.{% 
   </div><!-- /.container -->
 </section><!-- /.home-faq-section -->
 
-<!-- ── FAQ Accordion Script ── -->
-<script>
-  (function () {
-    var items = document.querySelectorAll('.faq-item-card');
-    items.forEach(function (item) {
-      var trigger = item.querySelector('.faq-trigger');
-      var content = item.querySelector('.faq-content');
-      var icon    = item.querySelector('.faq-icon');
-      if (!trigger || !content) return;
 
-      trigger.addEventListener('click', function () {
-        var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-        // Close all
-        items.forEach(function (el) {
-          var c  = el.querySelector('.faq-content');
-          var ic = el.querySelector('.faq-icon');
-          if (c)  { c.style.maxHeight = '0px'; c.style.marginTop = '0'; }
-          if (ic) { ic.textContent = '+'; ic.style.transform = 'rotate(0deg)'; }
-        });
-
-        // Open clicked (unless it was already open)
-        if (!isOpen) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.marginTop = '12px';
-          icon.textContent = '×';
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-    });
-  })();
-</script>
 
   {% endblock %}

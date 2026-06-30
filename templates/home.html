@@ -1,28 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Independent Commercial Real Estate Advisory in Bangalore
-<!-- ── BRICX FAQ ACCORDION ───────────────────────────────────────────────── -->
-
-
-<script>
-(function () {
-  var items = document.querySelectorAll('.bricx-faq-item');
-  items.forEach(function (item) {
-    var trigger = item.querySelector('.bricx-faq-trigger');
-    if (!trigger) return;
-    trigger.addEventListener('click', function () {
-      var isOpen = item.classList.contains('is-open');
-      // close all
-      items.forEach(function (el) { el.classList.remove('is-open'); });
-      // open clicked (unless it was already open)
-      if (!isOpen) { item.classList.add('is-open'); }
-    });
-  });
-})();
-</script>
-
-
-{% endblock %}
+{% block title %}Independent Commercial Real Estate Advisory in Bangalore{% endblock %}
 
 {% block meta_description %}Bricx.ai is a boutique real estate advisory firm in Bangalore. Conflict free counsel across leasing, investments, and land without developer bias.{% endblock %}
 
@@ -33,7 +11,7 @@
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   "name": "Bricx.ai",
-  "image": "https://bricx.ai/static/og default.png",
+  "image": "https://bricx.ai/static/og-default.png",
   "@id": "https://bricx.ai/#realestateagent",
   "url": "https://bricx.ai/",
   "telephone": "+919070504020",
@@ -248,9 +226,7 @@
     background-color: var(--primary-obsidian) !important;
   }
 
-  /* ═══════════════════════════════════════════════════
-     1. HERO SECTION (CAROLWOOD EXACT MATCH)
-  ═══════════════════════════════════════════════════ */
+  /* Hero Section Styles */
   .video-section {
     position: relative;
     height: 100vh;
@@ -473,12 +449,12 @@
     }
   }
 
-  /* ═══════════════════════════════════════════════════
-     2. LUXURY ABOUT SECTION (PLAIN CENTRED WHITE TEXT)
-  ═══════════════════════════════════════════════════ */
-  /* ═══════════════════════════════════════════════════
-     2. EDITORIAL INTRO SECTION (REPLACES ABOUT SECTION)
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   2. LUXURY ABOUT SECTION (PLAIN CENTRED WHITE TEXT)
+   ========================================================== */
+  /* ==========================================================
+   2. EDITORIAL INTRO SECTION (REPLACES ABOUT SECTION)
+   ========================================================== */
   .editorial-intro-section {
     position: relative;
     padding: 10rem 24px;
@@ -537,9 +513,9 @@
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
-  /* ═══════════════════════════════════════════════════
-     3. PREMIUM SERVICES PANELS (OPTION A)
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   3. PREMIUM SERVICES PANELS (OPTION A)
+   ========================================================== */
   .premium-service-section {
     position: relative;
     width: 100%;
@@ -552,6 +528,11 @@
   .section-bg-image {
     position: absolute;
     inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -563,16 +544,8 @@
     background-image: url("{{ url_for('static', filename='about_bricx.jpg') }}");
   }
 
-  #section-leasing .section-bg-image {
-    background-image: url("{{ url_for('static', filename='home_leasing_advisory.jpg') }}");
-  }
-
   #section-investment .section-bg-image {
     background-image: url("{{ url_for('static', filename='home_income_investments.jpg') }}");
-  }
-
-  #section-land .section-bg-image {
-    background-image: url("{{ url_for('static', filename='home_land_opportunity.jpg') }}");
   }
 
 
@@ -717,9 +690,9 @@
     transition: color 0.3s ease;
   }
 
-  /* ═══════════════════════════════════════════════════
-     4. HERO STATS MEDIA QUERIES (PRESERVED)
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   4. HERO STATS MEDIA QUERIES (PRESERVED)
+   ========================================================== */
   @media (max-width: 991px) {
     .content-container {
       gap: 2.25rem;
@@ -763,9 +736,9 @@
     }
   }
 
-  /* ═══════════════════════════════════════════════════
-     5. RESPONSIVE OVERRIDES FOR SERVICES
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   5. RESPONSIVE OVERRIDES FOR SERVICES
+   ========================================================== */
   @media (max-width: 991px) {
     .editorial-intro-section {
       padding: 6rem 24px;
@@ -833,9 +806,9 @@
     }
   }
 
-  /* ═══════════════════════════════════════════════════
-     6. LATEST INSIGHTS / INTELLIGENCE SECTION (DARK THEME)
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   6. LATEST INSIGHTS / INTELLIGENCE SECTION (DARK THEME)
+   ========================================================== */
   .insights-section {
     position: relative;
     width: 100%;
@@ -1032,9 +1005,9 @@
     transform: translateX(4px);
   }
 
-  /* ═══════════════════════════════════════════════════
-     7. FINAL CONSULTATION CTA SECTION
-     ═══════════════════════════════════════════════════ */
+  /* ==========================================================
+   7. FINAL CONSULTATION CTA SECTION
+   ========================================================== */
   .final-cta-section {
     background-color: var(--bg-cream);
     padding: 10rem 24px;
@@ -1173,11 +1146,11 @@
 
 {% block content %}
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      1. VIDEO HERO SECTION (CAROLWOOD EXACT MATCH)
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section id="section-6b01fd16-6dec-44d9-8683-fed1932e4d35" class="video-section">
-  <video autoplay loop muted playsinline preload="auto" class="hero-video" id="hero-video-element">
+  <video autoplay loop muted playsinline preload="metadata" class="hero-video" id="hero-video-element">
     <source src="{{ url_for('static', filename='hero.mp4') }}?v=3" type="video/mp4">
   </video>
 
@@ -1254,11 +1227,11 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      3. LEASING ADVISORY PANEL (01)
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="premium-service-section left-aligned" id="section-leasing">
-  <div class="section-bg-image"></div>
+  <img class="section-bg-image" src="{{ url_for('static', filename='home_leasing_advisory.jpg') }}" loading="lazy" alt="Leasing Advisory">
   <div class="section-gradient-overlay"></div>
   <div class="premium-section-container">
     <a href="/advisory" class="service-content-block-link">
@@ -1277,9 +1250,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      4. INCOME INVESTMENTS PANEL (02)
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="premium-service-section right-aligned" id="section-investment">
   <div class="section-bg-image"></div>
   <div class="section-gradient-overlay"></div>
@@ -1299,11 +1272,11 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      5. LAND & OPPORTUNITY PANEL (03)
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="premium-service-section left-aligned" id="section-land">
-  <div class="section-bg-image"></div>
+  <img class="section-bg-image" src="{{ url_for('static', filename='home_land_opportunity.jpg') }}" loading="lazy" alt="Land & Opportunity">
   <div class="section-gradient-overlay"></div>
   <div class="premium-section-container">
     <a href="/land-opportunities" class="service-content-block-link">
@@ -1321,9 +1294,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      5.5 HOW WE WORK DIFFERENTLY SECTION
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="how-we-work-section section-padding reveal-on-scroll" id="section-how-we-work" style="background-color: var(--bg-cream); padding: 90px 24px; border-bottom: 1px solid var(--border-light); text-align: center;">
   <div class="container" style="max-width: 800px; margin: 0 auto;">
 <div
@@ -1339,9 +1312,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      6. LATEST INSIGHTS / INTELLIGENCE SECTION
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="insights-section" id="section-insights">
   <div class="insights-container">
     <div class="insights-header reveal-on-scroll">
@@ -1384,9 +1357,9 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════
+<!-- ==========================================================
      7. FINAL CONSULTATION CTA SECTION
-══════════════════════════════════════════════════════════════════ -->
+========================================================== -->
 <section class="final-cta-section" id="section-final-cta">
   <div class="final-cta-container reveal-on-scroll">
     <span class="final-cta-tag">Private Briefing</span>
@@ -1401,7 +1374,9 @@
   </div>
 </section>
 
-<!-- ── FAQ SECTION ── -->
+<!-- ==========================================================
+     FAQ Section
+========================================================== -->
 <section class="home-faq-section" style="background-color: var(--bg-cream); padding: 90px 0; border-top: 1px solid var(--border-light);">
   <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
     <div style="text-align: center; margin-bottom: 4rem;">
@@ -1426,32 +1401,7 @@ Most brokers will show you 30 properties in a week. Bricx.ai will show you 3. Th
   </div><!-- /.container -->
 </section>
 
-<!-- FAQ Accordion JS Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const triggers = document.querySelectorAll('.faq-trigger');
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const content = trigger.nextElementSibling;
-        const icon = trigger.querySelector('.faq-icon');
-        const isOpen = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
-        
-        // Close all other open content blocks
-        document.querySelectorAll('.faq-content').forEach(c => {
-          c.style.maxHeight = '0px';
-          c.style.marginTop = '0px';
-          c.previousElementSibling.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
-        });
-        
-        if (!isOpen) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.marginTop = '16px';
-          icon.style.transform = 'rotate(45deg)';
-        }
-      });
-    });
-  });
-</script>
+
 
 
 

@@ -1,22 +1,36 @@
 # pyrefly: ignore [missing-import]
 import os
 import json
+import logging
+from filelock import FileLock
 from flask import Flask, render_template, request, jsonify, redirect
+
+# Configure standard logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Persistent File-based Mock Database Pathing
-LEADS_FILE = os.path.join(os.path.dirname(__file__), "leads.json")
-SUBSCRIBERS_FILE = os.path.join(os.path.dirname(__file__), "subscribers.json")
-NDA_FILE = os.path.join(os.path.dirname(__file__), "nda_signatures.json")
-BLOGS_FILE = os.path.join(os.path.dirname(__file__), "blogs.json")
+# Configure database paths with environment variables
+LEADS_FILE = os.environ.get("LEADS_FILE_PATH", os.path.join(os.path.dirname(__file__), "leads.json"))
+SUBSCRIBERS_FILE = os.environ.get("SUBSCRIBERS_FILE_PATH", os.path.join(os.path.dirname(__file__), "subscribers.json"))
+NDA_FILE = os.environ.get("NDA_FILE_PATH", os.path.join(os.path.dirname(__file__), "nda_signatures.json"))
+BLOGS_FILE = os.environ.get("BLOGS_FILE_PATH", os.path.join(os.path.dirname(__file__), "blogs.json"))
+CONTACT_LEADS_FILE = os.environ.get("CONTACT_LEADS_FILE_PATH", os.path.join(os.path.dirname(__file__), "contact_leads.json"))
+
+# Define lock files for concurrent database access
+LEADS_LOCK = LEADS_FILE + ".lock"
+SUBSCRIBERS_LOCK = SUBSCRIBERS_FILE + ".lock"
+NDA_LOCK = NDA_FILE + ".lock"
+CONTACT_LEADS_LOCK = CONTACT_LEADS_FILE + ".lock"
 
 def load_json_db(file_path):
     if os.path.exists(file_path):
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except Exception:
+        except Exception as e:
+            logger.error(f"Failed to load or parse JSON from {file_path}: {e}")
             return []
     return []
 
@@ -25,17 +39,36 @@ def save_json_db(file_path, data):
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
     except Exception as e:
-        print(f"[ERROR] Failed to persist data to {file_path}: {e}")
+        logger.error(f"Failed to persist data to {file_path}: {e}")
 
-# Load initial state
-leads_db = load_json_db(LEADS_FILE)
-subscribers_db = load_json_db(SUBSCRIBERS_FILE)
-nda_db = load_json_db(NDA_FILE)
+_blogs_cache = None
+_blogs_mtime = 0
 
 def load_blogs():
-    return load_json_db(BLOGS_FILE)
+    global _blogs_cache, _blogs_mtime
+    try:
+        current_mtime = os.path.getmtime(BLOGS_FILE)
+    except OSError:
+        current_mtime = 0
 
-# Helper function to validate origin
+    if _blogs_cache is None or current_mtime != _blogs_mtime:
+        blogs = load_json_db(BLOGS_FILE)
+        for post in blogs:
+            if not post.get("date_iso"):
+                raw_date = post.get("date")
+                if raw_date:
+                    try:
+                        from datetime import datetime
+                        post["date_iso"] = datetime.strptime(raw_date, "%m/%d/%y").strftime("%Y-%m-%d")
+                    except Exception:
+                        post["date_iso"] = "2026-06-01"
+                else:
+                    post["date_iso"] = "2026-06-01"
+        _blogs_cache = blogs
+        _blogs_mtime = current_mtime
+    return _blogs_cache
+
+# Validate request origin and referrer
 def security_check():
     origin = request.headers.get("Origin")
     referer = request.headers.get("Referer")
@@ -114,7 +147,7 @@ def api_lead():
         data = request.get_json() or {}
         name = data.get("name")
         email = data.get("email")
-        phone = data.get("phone")  # Optional in HTML markup
+        phone = data.get("phone")
         message = data.get("message", "New B2B Lead Brief")
 
         if not name or not email:
@@ -126,9 +159,11 @@ def api_lead():
             "phone": phone,
             "message": message
         }
-        leads_db.append(lead)
-        save_json_db(LEADS_FILE, leads_db)
-        print(f"\n[BRICX.AI BACKEND] LEAD CAPTURED:\n  Name: {name}\n  Email: {email}\n  Phone: {phone}\n  Message: {message}\n")
+        with FileLock(LEADS_LOCK):
+            leads = load_json_db(LEADS_FILE)
+            leads.append(lead)
+            save_json_db(LEADS_FILE, leads)
+        logger.info(f"\n[BRICX.AI BACKEND] LEAD CAPTURED:\n  Name: {name}\n  Email: {email}\n  Phone: {phone}\n  Message: {message}\n")
         return jsonify({"success": True, "message": "Lead brief submitted successfully!"})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
@@ -144,9 +179,11 @@ def api_subscribe():
         if not email:
             return jsonify({"success": False, "message": "Email is required."}), 400
 
-        subscribers_db.append(email)
-        save_json_db(SUBSCRIBERS_FILE, subscribers_db)
-        print(f"\n[BRICX.AI BACKEND] NEWSLETTER SUBSCRIPTION:\n  Email: {email}\n")
+        with FileLock(SUBSCRIBERS_LOCK):
+            subscribers = load_json_db(SUBSCRIBERS_FILE)
+            subscribers.append(email)
+            save_json_db(SUBSCRIBERS_FILE, subscribers)
+        logger.info(f"\n[BRICX.AI BACKEND] NEWSLETTER SUBSCRIPTION:\n  Email: {email}\n")
         return jsonify({"success": True, "message": "Successfully subscribed to newsletter!"})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
@@ -169,9 +206,11 @@ def api_nda():
             "email": email,
             "company": company
         }
-        nda_db.append(sig)
-        save_json_db(NDA_FILE, nda_db)
-        print(f"\n[BRICX.AI BACKEND] NDA SIGNED:\n  Name: {fullname}\n  Email: {email}\n  Company: {company}\n")
+        with FileLock(NDA_LOCK):
+            nda = load_json_db(NDA_FILE)
+            nda.append(sig)
+            save_json_db(NDA_FILE, nda)
+        logger.info(f"\n[BRICX.AI BACKEND] NDA SIGNED:\n  Name: {fullname}\n  Email: {email}\n  Company: {company}\n")
         return jsonify({"success": True, "message": "NDA signed successfully! Access granted."})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
@@ -197,10 +236,7 @@ def api_contact_lead():
         from datetime import datetime
         timestamp = datetime.utcnow().isoformat() + "Z"
 
-        CONTACT_LEADS_FILE = os.path.join(os.path.dirname(__file__), "contact_leads.json")
-        leads_db = load_json_db(CONTACT_LEADS_FILE)
-        
-        lead = {
+        new_lead = {
             "name": name,
             "mobile": mobile,
             "email": email,
@@ -208,12 +244,15 @@ def api_contact_lead():
         }
         prop = data.get("property")
         if prop:
-            lead["property"] = prop
+            new_lead["property"] = prop
         if message:
-            lead["message"] = message
-        leads_db.append(lead)
-        save_json_db(CONTACT_LEADS_FILE, leads_db)
-        print(f"\n[BRICX.AI BACKEND] FLOATING LEAD CAPTURED:\n  Name: {name}\n  Mobile: {mobile}\n  Email: {email}\n  Property: {prop}\n  Message: {message}\n  Submitted At: {timestamp}\n")
+            new_lead["message"] = message
+
+        with FileLock(CONTACT_LEADS_LOCK):
+            contact_leads = load_json_db(CONTACT_LEADS_FILE)
+            contact_leads.append(new_lead)
+            save_json_db(CONTACT_LEADS_FILE, contact_leads)
+        logger.info(f"\n[BRICX.AI BACKEND] FLOATING LEAD CAPTURED:\n  Name: {name}\n  Mobile: {mobile}\n  Email: {email}\n  Property: {prop}\n  Message: {message}\n  Submitted At: {timestamp}\n")
         return jsonify({"success": True, "message": "Lead brief submitted successfully!"})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
@@ -238,10 +277,10 @@ def sitemap():
     ]
     
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    # Add static pages with a standard default date
+    # Static pages
     for url in static_urls:
         xml += f'  <url>\n    <loc>{url}</loc>\n    <lastmod>2026-06-01</lastmod>\n  </url>\n'
-    # Add dynamic blog pages with their specific ISO publication dates
+    # Dynamic blog pages
     for post in blogs:
         slug = post['slug']
         date_iso = post.get("date_iso", "2026-06-01")
@@ -249,7 +288,7 @@ def sitemap():
     xml += '</urlset>'
     return xml, 200, {'Content-Type': 'application/xml; charset=utf-8'}
 
-# Premium Branded Error Handlers
+# Custom error page handlers
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
@@ -259,4 +298,5 @@ def server_error(e):
     return render_template("500.html"), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    flask_debug = os.environ.get("FLASK_DEBUG", "False").lower() in ("true", "1")
+    app.run(debug=flask_debug, port=5001)

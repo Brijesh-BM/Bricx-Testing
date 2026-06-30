@@ -58,7 +58,9 @@ assets with capital market discipline: focusing on risk first and return project
 
 {% block content %}
 
-<!-- ── INVESTMENT OPPORTUNITIES PAGE HERO ──────────────────────────────── -->
+<!-- ==========================================================
+     Investment Opportunities Page Hero
+========================================================== -->
 <section class="showcase-hero-section" style="padding: 130px 0 2rem 0; background-color: var(--bg-cream);">
   <div class="showcase-container">
     <div class="division-showcase-box reveal-on-scroll">
@@ -84,7 +86,9 @@ assets with capital market discipline: focusing on risk first and return project
   </div>
 </section>
 
-<!-- ── COMMERCIAL INVESTMENT PRINCIPLES ───────────────────────────────── -->
+<!-- ==========================================================
+     Commercial Investment Principles
+========================================================== -->
 <section class="leasing-details-section reveal-on-scroll"
   style="padding: 4rem 0 2rem 0; background-color: var(--bg-white); border-bottom: 1px solid var(--border-light);">
   <div class="container">
@@ -157,7 +161,9 @@ assets with capital market discipline: focusing on risk first and return project
   </div>
 </section>
 
-<!-- ── WHAT WE WORK ON SECTION ─────────────────────────────────────────── -->
+<!-- ==========================================================
+     What We Work On Section
+========================================================== -->
 <section class="leasing-details-section section-padding reveal-on-scroll"
   style="background-color: var(--bg-cream); border-top: 1px solid var(--border-light);">
   <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
@@ -177,7 +183,9 @@ assets with capital market discipline: focusing on risk first and return project
     </p>
   </div>
 </section>
-<!-- ── INVESTMENT FAQ SECTION ── -->
+<!-- ==========================================================
+     Investment FAQ Section
+========================================================== -->
 <section class="home-faq-section" style="background-color: var(--bg-cream); padding: 90px 0; border-top: 1px solid var(--border-light);">
   <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
 
@@ -220,37 +228,6 @@ assets with capital market discipline: focusing on risk first and return project
   </div><!-- /.container -->
 </section><!-- /.home-faq-section -->
 
-<!-- ── FAQ Accordion Script ── -->
-<script>
-  (function () {
-    var items = document.querySelectorAll('.faq-item-card');
-    items.forEach(function (item) {
-      var trigger = item.querySelector('.faq-trigger');
-      var content = item.querySelector('.faq-content');
-      var icon    = item.querySelector('.faq-icon');
-      if (!trigger || !content) return;
 
-      trigger.addEventListener('click', function () {
-        var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-        // Close all
-        items.forEach(function (el) {
-          var c  = el.querySelector('.faq-content');
-          var ic = el.querySelector('.faq-icon');
-          if (c)  { c.style.maxHeight = '0px'; c.style.marginTop = '0'; }
-          if (ic) { ic.textContent = '+'; ic.style.transform = 'rotate(0deg)'; }
-        });
-
-        // Open clicked (unless it was already open)
-        if (!isOpen) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.marginTop = '12px';
-          icon.textContent = '×';
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-    });
-  })();
-</script>
 
 {% endblock %}

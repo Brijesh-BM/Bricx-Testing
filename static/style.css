@@ -1,4 +1,6 @@
-/* ── BRICX.AI PREMIUM CORE DESIGN SYSTEM ─────────────────────────── */
+/* ==========================================================
+   Core Design System
+   ========================================================== */
 :root {
   /* HSL-driven Luxury B2B Navy-Beige-Cream Palette */
   --bg-cream: hsl(38, 30%, 97%);
@@ -42,7 +44,9 @@
   --transition-image: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── BASE RESET ────────────────────────────────────────────────────────── */
+/* ==========================================================
+   Base Reset
+   ========================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -82,7 +86,9 @@ body {
   background: var(--accent-olive);
 }
 
-/* ── GLOBAL HELPER STYLES ──────────────────────────────────────────────── */
+/* ==========================================================
+   Global Helper Styles
+   ========================================================== */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -133,7 +139,9 @@ p {
   font-weight: 400;
 }
 
-/* ── STICKY GLASSMORPHIC NAVIGATION ───────────────────────────────────── */
+/* ==========================================================
+   Sticky Glassmorphic Navigation
+   ========================================================== */
 header {
   position: sticky;
   top: 0;
@@ -327,7 +335,9 @@ header {
 
 }
 
-/* ── CAROLWOOD INFINITE MARQUEE TYPOGRAPHY (PRESTIGE SCROLL) ─────────── */
+/* ==========================================================
+   Infinite Marquee Typography
+   ========================================================== */
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -401,7 +411,9 @@ header {
   animation-delay: 300ms;
 }
 
-/* ── HOMEPAGE HERO SPLIT SECTION (IMAGE 2) ───────────────────────────── */
+/* ==========================================================
+   Homepage Hero Split Section
+   ========================================================== */
 .hero-split {
   background: var(--bg-cream);
   display: grid;
@@ -515,7 +527,9 @@ header {
   }
 }
 
-/* ── CORE ADVISORY GRID (IMAGE 3) ────────────────────────────────────── */
+/* ==========================================================
+   Core Advisory Grid
+   ========================================================== */
 .core-advisory {
   background: var(--bg-white);
   border-bottom: 1px solid var(--border-light);
@@ -617,7 +631,9 @@ header {
   transform: scale(1.04);
 }
 
-/* ── ULTRA-PREMIUM CINEMATIC PANELS ───────────────────────────────────── */
+/* ==========================================================
+   Ultra-Cinematic Panels
+   ========================================================== */
 .advisory-panel {
   position: relative;
   background-color: var(--bg-white);
@@ -758,9 +774,9 @@ header {
   box-shadow: 0 4px 15px rgba(14, 24, 42, 0.08);
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    ACCENTED PANEL (Income Investments - premium focal point)
-──────────────────────────────────────────────────────────────────────── */
+
 .advisory-panel.accented {
   border-color: rgba(197, 184, 151, 0.25);
 }
@@ -773,9 +789,9 @@ header {
   border-color: rgba(14, 24, 42, 0.08);
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    HOVER ZOOM AND CARD LIFT
-──────────────────────────────────────────────────────────────────────── */
+
 .advisory-panel:hover {
   transform: translateY(-8px);
   box-shadow: 0 30px 60px rgba(14, 24, 42, 0.08);
@@ -832,7 +848,9 @@ header {
   }
 }
 
-/* ── WHO WE ARE SECTION (IMAGE 4) ────────────────────────────────────── */
+/* ==========================================================
+   Who We Are Section
+   ========================================================== */
 .who-we-are {
   background: var(--bg-cream);
   border-bottom: 1px solid var(--border-light);
@@ -875,7 +893,9 @@ header {
   }
 }
 
-/* ── ARCHITECTURAL GEOMETRIC SHOWCASE (IMAGE 5) ──────────────────────── */
+/* ==========================================================
+   Architectural Geometric Showcase
+   ========================================================== */
 .showcase-section {
   background: var(--bg-white);
   padding: 6rem 0;
@@ -986,7 +1006,9 @@ header {
   }
 }
 
-/* ── START THE CONVERSATION FORM (IMAGE 1) ──────────────────────────── */
+/* ==========================================================
+   Start The Conversation Form
+   ========================================================== */
 .conversation-section {
   background: var(--bg-white);
 }
@@ -1093,7 +1115,9 @@ select.form-control {
   }
 }
 
-/* ── ADVISORY SERVICES DETAILED PAGE (/advisory) ─────────────────────── */
+/* ==========================================================
+   Advisory Services Detailed Page
+   ========================================================== */
 .advisory-hero {
   position: relative;
   background-color: var(--accent-olive);
@@ -1196,7 +1220,9 @@ select.form-control {
   }
 }
 
-/* ── CINEMATIC SCROLL REVEAL SYSTEM ───────────────────────── */
+/* ==========================================================
+   Cinematic Scroll Reveal System
+   ========================================================== */
 .reveal-on-scroll {
   opacity: 0 !important;
   transform: translate3d(0, 30px, 0) !important;
@@ -1253,7 +1279,9 @@ select.form-control {
 
 
 
-/* ── ADVISORY SERVICES DETAILED PAGE (/advisory) ─────────────────────── */
+/* ==========================================================
+   Advisory Services Detailed Page
+   ========================================================== */
 .advisory-hero {
   position: relative;
   background-color: var(--accent-olive);
@@ -1684,7 +1712,9 @@ select.form-control {
   margin: 0 auto 2rem auto;
 }
 
-/* ── LAND OPPORTUNITIES (/land-opportunities) ───────────────────────── */
+/* ==========================================================
+   Land Opportunities
+   ========================================================== */
 .land-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -1810,7 +1840,9 @@ select.form-control {
   }
 }
 
-/* ── REDESIGNED SPLIT CONTACT SCREEN (/contact-us) ───────────────────── */
+/* ==========================================================
+   Redesigned Split Contact Screen
+   ========================================================== */
 .contact-grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -1853,7 +1885,9 @@ select.form-control {
   }
 }
 
-/* ── CAROLWOOD-INSPIRED LUXURY EDITORIAL BLOG (/blog/...) ──────────────── */
+/* ==========================================================
+   Luxury Editorial Blog
+   ========================================================== */
 .blog-editorial-header {
   padding: 6rem 0 3.5rem 0;
   background-color: var(--bg-cream);
@@ -2131,7 +2165,9 @@ select.form-control {
   }
 }
 
-/* ── CAROLWOOD HERO BACKGROUND VIDEO SLIDESHOW ────────────────────────── */
+/* ==========================================================
+   Hero Background Video Slideshow
+   ========================================================== */
 .hero-video-section {
   position: relative;
   width: 100%;
@@ -2317,7 +2353,9 @@ select.form-control {
   }
 }
 
-/* ── CAROLWOOD FEATURED SLIDER SHOWCASE ───────────────────────────────── */
+/* ==========================================================
+   Featured Slider Showcase
+   ========================================================== */
 .showcase-header-row h2 {
   margin: 0;
 }
@@ -2463,7 +2501,9 @@ select.form-control {
   }
 }
 
-/* ── CAROLWOOD ESTATES MINIMALIST FILTER PANEL ───────────────────────── */
+/* ==========================================================
+   Minimalist Filter Panel
+   ========================================================== */
 .carolwood-filter-panel {
   display: flex;
   justify-content: space-between;
@@ -3033,7 +3073,9 @@ select.form-control {
 
 
 
-/* ── PREMIUM STANDARDS ADDITIONS ──────────────────────────────────────────── */
+/* ==========================================================
+   Standards Additions
+   ========================================================== */
 
 /* Skip to content (accessibility) */
 .skip-to-content {
@@ -3094,7 +3136,9 @@ textarea:focus-visible {
 
 
 
-/* ── LISTING CARD FLEX DIRECTION FIX ─────────────────────────────────────── */
+/* ==========================================================
+   Listing Card Flex Layout
+   ========================================================== */
 /* Listing cards were display:flex but content was not stacking correctly */
 .listing-card {
   display: flex;
@@ -3111,7 +3155,9 @@ textarea:focus-visible {
   margin-top: auto;
 }
 
-/* ── REDUCED MOTION (Accessibility) ──────────────────────────────────────── */
+/* ==========================================================
+   Reduced Motion (Accessibility)
+   ========================================================== */
 @media (prefers-reduced-motion: reduce) {
 
   *,
@@ -3132,13 +3178,17 @@ textarea:focus-visible {
   }
 }
 
-/* ── FOOTER NEWSLETTER INPUT PLACEHOLDER FIX ─────────────────────────────── */
+/* ==========================================================
+   Footer Newsletter Input Placeholder Layout
+   ========================================================== */
 .footer-newsletter .newsletter-form input::placeholder,
 .newsletter-form input::placeholder {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* ── LISTING CARD HOVER BORDER ───────────────────────────────────────────── */
+/* ==========================================================
+   Listing Card Hover Border
+   ========================================================== */
 .listing-card {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -3151,14 +3201,18 @@ textarea:focus-visible {
   border-color: var(--accent-gold);
 }
 
-/* ── FORM CONTROL FOCUS RING ─────────────────────────────────────────────── */
+/* ==========================================================
+   Form Control Focus Ring
+   ========================================================== */
 .form-control:focus {
   outline: none;
   border-color: var(--accent-olive);
   box-shadow: 0 0 0 3px rgba(33, 40, 8, 0.08);
 }
 
-/* ── ADVISORY HERO Z-INDEX FIX ───────────────────────────────────────────── */
+/* ==========================================================
+   Advisory Hero Z-Index Layout
+   ========================================================== */
 /* Ensure content sits above the animated ::before gradient overlay */
 .advisory-hero .container,
 .advisory-hero>.container {
@@ -3171,9 +3225,9 @@ textarea:focus-visible {
    Premium Olive Curtain Transition
 ══════════════════════════════════════════════════════════════════════════ */
 
-/* ────────────────────────────────────────────────────────────────────────
+
    MAIN CURTAIN
-──────────────────────────────────────────────────────────────────────── */
+
 .page-curtain {
   position: fixed;
   inset: 0;
@@ -3211,9 +3265,9 @@ textarea:focus-visible {
   transform: translateY(-100%);
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    INNER CONTENT
-──────────────────────────────────────────────────────────────────────── */
+
 .curtain-inner {
   display: flex;
   flex-direction: column;
@@ -3258,9 +3312,9 @@ textarea:focus-visible {
   color: rgba(203, 191, 159, 0.58);
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    GOLD PROGRESS BAR
-──────────────────────────────────────────────────────────────────────── */
+
 .curtain-progress-bar {
   position: absolute;
 
@@ -3277,9 +3331,9 @@ textarea:focus-visible {
   transition: width 0.55s ease;
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    DECORATIVE CORNERS
-──────────────────────────────────────────────────────────────────────── */
+
 .page-curtain::before,
 .page-curtain::after {
   content: "";
@@ -3319,9 +3373,9 @@ textarea:focus-visible {
   border-width: 0 1px 1px 0;
 }
 
-/* ────────────────────────────────────────────────────────────────────────
+
    ACCESSIBILITY
-──────────────────────────────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
 
   .page-curtain {
@@ -3569,7 +3623,9 @@ textarea:focus-visible {
    Shared across /advisory, /investment-opportunities, /land-opportunities
 ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── KEN BURNS LOOP (kicks in after entry animation completes) ─────────── */
+/* ==========================================================
+   Ken Burns Loop (Kicks In After Entry Animation Completes)
+   ========================================================== */
 @keyframes kenBurnsLoop {
   0% {
     transform: scale(1.0) translate(0%, 0%);
@@ -3592,12 +3648,16 @@ textarea:focus-visible {
   animation: kenBurnsLoop 24s ease-in-out infinite !important;
 }
 
-/* ── PARALLAX HOOK (translateY applied via JS) ──────────────────────────── */
+/* ==========================================================
+   Parallax Hook (Translatey Applied Via Js)
+   ========================================================== */
 .advisory-hero-bg.parallax-ready {
   will-change: transform;
 }
 
-/* ── HERO GOLD ACCENT RULE ──────────────────────────────────────────────── */
+/* ==========================================================
+   Hero Gold Accent Rule
+   ========================================================== */
 .hero-accent-rule {
   display: block;
   width: 0;
@@ -3615,7 +3675,9 @@ textarea:focus-visible {
   }
 }
 
-/* ── SCROLL INDICATOR ───────────────────────────────────────────────────── */
+/* ==========================================================
+   Scroll Indicator
+   ========================================================== */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 2.8rem;
@@ -3683,7 +3745,9 @@ textarea:focus-visible {
   }
 }
 
-/* ── PAGE-SPECIFIC HERO OVERLAY GRADIENTS ───────────────────────────────── */
+/* ==========================================================
+   Page-Specific Hero Overlay Gradients
+   ========================================================== */
 
 /* LEASING — warm institutional blue-to-navy, left-weighted */
 .advisory-hero[data-theme="leasing"]::before {
@@ -3714,7 +3778,9 @@ textarea:focus-visible {
       rgba(8, 13, 22, 0.78) 100%);
 }
 
-/* ── HERO ENTRANCE: category tag gets a gold underline reveal ───────────── */
+/* ==========================================================
+   Hero Entrance: Category Tag Gets A Gold Underline Reveal
+   ========================================================== */
 .advisory-hero .blog-category::after {
   content: '';
   display: block;
@@ -3730,7 +3796,9 @@ textarea:focus-visible {
   width: 100%;
 }
 
-/* ── SECTION ENTRANCE: expanding gold divider line ──────────────────────── */
+/* ==========================================================
+   Section Entrance: Expanding Gold Divider Line
+   ========================================================== */
 .section-gold-divider {
   display: block;
   width: 0;
@@ -3745,7 +3813,9 @@ textarea:focus-visible {
   width: 100%;
 }
 
-/* ── HERO IMAGE FILTER PER PAGE ─────────────────────────────────────────── */
+/* ==========================================================
+   Hero Image Filter Per Page
+   ========================================================== */
 .advisory-hero[data-theme="leasing"] .advisory-hero-bg {
   filter: brightness(0.3) contrast(1.08) saturate(0.85);
 }
@@ -3758,7 +3828,9 @@ textarea:focus-visible {
   filter: brightness(0.28) contrast(1.15) saturate(0.70);
 }
 
-/* ── STAGGER ITEMS: from right for horizontal layouts ───────────────────── */
+/* ==========================================================
+   Stagger Items: From Right For Horizontal Layouts
+   ========================================================== */
 .stagger-from-right {
   opacity: 0 !important;
   transform: translate3d(24px, 0, 0) !important;
@@ -3787,7 +3859,9 @@ textarea:focus-visible {
   transition-delay: 400ms !important;
 }
 
-/* ── DIVISION SHOWCASE RECTANGLE BOX (PREMIUM SPLIT LAYOUT) ────────── */
+/* ==========================================================
+   Division Showcase Rectangle Box (Split Layout)
+   ========================================================== */
 .showcase-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -3879,7 +3953,9 @@ textarea:focus-visible {
   }
 }
 
-/* ── PREMIUM CAROLWOOD SHARE ICONS & PRESS LOGOS ────────────────────────── */
+/* ==========================================================
+   Share Icons and Press Logos
+   ========================================================== */
 .blog-share-icon {
   display: inline-flex;
   align-items: center;
@@ -3949,12 +4025,12 @@ textarea:focus-visible {
 }
 
 /* ═══════════════════════════════════════════════════
-   BRICX JOURNAL / PRESS LIST PAGE (CAROLWOOD REPLICA)
+   Bricx Journal and Press List Page
    ═══════════════════════════════════════════════════ */
 
 /* Main layout containers */
 .bricx-blog-list-section {
-  background-color: #f6f5f3 !important; /* Elegant Carolwood warm cream-grey background */
+  background-color: #f6f5f3 !important; /* Warm cream-grey background */
   padding: 80px 0 120px 0;
 }
 
@@ -4022,7 +4098,7 @@ textarea:focus-visible {
 
 /* Text Content Area - Spacious & Premium */
 .bricx-blog-list-content {
-  padding: 56px 48px; /* Roomy, luxurious padding matching Carolwood */
+  padding: 56px 48px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -4210,7 +4286,9 @@ textarea:focus-visible {
   color: var(--text-charcoal) !important;
 }
 
-/* ── FLOATING CONTACT BUTTON & MODAL POPUP (BRICX THEME MATCHED) ─────────── */
+/* ==========================================================
+   Floating Contact Button and Modal Popup
+   ========================================================== */
 #floating-contact-btn {
   position: fixed;
   bottom: 96px;
@@ -4462,7 +4540,9 @@ textarea:focus-visible {
   border: 1px solid rgba(201, 59, 59, 0.12);
 }
 
-/* ── PROSPECTUS MODAL & ADVISOR PROFILE (BRICX THEME MATCHED) ── */
+/* ==========================================================
+   Prospectus Modal and Advisor Profile
+   ========================================================== */
 .prospectus-modal-overlay {
   position: fixed;
   inset: 0;
@@ -4613,7 +4693,9 @@ textarea:focus-visible {
   }
 }
 
-/* ── MODAL SUBMISSION STATE OVERLAY (SPINNER & BLUR) ── */
+/* ==========================================================
+   Modal Submission State Overlay
+   ========================================================== */
 .modal-state-overlay {
   position: absolute;
   inset: 0;
