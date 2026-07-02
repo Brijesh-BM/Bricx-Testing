@@ -1,80 +1,45 @@
-# BRICX.AI Premium Redesigned Website
+# Bricx.ai — Commercial Real Estate Advisory
 
-A standalone, ultra-premium, responsive corporate real estate and wealth advisory web portal for **Bricx.ai**. Redesigned with institutional integrity, high-contrast readability, unified geometric typography (**Outfit & Inter**), and snappy micro-animations.
+This project has been converted from a Python Flask application into a modern **Next.js App Router** application. It serves as the primary digital platform for Bricx.ai, providing commercial real estate leasing advisory, income investments, and land acquisition advisory services in Bengaluru.
 
----
+## Tech Stack
 
-## 🛠️ Tech Stack
-*   **Backend:** Python 3.x with Flask
-*   **Frontend:** HTML5, Premium Vanilla CSS3 (custom variables, grid architectures), and interactive ES6 JavaScript
+* **Frontend Framework**: Next.js (App Router, React 19)
+* **Styling**: Custom modern CSS (embedded into `app/globals.css` and component modules) with Google Fonts integrations.
+* **Email Notifications & Form Handling**: Nodemailer (SMTP transport) with structured email triggers for consultation requests, floating briefs, newsletter subscriptions, and NDAs.
+* **Search Engine Optimization (SEO)**: Next.js metadata objects (titles, descriptions, alternates, Open Graph, Twitter cards, and structured JSON-LD schemas matching templates exactly).
 
----
+## Getting Started
 
-## 🚀 Setup & Execution Instructions
+### 1. Configure Environment Variables
 
-Follow these step-by-step commands to spin up the Bricx portal independently:
+Create a `.env` file in the root directory and configure the following parameters:
 
-### 1. Open Folder in Terminal / VS Code
-Open your terminal and navigate to the project directory:
+```env
+# SMTP Credentials (Nodemailer)
+SMTP_HOST=smtp.your-provider.com
+SMTP_PORT=587
+SMTP_USER=your-user@domain.com
+SMTP_PASS=your-secure-password
+CONTACT_RECEIVER_EMAIL=principal@bricx.ai
+```
+
+### 2. Run the Development Server
+
+Install dependencies and start the local environment:
+
 ```bash
-cd "c:\Users\Brijesh M\Documents\Bricx-Redesign"
+npm install
+npm run dev
 ```
-*(Or open the folder directly in VS Code).*
 
-### 2. Establish Virtual Environment
-Create a clean local Python virtual environment to store dependencies:
+Open [http://localhost:3000](http://localhost:3000) with your browser to view the application.
+
+### 3. Build for Production
+
+Compile and verify TypeScript checks, lint checks, and static page exports:
+
 ```bash
-python -m venv venv
+npm run build
+npm run start
 ```
-
-### 3. Activate the Virtual Environment
-Activate the environment in your terminal shell:
-
-*   **Windows (PowerShell):**
-    ```powershell
-    .\venv\Scripts\Activate.ps1
-    ```
-*   **Windows (Command Prompt):**
-    ```cmd
-    venv\Scripts\activate.bat
-    ```
-*   **Mac / Linux:**
-    ```bash
-    source venv/bin/activate
-    ```
-
-### 4. Install Dependencies
-Install Flask using the local pip package installer:
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Launch the Server
-Start the Flask development server:
-```bash
-python app.py
-```
-
-The terminal will report that the Bricx portal is live:
-```text
- * Running on http://127.0.0.1:5000
-```
-
-### 6. Browse the Site
-Open your web browser and navigate to:
-```text
-http://127.0.0.1:5000
-```
-
----
-
-## 🏛️ Project Structure
-*   `app.py`: Standard Flask server handling advisory, off-market investments, land acquisitions, contact, and editorial blog routes.
-*   `static/style.css`: Master unified CSS stylesheet implementing color variables, spatial rhythms, and snappy interactions.
-*   `templates/base.html`: Common layout base wrapping the responsive glassmorphic nav and olive footer.
-*   `templates/home.html`: exact screenshot-matched homepage.
-*   `templates/advisory.html`: occupier and tenant representation services.
-*   `templates/investment_opportunities.html`: Compass-inspired private exclusive listing grids and secure investor NDA gate.
-*   `templates/land_opportunities.html`: Strategic land packages lists.
-*   `templates/contact_us.html`: responsive contact coordinates grids.
-*   `templates/blog.html`: Carolwood-style drop-cap editorial layout.
